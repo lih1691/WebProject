@@ -1,7 +1,7 @@
 import React  from 'react';
 import Header from "../../Components/Base/Header";
-import SignIn from "../../Components/Base/Header/SignIn";
-import SignUp from "../../Components/Base/Header/SignUp";
+import SignInLink from "../../Components/Base/Header/SignInLink";
+import SignUpLink from "../../Components/Base/Header/SignUpLink";
 
 const liStyle = {
     listStyle: "none",
@@ -12,8 +12,8 @@ const HeaderContainer = () => {
     return (
         <Header>
             <ul>
-                <li style = {liStyle}><SignUp/></li>
-                <li style = {liStyle}><SignIn/></li>
+                <li style = {liStyle}><SignUpLink/></li>
+                <li style = {liStyle}><SignInLink/></li>
             </ul>
         </Header>
     )

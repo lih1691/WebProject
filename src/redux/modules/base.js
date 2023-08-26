@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { handleActions, createAction } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
 const initialState = Map({
     header: Map({
@@ -7,3 +7,6 @@ const initialState = Map({
     })
 });
 
+export default handleActions({
+
+}, initialState);

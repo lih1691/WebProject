@@ -7,7 +7,6 @@ const useInput = (initialValue = null) => {
         (e) => {
             const { name, value } = e.target;
             setData({ ...data, [name]: value });
-            console.log(data);
         }, [data]
     );
 

@@ -3,12 +3,12 @@ import {Routes, Route} from 'react-router-dom';
 import { AuthWrapper } from 'Components/Auth';
 import { SignIn, SignUp } from 'Containers/Auth';
 
-const Auth = () => {
+function Auth() {
     return (
         <AuthWrapper>
             <Routes>
-                <Route path={"/SignIn"} element={ <SignIn /> } />
-                <Route path={"/SignUp"} element={ <SignUp /> } />
+                <Route path={"/SignInLink"} element={ <SignIn /> } />
+                <Route path={"/SignUpLink"} element={ <SignUp /> } />
             </Routes>
         </AuthWrapper>
     );

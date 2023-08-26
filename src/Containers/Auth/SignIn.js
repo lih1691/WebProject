@@ -2,20 +2,20 @@ import React from 'react';
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink } from 'Components/Auth';
 import { connect } from 'react-redux';
 import { bindActionCreators }  from "redux";
-import * as authActions from 'redux/modules/auth';
+import * as authActions from 'redux/modules/auth'
 
-const SignIn = () =>  {
-    const { userID, userPWD } = this.props.form.toJS();
+function SignIn(props) {
+    const { userID, userPWD } = props.form.toJS();
 
-    const handleChange = (e) => {
-        const { AuthActions } = this.props;
+    const handleChange= (e) => {
+        const { AuthActions } = props;
         const { name, value } = e.target;
 
         AuthActions.changeInput({
             name,
             value,
-            form:'SignIn'
-        });
+            form: 'SignIn'
+        })
     }
 
     return (
@@ -35,7 +35,7 @@ const SignIn = () =>  {
                 onChange={handleChange}
             />
             <AuthButton>로그인</AuthButton>
-            <RightAlignedLink to={"/Auth/SignUp"}>회원가입</RightAlignedLink>
+            <RightAlignedLink to={"/Auth/SignUpLink"}>회원가입</RightAlignedLink>
         </AuthContent>
     );
 }

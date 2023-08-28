@@ -2,7 +2,9 @@ import React from 'react';
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "Components/Auth";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { isEmail, isLength, isAlphanumeric } from 'validator';
+import { runValidation, runCheckExists } from "Components/Auth/ValidationHelpers";
+import storage from "lib/storage";
+import * as  userActions from 'redux/modules/user';
 import * as authActions from 'redux/modules/auth';
 
 function SignUp(props) {
@@ -17,90 +19,60 @@ function SignUp(props) {
         });
     }
 
-    const validate = {
-        userEmail: (value) => {
-            if(!isEmail(value)) {
-                setError('잘못된 이메일 형식입니다.');
-                return false;
-            }
-
-            return true;
-        },
-
-        userID: (value) => {
-            if(!isAlphanumeric(value) || !isLength(value, {min: 4, max: 15})) {
-                console.log(isAlphanumeric(value));
-                setError('아이디는 4 ~ 15 글자의 알파벳 혹은 숫자로 이뤄져야 합니다.');
-                return false;
-            }
-
-            return true;
-        },
-
-        userPWD: (value) => {
-            if(!isLength(value, {min: 6})) {
-                setError('비밀번호는 6자 이상이어야 합니다.');
-                return false;
-            }
-
-            return true;
-        },
-
-        userPWDConfirm: (value) => {
-            if(props.form.get('userPWD') !== value) {
-                setError('비밀번호가 일치하지 않습니다.');
-                return false;
-            }
-
-            setError(null);
-            return true;
-        }
-    }
-
-    const checkEmailExists = async(userEmail) => {
-        const { AuthActions } = props;
-        try {
-            await AuthActions.checkEmailExists(userEmail);
-
-            if ( props.exists.get('userEmail')) {
-                setError('이미 존재하는 이메일입니다.');
-            } else {
-                setError(null);
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const checkUserIDExists = async (userID) => {
-        const { AuthActions } = props;
-        try {
-             await AuthActions.checkUserIDExists(userID);
-             if (props.exists.get('userID')) {
-                 setError('이미 존재하는 아이디입니다.');
-             } else {
-                 setError(null);
-             }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         const { AuthActions } = props;
         const { name, value } = e.target;
 
         AuthActions.changeInput({
             name,
             value,
-            form:'SignUp'
+            form: 'SignUp'
         });
 
-        const validation = validate[name](value);
-        if (name.indexOf('userPWD') > -1 || !validation) return;
+        const validationError = runValidation(name, value, props.form, props);
+        if (validationError) {
+            setError(validationError);
+            return;
+        }
 
-        const check = name === 'userID' ?  checkUserIDExists: checkEmailExists;
-        check(value);
+        const checkError = await runCheckExists(name, value, props);
+        if (checkError) {
+            setError(checkError);
+        } else {
+            setError(null);
+        }
+    }
+
+    const handleLocalSignUp = async () => {
+        const { form, AuthActions, UserActions, error, history } = props;
+        const { userID, userPWD, userPWDConfirm, userEmail } = form.toJS();
+
+        if (error) return;
+        if (!runValidation('userID', userID, form, props)
+            || !runValidation('userPWD', userPWD, form, props)
+            || !runValidation('userPWDConfirm', userPWDConfirm, form, props)
+            || !runValidation('userEmail', userEmail, form, props)) {
+            return;
+        }
+
+        try {
+            await AuthActions.localSignUp({
+                userID, userPWD, userEmail
+            });
+            const loggedInfo = this.props.result.toJS();
+
+            storage.set('loggedInfo', loggedInfo);
+            UserActions.setLoggedInfo(loggedInfo);
+            UserActions.setValidated(true);
+            history.push('/');
+        } catch (e) {
+            if (e.response.status === 409) {
+                const { key } = e.response.data;
+                const message = key === 'userEmail' ? '이미 존재하는 이메일입니다.' : '이미 존재하는 아이디입니다.';
+                return setError(message);
+            }
+            setError('알 수 없는 에러가 발생했습니다.');
+        }
     }
 
     return (
@@ -136,7 +108,7 @@ function SignUp(props) {
             {
                 error && <AuthError>{error}</AuthError>
             }
-            <AuthButton>회원가입</AuthButton>
+            <AuthButton onClick={handleLocalSignUp}>회원가입</AuthButton>
             <RightAlignedLink to={"/Auth/SignInLink"}>로그인</RightAlignedLink>
         </AuthContent>
     );
@@ -146,10 +118,12 @@ export default connect(
     (state) => ({
         form: state.auth.getIn(['SignUp', 'form']),
         error: state.auth.getIn(['SignUp', 'error']),
-        exists: state.auth.getIn(['SignUp', 'exists'])
+        exists: state.auth.getIn(['SignUp', 'exists']),
+        result: state.auth.get('result')
     }),
     (dispatch) => ({
-        AuthActions: bindActionCreators(authActions, dispatch)
+        AuthActions: bindActionCreators(authActions, dispatch),
+        UserActions: bindActionCreators(userActions, dispatch)
     })
 )(SignUp);
 

@@ -7,8 +7,8 @@ function Auth() {
     return (
         <AuthWrapper>
             <Routes>
-                <Route path={"/SignInLink"} element={ <SignIn /> } />
-                <Route path={"/SignUpLink"} element={ <SignUp /> } />
+                <Route path={"/SignIn"} element={ <SignIn /> } />
+                <Route path={"/SignUp"} element={ <SignUp /> } />
             </Routes>
         </AuthWrapper>
     );

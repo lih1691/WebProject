@@ -7,8 +7,8 @@ import * as authActions from 'redux/modules/auth';
 import * as userActions from 'redux/modules/auth';
 
 function SignIn(props) {
-    const { userID, userPWD } = props.form.toJS();
     const { error } = props;
+    const { userID, userPWD } = props.form.toJS();
 
     const handleChange= (e) => {
         const { AuthActions } = props;
@@ -22,7 +22,7 @@ function SignIn(props) {
     }
 
     useEffect(() => {
-        const { AuthActions }  = props;
+        const { AuthActions } = props;
         return () => {
             AuthActions.initializeForm('SignIn');
         };
@@ -74,7 +74,7 @@ function SignIn(props) {
                 error && <AuthError>{error}</AuthError>
             }
             <AuthButton>로그인</AuthButton>
-            <RightAlignedLink to={"/Auth/SignUpLink"}>회원가입</RightAlignedLink>
+            <RightAlignedLink to={"/Auth/SignUp"}>회원가입</RightAlignedLink>
         </AuthContent>
     );
 }

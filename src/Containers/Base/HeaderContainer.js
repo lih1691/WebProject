@@ -1,7 +1,7 @@
 import React  from 'react';
-import Header from "../../Components/Base/Header";
-import SignInLink from "../../Components/Base/Header/SignInLink";
-import SignUpLink from "../../Components/Base/Header/SignUpLink";
+import Header from "Components/Base/Header";
+import SignInLink from "Components/Base/Header/SignInLink";
+import SignUpLink from "Components/Base/Header/SignUpLink";
 
 const liStyle = {
     listStyle: "none",

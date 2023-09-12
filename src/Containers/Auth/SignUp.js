@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "Components/Auth";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
@@ -18,6 +18,13 @@ function SignUp(props) {
             message
         });
     }
+
+    useEffect(() => {
+        const { AuthActions } = props;
+        return () => {
+            AuthActions.initializeForm('SignUp');
+        };
+    }, []);
 
     const handleChange = async (e) => {
         const { AuthActions } = props;
@@ -59,7 +66,7 @@ function SignUp(props) {
             await AuthActions.localSignUp({
                 userID, userPWD, userEmail
             });
-            const loggedInfo = this.props.result.toJS();
+            const loggedInfo = props.result.toJS();
 
             storage.set('loggedInfo', loggedInfo);
             UserActions.setLoggedInfo(loggedInfo);
@@ -109,7 +116,7 @@ function SignUp(props) {
                 error && <AuthError>{error}</AuthError>
             }
             <AuthButton onClick={handleLocalSignUp}>회원가입</AuthButton>
-            <RightAlignedLink to={"/Auth/SignInLink"}>로그인</RightAlignedLink>
+            <RightAlignedLink to={"/Auth/SignIn"}>로그인</RightAlignedLink>
         </AuthContent>
     );
 }

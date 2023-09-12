@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Root from './Root';
 import './index.css';
-import configureStore from 'redux/configureStore';
+import ReduxStore from 'redux/reduxStore';
 import reportWebVitals from './reportWebVitals';
 
-const store = configureStore();
+const store = ReduxStore();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Root store={store}/>);
 

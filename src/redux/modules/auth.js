@@ -10,7 +10,8 @@ const CHANGE_INPUT = 'auth/CHANGE_INPUT';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
 const CHECK_USERID_EXISTS = 'auth/CHECK_USERID_EXISTS'; // 아이디 중복 확인
-const CHECK_EMAIL_EXISTS = 'auth/CHECK_EMAIL_EXISTS'; // 이메일 중복 확인
+const CHECK_EMAIL_EXISTS = 'auth/CHECK_EMAIL_EXISTS'; // 이메일 중복 확인\
+const CHECK_NICKNAME_EXISTS = 'auth/CHECK_NICKNAME_EXISTS';
 
 const LOCAL_SIGNUP = 'auth/LOCAL_SIGNUP';
 const LOCAL_SIGNIN = 'auth/LOCAL_SIGNIN';
@@ -18,8 +19,9 @@ const LOGOUT = 'auth/LOGOUT';
 
 export const setError = createAction(SET_ERROR);
 
+export const checkUserIDExists = createAction(CHECK_USERID_EXISTS, AuthAPI.checkUserIDExists);
 export const checkEmailExists = createAction(CHECK_EMAIL_EXISTS, AuthAPI.checkEmailExists); // email
-export const checkUsernameExists = createAction(CHECK_USERID_EXISTS, AuthAPI.checkUserIDExists); // username
+export const checkNickNameExists = createAction(CHECK_NICKNAME_EXISTS, AuthAPI.checkNickNameExists); // username
 
 export const localSingUp = createAction(LOCAL_SIGNUP, AuthAPI.localSignUp); // { email, username, password }
 export const localSingIn = createAction(LOCAL_SIGNIN, AuthAPI.localSignIn); // { email, password }
@@ -29,7 +31,6 @@ export const logOut = createAction(LOGOUT, AuthAPI.logOut);
 export const changeInput = createAction(CHANGE_INPUT);
 export const initializeForm = createAction(INITIALIZE_FORM);
 
-export const checkUserIDExists = createAction(CHECK_USERID_EXISTS, AuthAPI.checkUserIDExists);
 
 const initialState = Map({
     SignUp: Map({
@@ -37,22 +38,23 @@ const initialState = Map({
             userID:'',
             userPWD:'',
             userPWDConfirm:'',
-            userEmail:'',
+            userEmail:''
         }),
-        exists: Map(({
-            email: false,
-            password: false,
-        })),
-        error:null
+        exists: Map({
+            userEmail: false,
+            userPWD: false,
+        }),
+        error: null
     }),
 
     SignIn: Map({
         form: Map({
             userID:'',
-            userPWD:'',
+            userPWD:''
         }),
         error:null
     }),
+
     result: Map({})
 });
 

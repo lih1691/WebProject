@@ -2,16 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
-import { shadow, media } from 'lib/styleUtil';
+import {  media } from 'lib/styleUtil';
 
 // 상단 고정, 그림자
 const Positioner = styled.div`
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
-    ${shadow(1)}
 `;
 
 // 흰 배경, 내용 중간 정렬
@@ -55,11 +54,6 @@ const Spacer = styled.div`
     flex-grow: 1;
 `;
 
-// 하단 그래디언트 테두리
-const GradientBorder = styled.div`
-    height: 3px;
-    background: linear-gradient(to right, ${oc.teal[6]}, ${oc.cyan[5]});
-`;
 
 const Header = ({children}) => {
     return (
@@ -73,7 +67,6 @@ const Header = ({children}) => {
                     {children}
                 </HeaderContents>
             </WhiteBackground>
-            <GradientBorder/>
         </Positioner>
     );
 }

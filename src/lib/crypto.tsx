@@ -1,13 +1,13 @@
 import CryptoJS from 'crypto-js'
 
-const secretKey = process.env.REACT_APP_SECRET_KEY;
+const secretKey: string = process.env.REACT_APP_SECRET_KEY;
 
-export const encrypt = (text) => {
+export const encrypt = (text: string) => {
     if (!text) return '';
     return CryptoJS.AES.encrypt(JSON.stringify(text), secretKey).toString();
 }
 
-export const decrypt = (text) => {
+export const decrypt = (text: string) => {
     if (!text) return '';
 
     try {

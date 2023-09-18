@@ -1,9 +1,9 @@
 const storage = {
-    set: (key, object) => {
+    set: (key: string, object: Record<string, any>) => {
         if(localStorage) return;
-        localStorage[key] = (typeof object) === 'string' ? object : JSON.stringify(object);
+        (window as any).localStorage[key] = (typeof object as string === 'string') ? object : JSON.stringify(object);
     },
-    get: (key) => {
+    get: (key: string) => {
         if (!localStorage) return;
 
         if (!localStorage[key]) {
@@ -18,7 +18,7 @@ const storage = {
         }
     },
 
-    remove: (key) => {
+    remove: (key: string) => {
         if (!localStorage) return;
 
         if (!localStorage[key]) {

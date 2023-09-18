@@ -11,12 +11,9 @@ const Sign = styled(Link)`
   text-decoration: none;
   transition: .2s all;
   
-  
-  
   &:hover {
     color: ${oc.gray[5]};
   }
-  
 `
 
 export default Sign;

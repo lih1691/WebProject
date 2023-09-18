@@ -1,34 +1,33 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import * as AuthAPI from 'lib/api/auth';
+import * as AuthAPI from '@lib/api/auth';
+
+interface formState {
+    userID: string;
+    userNickName: string;
+    userPWD: string;
+    userPWDConfirm: string;
+    userEmail: string;
+}
+
+interface existsState {
+    id: boolean;
+    email: boolean;
+    nickName: boolean;
+}
 
 interface authState {
     SignUp: {
-        form: {
-            userID: string;
-            userNickName: string;
-            userPWD: string;
-            userPWDConfirm: string;
-            userEmail: string;
-        }
-
-        exists: {
-            id: boolean;
-            email: boolean;
-            nickName: boolean;
-        }
-
+        form: formState;
+        exists: existsState;
         error: string | null;
     };
-
     SignIn: {
         form: {
             userID: string;
             userPWD: string;
-        }
-
+        };
         error: string | null;
-    }
-
+    };
     result: Record<string, any>;
 }
 
@@ -57,6 +56,7 @@ const initialState: authState = {
     },
     result: {},
 };
+
 
 export const checkUserIDExists = createAsyncThunk(
     'auth/checkUserIDExists',
@@ -97,29 +97,43 @@ export const localSignIn = createAsyncThunk(
         return response.data;
     }
 );
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setError: (state, action: PayloadAction<{ form: string; message: string | null }>) => {
+        setError: (state, action: PayloadAction<{ form: keyof authState; message: string | null }>) => {
             const { form, message } = action.payload;
-            state[form].error = message;
+
+           state[form].error = message;
         },
 
         // 입력값 변경 액션
         changeInput: (
             state,
-            action: PayloadAction<{ form: string; name: string; value: string }>
+            action: PayloadAction<{ form: keyof authState; name: string; value: string }>
         ) => {
             const { form, name, value } = action.payload;
             state[form].form[name] = value;
         },
 
         // 폼 초기화 액션
-        initializeForm: (state, action: PayloadAction<string>) => {
+        initializeForm: (state, action: PayloadAction<keyof authState>) => {
             const initialForm = initialState[action.payload];
-            state[action.payload] = initialForm;
+            state[action.payload].form = { ...initialState[action.payload].form }
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(checkUserIDExists.fulfilled, (state, action) => {
+                state.SignUp.exists.id = action.payload;
+            })
+            .addCase(checkNickNameExists.fulfilled, (state, action) => {
+                state.SignUp.exists.nickName = action.payload;
+            })
+            .addCase(checkEmailExists.fulfilled, (state, action) => {
+                state.SignUp.exists.email = action.payload;
+            });
     },
 });
 

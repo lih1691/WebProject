@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { shadow } from 'lib/styleUtil';
+import { shadow } from '@lib/styleUtil';
 import { Link } from 'react-router-dom';
 
 
@@ -39,7 +39,11 @@ const Contents = styled.div`
   height: auto;
 `;
 
-const AuthWrapper = ({children}) => (
+interface AuthWrapperProps {
+    children: ReactNode;
+}
+
+const AuthWrapper: React.FC<AuthWrapperProps> = ({children}) => (
     <Positioner>
         <ShadowBox>
             <LogoWrapper>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 import useInput from '../lib/useInput';
-import { encrypt, decrypt } from '../lib/crypto';
+import { encrypt, decrypt } from '@lib/crypto';
 
 const SERVER_URL = 'http://localhost:4000/api/userData';
 

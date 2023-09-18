@@ -27,7 +27,15 @@ const Input = styled.input`
   }
 `;
 
-const InputWithLabel = ({label, ...rest}) => (
+interface InputWithLabelProps {
+    label: string;
+    name: string;
+    placeholder: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const InputWithLabel: React.FC<InputWithLabelProps> = ({label, ...rest}) => (
     <Wrapper>
         <Label>{label}</Label>
         <Input {... rest} />

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": false,
+        "baseUrl": "./src",
+        "paths": {
+            "@Components/*": ["./Components/*"],
+            "@Containers/*": ["./Containers/*"],
+            "@lib/*": ["./lib/*"],
+            "@pages/*": ["./pages/*"],
+            "@redux/*": ["./redux/*"]
+        },
+        "include": ["src/**/**/.ts"]
+    }
+}
+

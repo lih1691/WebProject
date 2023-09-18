@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
@@ -10,7 +10,11 @@ const Wrapper = styled.div`
     text-align: center;
 `;
 
-const AuthError = ({children}) => (
+interface AuthErrorProps {
+    children: ReactNode;
+}
+
+const AuthError: React.FC<AuthErrorProps> = ({children}) => (
     <Wrapper>
         {children}
     </Wrapper>

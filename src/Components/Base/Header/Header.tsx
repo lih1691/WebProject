@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
-import {  media } from 'lib/styleUtil';
+import {  media } from '@lib/styleUtil';
 
 // 상단 고정, 그림자
 const Positioner = styled.div`
@@ -54,8 +54,11 @@ const Spacer = styled.div`
     flex-grow: 1;
 `;
 
+interface HeaderProps {
+    children?: ReactNode;
+}
 
-const Header = ({children}) => {
+const Header: React.FC<HeaderProps> = ({children}) => {
     return (
         <Positioner>
             <WhiteBackground>

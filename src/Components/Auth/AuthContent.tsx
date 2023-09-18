@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
@@ -9,7 +9,12 @@ const Title = styled.div`
   margin-bottom: 1rem;
 `
 
-const AuthContent = ({title, children}) => (
+interface AuthContentProps {
+    title: string;
+    children: ReactNode;
+}
+
+const AuthContent: React.FC<AuthContentProps> = ({title, children}) => (
     <div>
         <Title>{title}</Title>
         {children}

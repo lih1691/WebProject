@@ -14,7 +14,13 @@ const StyledLink = styled(Link)`
     color: ${oc.gray[7]};  
   }
 `
-const RightAlignedLink = ({to, children}) => (
+
+interface RightAlignedLinkProps {
+    to: string;
+    children: string;
+}
+
+const RightAlignedLink: React.FC<RightAlignedLinkProps> = ({to, children}) => (
     <Aligner>
         <StyledLink to={to}>{children}</StyledLink>
     </Aligner>

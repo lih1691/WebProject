@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from "styled-components";
 import oc from 'open-color';
-import { shadow } from 'lib/styleUtil';
+import { shadow } from '@lib/styleUtil';
 
 const Wrapper = styled.div`
   margin-top: 1rem;
@@ -29,7 +29,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const AuthButton = ({children, onClick}) => (
+interface AuthButtonProps {
+    children: ReactNode;
+    onClick?: () => void;
+}
+
+const AuthButton: React.FC<AuthButtonProps> = ({children, onClick}) => (
     <Wrapper onClick={onClick}>
         {children}
     </Wrapper>

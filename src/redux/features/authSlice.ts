@@ -75,7 +75,7 @@ export const checkEmailExists = createAsyncThunk(
 );
 
 export const checkNickNameExists = createAsyncThunk(
-    'auth/checkNickNAmeExists',
+    'auth/checkNickNameExists',
     async (nickName: string) => {
         const response = await AuthAPI.checkNickNameExists(nickName);
         return response.data.exists;

@@ -61,6 +61,7 @@
     "react-refresh": "^0.11.0",
     "react-router-dom": "^6.15.0",
     "react-script": "^2.0.5",
+    "react-scripts": "^5.0.1",
     "redux": "^4.2.1",
     "redux-action": "^1.2.2",
     "redux-actions": "^3.0.0",
@@ -83,10 +84,10 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
   },
   "eslintConfig": {
     "extends": [
@@ -166,6 +167,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
+    "@types/react-router-dom": "^5.3.3",
     "@types/validator": "^13.11.1",
     "craco": "^0.0.3",
     "craco-alias": "^3.0.1",

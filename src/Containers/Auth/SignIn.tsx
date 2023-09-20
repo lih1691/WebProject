@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from '@Components/Auth';
-import { storage } from '@lib/storage'
-import { setError, initializeForm, changeInput, localSignUp } from "redux/features/authSlice";
+import storage from "@lib/storage";
+import { setError, initializeForm, changeInput, localSignIn } from "@redux/features/authSlice";
 import { setLoggedInfo, setValidated } from '@redux/features/userSlice';
-import { localSignIn } from "@lib/api/auth";
 
 function SignIn() {
-    const dispatch = useDispatch();
-    const { error, form, result } = useSelector(state => state.auth.SignIn);
+    const dispatch = useAppDispatch();
+    const { error, form } = useAppSelector(state => state.auth.SignIn);
+    const { result } = useAppSelector((state) => state.auth.result);
     const { userID, userPWD } = form;
 
-    const handleChange= (e) => {
+    const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         dispatch(changeInput({
@@ -29,19 +30,24 @@ function SignIn() {
 
 
     const HandleLocalSignIn = async () => {
-        const { history } = useSelector(state => state.auth.SignIn);
+        const navigate = useNavigate();
         const { userID, userPWD } = form;
 
         try {
-            await localSignIn({userID, userPWD});
-            const loggedInfo = result;
+            localSignIn({userID, userPWD});
+            const loggedInfo =  result;
 
             setLoggedInfo(loggedInfo);
-            history.push('/');
+            navigate('/');
             storage.set('loggedInfo', loggedInfo);
         } catch (e) {
             console.log('a');
-            setError('잘못된 계정 정보입니다.');
+            setError(
+                {
+                    form: 'SignIn',
+                    message: '잘못된 계정 정보 입니다.'
+                }
+            )
         }
     }
 

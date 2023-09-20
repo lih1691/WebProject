@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "@Components/Auth";
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@redux/store';
+import { useAppSelector, useAppDispatch} from "@redux/hook";
 import { runValidation, runCheckExists } from "@Components/Auth/ValidationHelpers";
 import storage from "@lib/storage";
-import { setError, initializeForm, changeInput, localSignUp } from "redux/features/authSlice";
-import { setLoggedInfo, setValidated } from "redux/features/userSlice";
+import { setError, initializeForm, changeInput, localSignUp } from "@redux/features/authSlice";
+import { setLoggedInfo, setValidated } from "@redux/features/userSlice";
 
 function SignUp() {
-    const dispatch = useDispatch();
-    const { result } = useSelector((state: RootState) => state.auth);
-    const { error, form } = useSelector((state: RootState) => state.auth.SignUp);
+    const dispatch = useAppDispatch();
+    const { result } = useAppSelector((state) => state.auth.result);
+    const { error, form } = useAppSelector((state) => state.auth.SignUp);
     const { userID, userNickName, userPWD, userPWDConfirm, userEmail } = form;
 
     useEffect(() => {
@@ -43,7 +43,7 @@ function SignUp() {
         if (checkError) {
             dispatch(setError({
                 form: 'SignUp',
-                message: checkError,
+                message: checkError.toString()
             }));
         } else {
             dispatch(setError({
@@ -54,8 +54,9 @@ function SignUp() {
     }
 
     const HandleLocalSignUp = async () => {
-        const { error, history } = useSelector((state: RootState) => state.auth.SignUp);
+        const { error } = useAppSelector((state) => state.auth.SignUp);
         const { userID, userPWD, userPWDConfirm, userEmail } = form;
+        const navigate = useNavigate();
 
         if (error) return;
         if (!runValidation('userID', userID, form)
@@ -74,8 +75,8 @@ function SignUp() {
             storage.set('loggedInfo', loggedInfo);
             setLoggedInfo(loggedInfo);
             setValidated(true);
-            history.push('/');
-        } catch (e: Error) {
+            navigate('/');
+        } catch (e) {
             if (e.response.status === 409) {
                 const { key } = e.response.data;
                 const message = key === 'userEmail' ? '이미 존재하는 이메일입니다.' : '이미 존재하는 아이디입니다.';

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as AuthAPI from '@lib/api/auth';
 
 interface LoggedInfo {
@@ -21,6 +21,21 @@ const initialState: userState = {
     validated: false,
 }
 
+export const logOut = createAsyncThunk(
+    'user/logOut',
+    async () => {
+        const response = AuthAPI.logOut();
+    }
+)
+
+export const checkStatus = createAsyncThunk(
+    'user/checkStatus',
+    async () => {
+        const response = await AuthAPI.checkStatus();
+        return response.data;
+    }
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -33,28 +48,25 @@ const userSlice = createSlice({
             state.validated = action.payload;
         }
     },
+    extraReducers: (builder) => {
+        builder.addCase(logOut.rejected, (state, action) => {
+            console.error('로그아웃 실패');
+        })
+        builder.addCase(logOut.fulfilled, (state, action) => {
+            setLoggedInfo({ thumbnail: null, nickName: null});
+        })
+        builder.addCase(checkStatus.fulfilled, (state, action) => {
+            state.loggedInfo = action.payload;
+            state.logged = true;
+            state.validated = true;
+        })
+        builder.addCase(checkStatus.rejected, (state, action) => {
+            state.loggedInfo = { thumbnail: null, nickName: null };
+            state.logged = false;
+            state.validated = false;
+        })
+    }
 });
-
-export const logout = () => async (dispatch: Dispatch) => {
-    try {
-        await AuthAPI.logOut();
-        dispatch(setLoggedInfo({ thumbnail: null, nickName: null}));
-    } catch (error) {
-        console.error('로그아웃 실패', error);
-    }
-};
-
-export const checkStatus = () => async (dispatch : Dispatch) => {
-    try {
-        const response = await AuthAPI.checkStatus();
-        dispatch(setLoggedInfo(response.data));
-        dispatch(setValidated(true));
-    } catch (error) {
-        dispatch(setLoggedInfo({ thumbnail: null, nickName: null}));
-        dispatch(setValidated(false));
-    }
-}
-
 
 export const { setLoggedInfo, setValidated } = userSlice.actions;
 export default userSlice.reducer;

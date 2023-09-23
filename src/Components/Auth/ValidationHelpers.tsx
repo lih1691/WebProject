@@ -22,13 +22,13 @@ export const runValidation = (name: string, value: string, form: formState) => {
             return validateEmail(value);
         case 'userID':
             return validateUserID(value);
-        case 'userPWD':
-            return validatePassword(value);
-        case 'userPWDConfirm':
-            return validatePasswordConfirmation(value, form.userPWD);
-        default:
-            return null;
-    }
+case 'userPWD':
+return validatePassword(value);
+case 'userPWDConfirm':
+return validatePasswordConfirmation(value, form.userPWD);
+default:
+return null;
+}
 };
 
 export const runCheckExists =  createAsyncThunk (

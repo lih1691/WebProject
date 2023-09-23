@@ -2,13 +2,16 @@ import React, {ReactNode} from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
-import {  media } from '@lib/styleUtil';
+import { Spacer, media } from '@lib/styleUtil';
+import MenuBar from "@Components/Base/Menu";
+
 
 // 상단 고정, 그림자
 const Positioner = styled.div`
     display: flex;
     flex-direction: column;
     position: fixed;
+    justify-content: space-between;
     top: 0;
     width: 100%;
 `;
@@ -49,16 +52,7 @@ const Logo = styled.div`
     text-decoration-line: none;
 `;
 
-// 중간 여백
-const Spacer = styled.div`
-    flex-grow: 1;
-`;
-
-interface HeaderProps {
-    children?: ReactNode;
-}
-
-const Header: React.FC<HeaderProps> = ({children}) => {
+function Header ({children}: {children: ReactNode}) {
     return (
         <Positioner>
             <WhiteBackground>
@@ -66,7 +60,6 @@ const Header: React.FC<HeaderProps> = ({children}) => {
                     <Link to={"/"} style={{ textDecoration: "none"}}>
                         <Logo>Logo</Logo>
                     </Link>
-                    <Spacer/>
                     {children}
                 </HeaderContents>
             </WhiteBackground>

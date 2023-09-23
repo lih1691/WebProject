@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "@Components/Auth";
 import { useAppSelector, useAppDispatch} from "@redux/hook";
@@ -21,6 +21,7 @@ function SignUp() {
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
+        console.log(value);
 
         dispatch(changeInput({
             name,
@@ -29,28 +30,23 @@ function SignUp() {
         }));
 
         const validationError = runValidation(name, value, form);
-        if (validationError) {
-            dispatch(changeInput({
-                name,
-                value,
-                form: 'SignUp'
-            }));
+        dispatch(setError({
+            form: "SignUp",
+            message: validationError,
+        }));
 
-            return;
-        }
-
-        const checkError = runCheckExists({name, value});
-        if (checkError) {
-            dispatch(setError({
-                form: 'SignUp',
-                message: checkError.toString()
-            }));
-        } else {
-            dispatch(setError({
-                form: 'SignUp',
-                message: null,
-            }));
-        }
+        // const checkError = runCheckExists({name, value});
+        // if (checkError) {
+        //     dispatch(setError({
+        //         form: 'SignUp',
+        //         message: checkError.toString(),
+        //     }));
+        // } else {
+        //     dispatch(setError({
+        //         form: 'SignUp',
+        //         message: null,
+        //     }));
+        // }
     }
 
     const HandleLocalSignUp = async () => {
@@ -76,7 +72,7 @@ function SignUp() {
             setLoggedInfo(loggedInfo);
             setValidated(true);
             navigate('/');
-        } catch (e) {
+        } catch (e: any) {
             if (e.response.status === 409) {
                 const { key } = e.response.data;
                 const message = key === 'userEmail' ? '이미 존재하는 이메일입니다.' : '이미 존재하는 아이디입니다.';

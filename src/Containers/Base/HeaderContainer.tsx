@@ -1,20 +1,18 @@
 import React  from 'react';
-import styled from 'styled-components';
-import Header from "@Components/Base/Header";
-import SignInLink from "@Components/Base/Header/SignInLink";
-import SignUpLink from "@Components/Base/Header/SignUpLink";
+import Header from "@Components/Base/Header/Header";
+import { NoneDotli } from '@lib/styleUtil';
+import { SignUpLink, SignInLink } from '@Components/Base/Header';
+import MenuBar from "@Components/Base/Menu";
 
-const NonDotli = styled.li`
-  list-style: none;
-  float: left;
-`
-
-const HeaderContainer: React.FC= () => {
+function HeaderContainer() {
     return (
         <Header>
+            <MenuBar>
+                <h2>메뉴</h2>
+            </MenuBar>
             <ul>
-                <NonDotli><SignUpLink/></NonDotli>
-                <NonDotli><SignInLink/></NonDotli>
+                <NoneDotli><SignUpLink/></NoneDotli>
+                <NoneDotli><SignInLink/></NoneDotli>
             </ul>
         </Header>
     )

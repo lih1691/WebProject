@@ -1,3 +1,3 @@
 export { default } from './Header';
-export { default as SignIn } from './SignInLink';
-export { default as SignUp } from './SignUpLink';
+export { default as SignInLink } from './SignInLink';
+export { default as SignUpLink } from './SignUpLink';

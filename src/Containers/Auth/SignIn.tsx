@@ -12,7 +12,7 @@ function SignIn() {
     const { result } = useAppSelector((state) => state.auth.result);
     const { userID, userPWD } = form;
 
-    const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         dispatch(changeInput({
@@ -70,7 +70,7 @@ function SignIn() {
             {
                 error && <AuthError>{error}</AuthError>
             }
-            <AuthButton>로그인</AuthButton>
+            <AuthButton onClick={HandleLocalSignIn}>로그인</AuthButton>
             <RightAlignedLink to={"/Auth/SignUp"}>회원가입</RightAlignedLink>
         </AuthContent>
     );

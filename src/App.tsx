@@ -8,7 +8,7 @@ const App: React.FC = () => {
         <div>
             <HeaderContainer />
             <Routes>
-                <Route path={"/"} element={<MainPage />} />
+                <Route path={"/"}  element={<MainPage />} />
                 <Route path={"/Auth/*"} element={<Auth />}/>
             </Routes>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HeaderContainer from "@Containers/Base/HeaderContainer";
-import { MainPage, Auth } from '@pages/index';
+import { MainPage, Auth, ReviewListPage, NewsListPage } from '@pages/index';
 
 const App: React.FC = () => {
     return (
@@ -10,6 +10,8 @@ const App: React.FC = () => {
             <Routes>
                 <Route path={"/"}  element={<MainPage />} />
                 <Route path={"/Auth/*"} element={<Auth />}/>
+                <Route path={"/Review/*"} element={<ReviewListPage/> }/>
+                <Route path={"/News/*"} element={<NewsListPage/> }/>
             </Routes>
         </div>
     );

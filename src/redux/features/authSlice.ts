@@ -84,16 +84,16 @@ export const checkNickNameExists = createAsyncThunk(
 
 export const localSignUp = createAsyncThunk(
     'auth/localSignUp',
-    async (data: { userID: string; userNickName: string; userEmail: string; userPWD: string }) => {
-        const response = await AuthAPI.localSignUp(data);
+    async (userdata: string) => {
+        const response = await AuthAPI.localSignUp(userdata);
         return response.data;
     }
 );
 
 export const localSignIn = createAsyncThunk(
     'auth/localSignIn',
-    async (data: { userID: string; userPWD: string }) => {
-        const response = await AuthAPI.localSignIn(data);
+    async (userData: string) => {
+        const response = await AuthAPI.localSignIn(userData);
         return response.data;
     }
 );

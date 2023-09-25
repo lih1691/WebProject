@@ -7,9 +7,6 @@ import MenuBar from "@Components/Base/Menu";
 function HeaderContainer() {
     return (
         <Header>
-            <MenuBar>
-                <h2>메뉴</h2>
-            </MenuBar>
             <ul>
                 <NoneDotli><SignUpLink/></NoneDotli>
                 <NoneDotli><SignInLink/></NoneDotli>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MainPage: React.FC = () => {
+function MainPage() {
     return (
         <>
 
         </>
     );
-};
+}
 
 export default MainPage;

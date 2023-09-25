@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AuthWrapper } from '@Components/Auth';
 import { SignIn, SignUp } from '@Containers/Auth';
 

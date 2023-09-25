@@ -5,7 +5,6 @@ import oc from 'open-color';
 import { Spacer, media } from '@lib/styleUtil';
 import MenuBar from "@Components/Base/Menu";
 
-
 // 상단 고정, 그림자
 const Positioner = styled.div`
     display: flex;
@@ -60,6 +59,8 @@ function Header ({children}: {children: ReactNode}) {
                     <Link to={"/"} style={{ textDecoration: "none"}}>
                         <Logo>Logo</Logo>
                     </Link>
+                    <MenuBar></MenuBar>
+                    <Spacer/>
                     {children}
                 </HeaderContents>
             </WhiteBackground>

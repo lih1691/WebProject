@@ -31,10 +31,11 @@ function SignIn() {
 
     const HandleLocalSignIn = async () => {
         const navigate = useNavigate();
-        const { userID, userPWD } = form;
+        const userData = useAppSelector(state => state.auth.SignIn.form);
+        const jsonData = JSON.stringify(userData);
 
         try {
-            localSignIn({userID, userPWD});
+            localSignIn(jsonData);
             const loggedInfo =  result;
 
             setLoggedInfo(loggedInfo);

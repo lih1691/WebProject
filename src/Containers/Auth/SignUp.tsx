@@ -51,7 +51,8 @@ function SignUp() {
 
     const HandleLocalSignUp = async () => {
         const { error } = useAppSelector((state) => state.auth.SignUp);
-        const { userID, userPWD, userPWDConfirm, userEmail } = form;
+        const userData = form;
+        const jsonData= JSON.stringify(userData);
         const navigate = useNavigate();
 
         if (error) return;
@@ -63,9 +64,7 @@ function SignUp() {
         }
 
         try {
-            localSignUp({
-                userID, userNickName, userPWD, userEmail
-            });
+            localSignUp(jsonData);
             const loggedInfo = result;
 
             storage.set('loggedInfo', loggedInfo);

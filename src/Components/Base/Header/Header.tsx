@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
-import { Spacer, media } from '@lib/styleUtil';
+import { media } from '@lib/styleUtil';
 import MenuBar from "@Components/Base/Menu";
 
 // 상단 고정, 그림자
@@ -13,11 +13,16 @@ const Positioner = styled.div`
     justify-content: space-between;
     top: 0;
     width: 100%;
+    transition: .2s ;
+  
+    &:hover {
+      background-color: white;
+    }
 `;
 
 // 흰 배경, 내용 중간 정렬
-const WhiteBackground = styled.div`
-    background: white;
+const HeaderBackground = styled.div`
+    background: transparent;
     display: flex;
     justify-content: center;
     height: auto;
@@ -26,7 +31,7 @@ const WhiteBackground = styled.div`
 // 해더의 내용
 const HeaderContents = styled.div`
     width: 1200px;
-    height: 55px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,30 +45,41 @@ const HeaderContents = styled.div`
     ${media.tablet`
         width: 100%;
     `}
+
+    &:hover {
+      div {
+          a {
+            color: ${oc.gray[9]};
+          }
+      }
+    }
 `;
 
-// 로고
-const Logo = styled.div`
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    color: ${oc.teal[7]};
-    font-family: 'Rajdhani';
-    text-decoration-line: none;
+// 중간 여백
+export const Spacer = styled.div`
+    flex-grow: 1;
+`;
+
+const LogoLink = styled(Link)`
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: ${oc.teal[7]};
+  font-family: 'Rajdhani';
+  margin: 20px;
+  text-decoration: none;
 `;
 
 function Header ({children}: {children: ReactNode}) {
     return (
         <Positioner>
-            <WhiteBackground>
+            <HeaderBackground>
                 <HeaderContents>
-                    <Link to={"/"} style={{ textDecoration: "none"}}>
-                        <Logo>Logo</Logo>
-                    </Link>
-                    <MenuBar></MenuBar>
+                    <LogoLink to={"/"}>Logo</LogoLink>
+                    <MenuBar/>
                     <Spacer/>
                     {children}
                 </HeaderContents>
-            </WhiteBackground>
+            </HeaderBackground>
         </Positioner>
     );
 }

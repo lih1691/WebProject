@@ -6,6 +6,7 @@ import { runValidation, runCheckExists } from "@Components/Auth/ValidationHelper
 import storage from "@lib/storage";
 import { setError, initializeForm, changeInput, localSignUp } from "@redux/features/authSlice";
 import { setLoggedInfo, setValidated } from "@redux/features/userSlice";
+import { encrypt } from "@lib/crypto";
 
 function SignUp() {
     const dispatch = useAppDispatch();
@@ -51,8 +52,8 @@ function SignUp() {
 
     const HandleLocalSignUp = async () => {
         const { error } = useAppSelector((state) => state.auth.SignUp);
-        const userData = form;
-        const jsonData= JSON.stringify(userData);
+        const encryptedPWD = encrypt(userPWD);
+        const jsonData = JSON.stringify({userID, encryptedPWD, userNickName, userEmail});
         const navigate = useNavigate();
 
         if (error) return;
@@ -108,6 +109,13 @@ function SignUp() {
                 name={"userPWDConfirm"}
                 placeholder={"비밀번호 확인"}
                 value={userPWDConfirm}
+                onChange={handleChange}
+            />
+            <InputWithLabel
+                label={"닉네임"}
+                name={"userNickName"}
+                placeholder={"닉네임"}
+                value={userNickName}
                 onChange={handleChange}
             />
             <InputWithLabel

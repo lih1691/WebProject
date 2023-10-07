@@ -4,7 +4,6 @@ import oc from 'open-color';
 import { shadow } from '@lib/styleUtil';
 import { Link } from 'react-router-dom';
 
-
 const Positioner = styled.div`
   position: absolute;
   top: 50%;
@@ -39,21 +38,19 @@ const Contents = styled.div`
   height: auto;
 `;
 
-interface AuthWrapperProps {
-    children: ReactNode;
+function AuthWrapper ({children}: {children: ReactNode}) {
+    return (
+        <Positioner>
+            <ShadowBox>
+                <LogoWrapper>
+                    <Logo to={"/"}>Logo</Logo>
+                </LogoWrapper>
+                <Contents>
+                    {children}
+                </Contents>
+            </ShadowBox>
+        </Positioner>
+    );
 }
-
-const AuthWrapper: React.FC<AuthWrapperProps> = ({children}) => (
-    <Positioner>
-        <ShadowBox>
-            <LogoWrapper>
-                <Logo to={"/"}>Logo</Logo>
-            </LogoWrapper>
-            <Contents>
-                {children}
-            </Contents>
-        </ShadowBox>
-    </Positioner>
-);
 
 export default AuthWrapper;

@@ -10,6 +10,7 @@ const Aligner = styled.div`
 
 const StyledLink = styled(Link)`
   color: ${oc.gray[6]};
+  
   &:hover {
     color: ${oc.gray[7]};  
   }

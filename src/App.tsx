@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HeaderContainer from "@Containers/Base/HeaderContainer";
-import { MainPage, Auth, ReviewListPage, NewsListPage } from '@pages/index';
+import { HeaderContainer, FooterContainer } from "@Containers/Base";
+import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from '@pages/index';
 
-const App: React.FC = () => {
+function App(){
     return (
         <div>
             <HeaderContainer />
@@ -12,7 +12,9 @@ const App: React.FC = () => {
                 <Route path={"/Auth/*"} element={<Auth />}/>
                 <Route path={"/Review/*"} element={<ReviewListPage/> }/>
                 <Route path={"/News/*"} element={<NewsListPage/> }/>
+                <Route path={"/Community/*"} element={<CommunityPage/>} />
             </Routes>
+            <FooterContainer />
         </div>
     );
 }

@@ -1,13 +1,12 @@
 import { css, CSSObject, styled } from 'styled-components';
 
-export const NoneDotli = styled.li`
+export const NoneDotUl = styled.ul`
   list-style: none;
+`
+
+export const LeftLi = styled.li`
   float: left;
 `
-// 중간 여백
-export const Spacer = styled.div`
-    flex-grow: 1;
-`;
 
 export const sizes: Record<string, string> = {
     wide: '1200px',

@@ -1,16 +1,15 @@
 import React  from 'react';
-import Header from "@Components/Base/Header/Header";
-import { NoneDotli } from '@lib/styleUtil';
+import Header from "@Components/Base/Header";
+import { NoneDotUl, LeftLi } from '@lib/styleUtil';
 import { SignUpLink, SignInLink } from '@Components/Base/Header';
-import MenuBar from "@Components/Base/Menu";
 
 function HeaderContainer() {
     return (
         <Header>
-            <ul>
-                <NoneDotli><SignUpLink/></NoneDotli>
-                <NoneDotli><SignInLink/></NoneDotli>
-            </ul>
+            <NoneDotUl>
+                <LeftLi><SignUpLink/></LeftLi>
+                <LeftLi><SignInLink/></LeftLi>
+            </NoneDotUl>
         </Header>
     )
 }

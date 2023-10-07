@@ -122,6 +122,8 @@ const authSlice = createSlice({
             const initialForm = initialState[action.payload];
             state[action.payload].form = { ...initialState[action.payload].form }
         },
+
+
     },
     extraReducers: (builder) => {
         builder

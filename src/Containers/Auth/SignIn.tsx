@@ -11,7 +11,13 @@ function SignIn() {
     const { error, form } = useAppSelector(state => state.auth.SignIn);
     const { result } = useAppSelector((state) => state.auth.result);
     const { userID, userPWD } = form;
-
+    
+    useEffect(() => {
+        return () => {
+            dispatch(initializeForm('SignIn'));
+        };
+    }, [dispatch]);
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
@@ -21,14 +27,7 @@ function SignIn() {
             form: 'SignIn'
         }));
     }
-
-    useEffect(() => {
-        return () => {
-            dispatch(initializeForm('SignIn'));
-        };
-    }, [dispatch]);
-
-
+    
     const HandleLocalSignIn = async () => {
         const navigate = useNavigate();
         const userData = useAppSelector(state => state.auth.SignIn.form);

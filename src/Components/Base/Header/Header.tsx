@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
 import { media } from '@lib/styleUtil';
-import MenuBar from "@Components/Base/Menu";
 
-// 상단 고정, 그림자
+// 상단 고정
 const Positioner = styled.div`
     display: flex;
     flex-direction: column;
@@ -55,11 +54,6 @@ const HeaderContents = styled.div`
     }
 `;
 
-// 중간 여백
-export const Spacer = styled.div`
-    flex-grow: 1;
-`;
-
 const LogoLink = styled(Link)`
   font-size: 1.4rem;
   letter-spacing: 2px;
@@ -75,8 +69,7 @@ function Header ({children}: {children: ReactNode}) {
             <HeaderBackground>
                 <HeaderContents>
                     <LogoLink to={"/"}>Logo</LogoLink>
-                    <MenuBar/>
-                    <Spacer/>
+
                     {children}
                 </HeaderContents>
             </HeaderBackground>

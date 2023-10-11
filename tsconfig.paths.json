@@ -6,7 +6,8 @@
             "@Containers/*": ["./Containers/*"],
             "@lib/*": ["./lib/*"],
             "@pages/*": ["./pages/*"],
-            "@redux/*": ["./redux/*"]
+            "@redux/*": ["./redux/*"],
+            "@style/*": ["./style/*"]
         }
     }
 }

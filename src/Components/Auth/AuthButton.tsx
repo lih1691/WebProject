@@ -29,15 +29,13 @@ const Wrapper = styled.div`
   }
 `;
 
-interface AuthButtonProps {
-    children: ReactNode;
-    onClick?: () => void;
-}
 
-const AuthButton: React.FC<AuthButtonProps> = ({children, onClick}) => (
-    <Wrapper onClick={onClick}>
-        {children}
-    </Wrapper>
-);
+function AuthButton ({children, onClick} : {children: ReactNode, onClick: () => void}) {
+    return (
+        <Wrapper onClick={onClick}>
+            {children}
+        </Wrapper>
+    )
+}
 
 export default AuthButton;

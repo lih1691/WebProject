@@ -6,17 +6,18 @@ import { media } from '@lib/styleUtil';
 
 // 상단 고정
 const Positioner = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    justify-content: space-between;
-    top: 0;
-    width: 100%;
-    transition: .2s ;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  transition: .2s ;
+  z-index: 1;
   
-    &:hover {
-      background-color: white;
-    }
+  &:hover {
+    background-color: white;
+  }
 `;
 
 // 흰 배경, 내용 중간 정렬

@@ -1,11 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { HeaderContainer, FooterContainer } from "@Containers/Base";
 import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from '@pages/index';
 
+const Wrapper = styled.div`
+  position: relative;
+  max-width: 1920px;
+  width: 100%;
+  height: 100vh;
+`
+
 function App(){
     return (
-        <div>
+        <Wrapper>
             <HeaderContainer />
             <Routes>
                 <Route path={"/"}  element={<MainPage />} />
@@ -15,7 +23,7 @@ function App(){
                 <Route path={"/Community/*"} element={<CommunityPage/>} />
             </Routes>
             <FooterContainer />
-        </div>
+        </Wrapper>
     );
 }
 

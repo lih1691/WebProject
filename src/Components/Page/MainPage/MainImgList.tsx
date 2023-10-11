@@ -6,11 +6,11 @@ import { MainImg } from '@Components/Page/MainPage';
 const ImgList = styled.ul`
   display: block;
   position: absolute;
-  left: 40%;
+  left: 32%;
+  bottom: 0;
   z-index: 1;
   width: 1190px;
-  height: calc(100vh - 125px);
-  margin-left: -230px;
+  height: calc(100vh - 115px);
   transition: all .6s;
 `
 

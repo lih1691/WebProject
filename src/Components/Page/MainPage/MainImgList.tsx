@@ -1,12 +1,12 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from "@redux/hook";
+import { useAppSelector } from "@redux/hook";
 import styled from 'styled-components';
 import { MainImg } from '@Components/Page/MainPage';
 
 const ImgList = styled.ul`
   display: block;
   position: absolute;
-  left: 32%;
+  left: 36%;
   bottom: 0;
   z-index: 1;
   width: 1190px;
@@ -15,13 +15,13 @@ const ImgList = styled.ul`
 `
 
 function MainImgList() {
+    const currentIndex = useAppSelector((state) => state.ui.currentIndex);
     const images = useAppSelector((state) => state.ui.MainImages);
-    const dispatch = useAppDispatch();
-    
+
     return (
         <ImgList>
             {images.map((image) => (
-                <MainImg key={image.id} src={image.imageUrl} />
+                <MainImg key={image.id} src={image.imageUrl} active={image.id === currentIndex}/>
             ))}
         </ImgList>
     )

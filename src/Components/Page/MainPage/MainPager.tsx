@@ -1,7 +1,58 @@
-import react from 'react';
-import styled from 'styled-components';
-import oc from 'open-color';
+import React from 'react';
+import oc from "open-color";
+import { useAppSelector } from "@redux/hook";
+import { PagerUl, PagerLi } from '@style/PagerStyle';
 
-function MainPager() {
+const pagerLiStyle = {
+    widthLength: "30px",
+    Color: oc.gray[8],
+    ClickedColor: oc.gray[4],
+    after: {
+        topPosition: "100%",
+        leftPosition: "20%",
+        activatedLength: "30px",
+        deactivatedLength: "0px",
+    }
+};
 
+
+function MainPager({handleClick} : { handleClick: (index: number) => void}) {
+    const Index = useAppSelector((state) => state.ui.currentIndex);
+    
+    return (
+        <PagerUl leftPosition={"50%"} topPosition={"230px"} marginLeft={"-795px"} zIndex={1} display={"flex"}>
+            <PagerLi
+                widthLength={pagerLiStyle.widthLength}
+                Color={pagerLiStyle.Color}
+                ClickedColor={pagerLiStyle.ClickedColor}
+                active={Index === 0}
+                onClick={() => handleClick(0)}
+                after={pagerLiStyle.after}
+            >
+                01
+            </PagerLi>
+            <PagerLi
+                widthLength={pagerLiStyle.widthLength}
+                Color={pagerLiStyle.Color}
+                ClickedColor={pagerLiStyle.ClickedColor}
+                active={Index === 1}
+                onClick={() => handleClick(1)}
+                after={pagerLiStyle.after}
+            >
+                02
+            </PagerLi>
+            <PagerLi
+                widthLength={pagerLiStyle.widthLength}
+                Color={pagerLiStyle.Color}
+                ClickedColor={pagerLiStyle.ClickedColor}
+                active={Index === 2}
+                onClick={() => handleClick(2)}
+                after={pagerLiStyle.after}
+            >
+                03
+            </PagerLi>
+        </PagerUl>
+    )
 }
+
+export default MainPager;

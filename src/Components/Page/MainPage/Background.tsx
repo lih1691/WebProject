@@ -6,8 +6,8 @@ const Background = styled.div`
   top: 0;
   right: 55%;
   background-color: black;
-  width: 800px;
-  height: 500px;
+  width: 1200px;
+  height: 600px;
   z-index: -1;
 `
 

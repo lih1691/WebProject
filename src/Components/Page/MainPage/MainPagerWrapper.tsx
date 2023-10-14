@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { useAppDispatch } from "@redux/hook";
+import { changeIndex } from '@redux/features/UISlice';
 import MainPagerText from './MainPagerText';
+import MainPager from "@Components/Page/MainPage/MainPager";
 
 const Positioner = styled.div`
   position: relative;
   width: 1600px;
   margin: 0 auto;
-
+  z-index: 1;
+  
   &::before {
     content: "";
     opacity: 0.5;
@@ -23,15 +27,16 @@ const Positioner = styled.div`
 `
 
 function MainPagerWrapper() {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const dispatch = useAppDispatch();
     
-    const handleClick = (index: number) => {
-        setActiveIndex(index);
+    const handleLiClick = (index: number) => {
+        dispatch(changeIndex(index));
     }
     
     return (
         <Positioner>
-            <MainPagerText activeIndex={activeIndex} handleClick={handleClick} />
+            <MainPager handleClick={handleLiClick} />
+            <MainPagerText handleClick={handleLiClick} />
         </Positioner>
     )
 }

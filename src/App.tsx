@@ -22,7 +22,6 @@ function App(){
                 <Route path={"/News/*"} element={<NewsListPage/> }/>
                 <Route path={"/Community/*"} element={<CommunityPage/>} />
             </Routes>
-            <FooterContainer />
         </Wrapper>
     );
 }

@@ -5,7 +5,12 @@ import MainTextTitle from './MainTextTitle';
 import MainTextSentence from './MainTextSentence';
 
 const Positioner = styled.div`
-  opacity: 1;
+  position: relative;
+  width: 1600px;
+  margin: 0 auto;
+`
+
+const TextPositioner = styled.div`
   position: absolute;
   top: 305px;
   line-height: 1.8;
@@ -20,8 +25,10 @@ function MainTextWrapper() {
     
     return (
         <Positioner>
-            <MainTextTitle>{currentText.title}</MainTextTitle>
-            <MainTextSentence>{currentText.sentence}</MainTextSentence>
+            <TextPositioner>
+                <MainTextTitle>{currentText.title}</MainTextTitle>
+                <MainTextSentence>{currentText.sentence}</MainTextSentence>
+            </TextPositioner>
         </Positioner>
     )
 }

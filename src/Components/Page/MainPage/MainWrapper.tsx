@@ -1,17 +1,25 @@
 import React, {ReactNode} from 'react';
 import styled from 'styled-components';
-
-const WrapperContainer = styled.div`
-  width: 100%; /* 원하는 너비 설정 */
-  height: 100vh; /* 원하는 높이 설정 (예: 뷰포트 높이) */
-`;
+import oc from 'open-color';
 
 const Positioner = styled.div`
-  overflow: hidden;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 99%;
+  height: 99%;
+  top: 0;
   z-index: 0;
+  
+  &::after {
+     display: block;
+     content: "";
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     width: 265px;
+     z-index: -2;
+     background-color: ${oc.gray[3]};
+  }
 `
 
 function MainWrapper({children}: {children: ReactNode}) {

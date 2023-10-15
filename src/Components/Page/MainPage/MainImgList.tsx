@@ -6,7 +6,7 @@ import { MainImg } from '@Components/Page/MainPage';
 const ImgList = styled.ul`
   display: block;
   position: absolute;
-  left: 36%;
+  margin-left: 690px;
   bottom: 0;
   z-index: 1;
   width: 1190px;

@@ -10,7 +10,7 @@ const Positioner = styled.div`
   position: relative;
   width: 1600px;
   margin: 0 auto;
-  z-index: 1;
+  z-index: 0;
   
   &::before {
     content: "";

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const MainImg = styled.img<{active: boolean}>`
   position: absolute;
-  top: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   transition: .6s all;

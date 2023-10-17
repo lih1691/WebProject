@@ -1,4 +1,4 @@
-export { default as MainWrapper } from './MainWrapper';
+export { default as MainVisualWrapper } from './MainVisualWrapper';
 export { default as Background } from './Background';
 export { default as MainImg } from './MainImg';
 export { default as MainImgList } from './MainImgList';

@@ -7,7 +7,6 @@ export const NoneDotUl = styled.ul`
 export const LeftLi = styled.li`
   float: left;
 `
-
 export const sizes: Record<string, string> = {
     wide: '1200px',
     desktop: '992px',

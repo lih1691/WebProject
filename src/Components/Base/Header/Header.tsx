@@ -31,16 +31,14 @@ const HeaderBackground = styled.div`
 // 해더의 내용
 const HeaderContents = styled.div`
     width: 1200px;
-    height: 100px;
+    height: 125px;
     display: flex;
     flex-direction: row;
     align-items: center;
 
     padding-right: 1rem;
     padding-left: 1rem;
-    ${media.wide`
-        width: 992px;
-    `}
+    
 
     ${media.tablet`
         width: 100%;

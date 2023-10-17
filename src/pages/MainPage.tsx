@@ -1,15 +1,18 @@
 import React from 'react';
-import { MainWrapper } from '@Components/Page/MainPage';
-import { Background, MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage";
+import styled from "styled-components";
+import { MainVisualWrapper } from '@Components/Page/MainPage/MainVisual';
+import { CategoryContainer } from '@Components/Page/MainPage/Category';
+
+const MainContainer = styled.div`
+  margin: 0;
+  overflow-y: hidden;
+`
 
 function MainPage() {
     return (
-        <MainWrapper>
-            <Background />
-            <MainImgList />
-            <MainTextWrapper />
-            <MainPagerWrapper />
-        </MainWrapper>
+        <MainContainer>
+            <CategoryContainer />
+        </MainContainer>
     );
 }
 

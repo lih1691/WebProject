@@ -4,7 +4,7 @@ import oc from 'open-color';
 import { useAppDispatch } from "@redux/hook";
 import { changeIndex } from '@redux/features/UISlice';
 import MainPagerText from './MainPagerText';
-import MainPager from "@Components/Page/MainPage/MainPager";
+import MainPager from "@Components/Page/MainPage/MainVisual/MainPager";
 
 const Positioner = styled.div`
   position: relative;

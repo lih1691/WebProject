@@ -5,4 +5,5 @@ export const Section = styled.article`
   font-size: 15px;
   line-height: 1.8;
   display: block;
+  
 `

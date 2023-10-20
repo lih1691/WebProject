@@ -25,7 +25,7 @@ const Positioner = styled(Section)`
 
 function MainVisualWrapper() {
     return (
-        <Positioner>
+        <Positioner className={"article"}>
             <Background />
             <MainImgList />
             <MainTextWrapper />

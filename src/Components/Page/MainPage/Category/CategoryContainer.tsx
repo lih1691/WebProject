@@ -15,7 +15,7 @@ const CategorySection = styled(Section)`
 
 function CategoryContainer() {
     return (
-        <CategorySection>
+        <CategorySection className={"article"}>
             <CategoryList>
                 <CategoryLi>
                     <CategoryLink title={"애플"} text={"애플은 애플입니다."} background={gray} />

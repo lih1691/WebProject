@@ -5,9 +5,9 @@ import { PagerUl, PagerLi } from '@style/PagerStyle';
 
 const pagerLiStyle = {
     widthLength: "30px",
-    Color: oc.gray[8],
+    color: oc.gray[8],
     ClickedColor: oc.gray[4],
-    after: {
+    $after: {
         topPosition: "100%",
         leftPosition: "20%",
         activatedLength: "30px",
@@ -20,34 +20,34 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
     const Index = useAppSelector((state) => state.ui.currentIndex);
     
     return (
-        <PagerUl leftPosition={"50%"} topPosition={"230px"} marginLeft={"-795px"} zIndex={1} display={"flex"}>
+        <PagerUl $leftPosition={"50%"} $topPosition={"230px"} $marginLeft={"-795px"} $zIndex={1} display={"flex"}>
             <PagerLi
-                widthLength={pagerLiStyle.widthLength}
-                Color={pagerLiStyle.Color}
-                ClickedColor={pagerLiStyle.ClickedColor}
-                active={Index === 0}
+                $widthLength={pagerLiStyle.widthLength}
+                color={pagerLiStyle.color}
+                $ClickedColor={pagerLiStyle.ClickedColor}
+                $active={Index === 0}
                 onClick={() => handleClick(0)}
-                after={pagerLiStyle.after}
+                $after={pagerLiStyle.$after}
             >
                 01
             </PagerLi>
             <PagerLi
-                widthLength={pagerLiStyle.widthLength}
-                Color={pagerLiStyle.Color}
-                ClickedColor={pagerLiStyle.ClickedColor}
-                active={Index === 1}
+                $widthLength={pagerLiStyle.widthLength}
+                color={pagerLiStyle.color}
+                $ClickedColor={pagerLiStyle.ClickedColor}
+                $active={Index === 1}
                 onClick={() => handleClick(1)}
-                after={pagerLiStyle.after}
+                $after={pagerLiStyle.$after}
             >
                 02
             </PagerLi>
             <PagerLi
-                widthLength={pagerLiStyle.widthLength}
-                Color={pagerLiStyle.Color}
-                ClickedColor={pagerLiStyle.ClickedColor}
-                active={Index === 2}
+                $widthLength={pagerLiStyle.widthLength}
+                color={pagerLiStyle.color}
+                $ClickedColor={pagerLiStyle.ClickedColor}
+                $active={Index === 2}
                 onClick={() => handleClick(2)}
-                after={pagerLiStyle.after}
+                $after={pagerLiStyle.$after}
             >
                 03
             </PagerLi>

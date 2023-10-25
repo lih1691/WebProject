@@ -1,41 +1,36 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import { MainVisualWrapper } from '@Components/Page/MainPage/MainVisual';
-import { CategoryContainer } from '@Components/Page/MainPage/Category';
-import {handleFullPageScroll, handleWheelEvent} from "@lib/ScrollHelpers";
+import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
+import { handleScrollEvent, handleWheelEvent } from "@lib/ScrollHelpers";
 
 const ArticleContainer = styled.section`
   position: relative;
   height: 100%;
+  overflow-y: auto;
   transition: all .6s;
 `;
 
 function MainPage() {
     const articlesRef = useRef<Array<HTMLElement>>([]);
-    const [ activeArticleIndex, setActiveArticleIndex ] = useState<number>(0);
+    const [ articleIndex, setArticleIndex] = useState(0);
     
     useEffect(() => {
-        window.addEventListener('scroll', handleFullPageScroll(setActiveArticleIndex));
         articlesRef.current = Array.from(document.querySelectorAll('.article'));
+        const articlesNum = articlesRef.current.length;
+        window.addEventListener('scroll', handleScrollEvent(articleIndex, setArticleIndex, articlesNum));
+        window.addEventListener('wheel', handleWheelEvent(articlesRef, articleIndex, setArticleIndex));
         
         return () => {
-            window.removeEventListener('scroll', handleFullPageScroll(setActiveArticleIndex));
+            window.removeEventListener('scroll', handleScrollEvent(articleIndex, setArticleIndex, articlesNum));
+            window.removeEventListener('wheel', handleWheelEvent(articlesRef, articleIndex, setArticleIndex));
         };
-    }, []);
-    
-    useEffect(() => {
-        window.addEventListener('wheel', handleWheelEvent(activeArticleIndex, articlesRef, setActiveArticleIndex));
-        
-        return () => {
-            window.removeEventListener('wheel', handleWheelEvent(activeArticleIndex, articlesRef, setActiveArticleIndex));
-        }
-    }, [activeArticleIndex]);
-   
+    }, [articleIndex]);
     
     return (
         <ArticleContainer>
-            <MainVisualWrapper />
+            <MainVisualContainer />
             <CategoryContainer />
+            <NewsContainer />
         </ArticleContainer>
     );
 }

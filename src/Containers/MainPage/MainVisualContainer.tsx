@@ -2,13 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { Section } from "@style/Section";
-import { Background, MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual/index";
+import { Background, MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual";
 
 const Positioner = styled(Section)`
-  overflow: hidden;
-  position: relative;
   width: 100%;
-  height: 100vh;
   
   &::after {
      display: block;
@@ -23,7 +20,7 @@ const Positioner = styled(Section)`
   }
 `
 
-function MainVisualWrapper() {
+function MainVisualContainer() {
     return (
         <Positioner className={"article"}>
             <Background />
@@ -34,4 +31,4 @@ function MainVisualWrapper() {
     )
 }
 
-export default MainVisualWrapper;
+export default MainVisualContainer;

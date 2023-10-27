@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
+import { useAppSelector } from "@redux/hook";
 import { NoneDotUl, LeftLi } from "@lib/styleUtil";
 
 const MenuContents = styled.div`
@@ -20,12 +21,14 @@ const MenuLi = styled(LeftLi)`
 `
 
 function MenuBar() {
+    const index = useAppSelector((state) => (state.ui.currentIndex));
+    
     return (
         <MenuContents>
             <MenuUl>
-                <MenuLi><Menu to={"/News"}>News</Menu></MenuLi>
-                <MenuLi><Menu to={"/Review"}>Review</Menu></MenuLi>
-                <MenuLi><Menu to={"/Community"}>Community</Menu></MenuLi>
+                <MenuLi><Menu to={"/News"} $pageIndex={index}>News</Menu></MenuLi>
+                <MenuLi><Menu to={"/Review"} $pageIndex={index}>Review</Menu></MenuLi>
+                <MenuLi><Menu to={"/Community"} $pageIndex={index}>Community</Menu></MenuLi>
             </MenuUl>
         </MenuContents>
     );

@@ -18,8 +18,8 @@ const TextPositioner = styled.div`
 `
 
 function MainTextWrapper() {
-    const index = useAppSelector(state => state.ui.currentIndex);
-    const mainState = useAppSelector(state => state.ui.MainImages);
+    const index = useAppSelector(state => state.ui.mainVisual.currentIndex);
+    const mainState = useAppSelector(state => state.ui.mainVisual.MainImages);
     
     const currentText = mainState[index];
     

@@ -68,7 +68,6 @@ function Header ({children}: {children: ReactNode}) {
             <HeaderBackground>
                 <HeaderContents>
                     <LogoLink to={"/"}>Logo</LogoLink>
-
                     {children}
                 </HeaderContents>
             </HeaderBackground>

@@ -6,7 +6,7 @@ import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from '@pa
 
 const Wrapper = styled.div`
   position: relative;
-  max-width: 1920px;
+  min-width: 1400px;
   width: 100%;
   margin: 0;
   overflow-y: hidden;

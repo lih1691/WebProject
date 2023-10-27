@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { useAppDispatch } from "@redux/hook";
-import { changeIndex } from '@redux/features/UISlice';
+import {changeIndex, changeMainVisualIndex} from '@redux/features/UISlice';
 import MainPagerText from './MainPagerText';
 import MainPager from "@Components/Page/MainPage/MainVisual/MainPager";
 
@@ -30,7 +30,7 @@ function MainPagerWrapper() {
     const dispatch = useAppDispatch();
     
     const handleLiClick = (index: number) => {
-        dispatch(changeIndex(index));
+        dispatch(changeMainVisualIndex(index));
     }
     
     return (

@@ -1,42 +1,25 @@
-import React from 'react';
+import React  from 'react';
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import { changeIndex } from "@redux/features/UISlice";
 
-export function handleScrollEvent(articleIndex: number,setActiveArticle: (index: number) => void, articlesNum: number) {
-    return () => {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const scrollRatio = (scrollY + windowHeight) / document.documentElement.scrollHeight;
-        
-        
-        if (scrollRatio > (articleIndex + 1) / articlesNum) {
-            setActiveArticle(articleIndex + 1);
+export function moveScrollToArticle(articlesRef: React.MutableRefObject<Array<HTMLElement | null>>, activeArticleIndex: number, dispatch: ThunkDispatch<any, any, any>) {
+    if (articlesRef.current[activeArticleIndex]) {
+        const targetArticle = articlesRef.current[activeArticleIndex];
+        if (targetArticle) {
+            const topOffset = targetArticle.offsetTop;
+            window.scrollTo({ top: topOffset, behavior: 'smooth' });
+            dispatch(changeIndex(activeArticleIndex));
         }
-        else if (scrollRatio < articleIndex / articlesNum) {
-            setActiveArticle(articleIndex - 1);
-        }
-    };
+    }
 }
 
-export function handleWheelEvent(articlesRef: React.MutableRefObject<Array<HTMLElement | null>>, activeArticleIndex: number, setActiveArticle: (index: number) => void) {
+export function handleWheelEvent(articlesRef: React.MutableRefObject<Array<HTMLElement | null>>, activeArticleIndex: number, dispatch: ThunkDispatch<any, any, any>) {
     return (event: WheelEvent) => {
+        
         if (event.deltaY > 0) {
-            if (articlesRef.current[activeArticleIndex + 1]) {
-                const nextArticle = articlesRef.current[activeArticleIndex + 1];
-                if (nextArticle) {
-                    const topOffset = nextArticle.offsetTop;
-                    window.scrollTo({ top: topOffset, behavior: 'smooth' });
-                    setActiveArticle(activeArticleIndex + 1);
-                }
-            }
+            moveScrollToArticle(articlesRef, activeArticleIndex + 1, dispatch);
         } else if (event.deltaY < 0) {
-            if (articlesRef.current[activeArticleIndex - 1]) {
-                const prevArticle = articlesRef.current[activeArticleIndex - 1];
-                
-                if (prevArticle) {
-                    const topOffset = prevArticle.offsetTop;
-                    window.scrollTo({ top: topOffset, behavior: 'smooth'});
-                    setActiveArticle(activeArticleIndex - 1);
-                }
-            }
+            moveScrollToArticle(articlesRef, activeArticleIndex -1 , dispatch);
         }
     };
 }

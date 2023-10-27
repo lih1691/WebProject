@@ -8,6 +8,11 @@ body {
     background: #f1f1f5;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
+

@@ -17,8 +17,8 @@ const ImgList = styled.ul`
 `
 
 function MainImgList() {
-    const currentIndex = useAppSelector((state) => state.ui.currentIndex);
-    const images = useAppSelector((state) => state.ui.MainImages);
+    const currentIndex = useAppSelector((state) => state.ui.mainVisual.currentIndex);
+    const images = useAppSelector((state) => state.ui.mainVisual.MainImages);
     
     return (
         <ImgList>

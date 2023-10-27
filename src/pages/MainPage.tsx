@@ -1,7 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
+import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
-import { handleScrollEvent, handleWheelEvent } from "@lib/ScrollHelpers";
+import { DotNavigationWrapper} from "@Components/Base/DotNavigation";
+import { handleWheelEvent } from "@lib/ScrollHelpers";
 
 const ArticleContainer = styled.section`
   position: relative;
@@ -11,23 +13,25 @@ const ArticleContainer = styled.section`
 `;
 
 function MainPage() {
+    const articleIndex = useAppSelector((state) => state.ui.currentIndex);
+    const dispatch = useAppDispatch();
     const articlesRef = useRef<Array<HTMLElement>>([]);
-    const [ articleIndex, setArticleIndex] = useState(0);
     
     useEffect(() => {
         articlesRef.current = Array.from(document.querySelectorAll('.article'));
-        const articlesNum = articlesRef.current.length;
-        window.addEventListener('scroll', handleScrollEvent(articleIndex, setArticleIndex, articlesNum));
-        window.addEventListener('wheel', handleWheelEvent(articlesRef, articleIndex, setArticleIndex));
+        const handleScroll = handleWheelEvent(articlesRef, articleIndex, dispatch);
+        
+        window.addEventListener('wheel', handleScroll);
         
         return () => {
-            window.removeEventListener('scroll', handleScrollEvent(articleIndex, setArticleIndex, articlesNum));
-            window.removeEventListener('wheel', handleWheelEvent(articlesRef, articleIndex, setArticleIndex));
+            
+            window.removeEventListener('wheel', handleScroll);
         };
     }, [articleIndex]);
     
     return (
-        <ArticleContainer>
+        <ArticleContainer >
+            <DotNavigationWrapper articlesRef={articlesRef}></DotNavigationWrapper>
             <MainVisualContainer />
             <CategoryContainer />
             <NewsContainer />

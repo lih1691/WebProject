@@ -2,6 +2,10 @@ import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
+const Positioner = styled.div`
+  position: relative;
+`
+
 const Title = styled.div`
   font-size: 1.5rem;
   font-weight: 500;
@@ -14,11 +18,13 @@ interface AuthContentProps {
     children: ReactNode;
 }
 
-const AuthContent: React.FC<AuthContentProps> = ({title, children}) => (
-    <div>
-        <Title>{title}</Title>
-        {children}
-    </div>
-);
+function AuthContent({title, children}: {title: string, children: ReactNode}) {
+    return (
+        <Positioner>
+            <Title>{title}</Title>
+            {children}
+        </Positioner>
+    )
+}
 
 export default AuthContent;

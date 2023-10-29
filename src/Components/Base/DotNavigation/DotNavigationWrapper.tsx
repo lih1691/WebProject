@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from "@redux/hook";
 import { Dot } from "@Components/Base/DotNavigation/Dot";
 import { DotNavigation } from "@Components/Base/DotNavigation/DotNavigation";
-import { moveScrollToArticle } from "@lib/ScrollHelpers";
+import { moveScrollToArticle } from "@lib/mainScrollHelpers";
 
 const Wrapper = styled.div`
   position: fixed;

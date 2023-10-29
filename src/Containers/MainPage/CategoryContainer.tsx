@@ -11,6 +11,7 @@ const CategorySection = styled(Section)`
   overflow: hidden;
   position: relative;
   display: block;
+  min-width: 1500px;
 `
 
 function CategoryContainer() {

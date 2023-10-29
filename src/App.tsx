@@ -8,8 +8,6 @@ const Wrapper = styled.div`
   position: relative;
   min-width: 1400px;
   width: 100%;
-  margin: 0;
-  overflow-y: hidden;
 `
 function App(){
     return (

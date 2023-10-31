@@ -26,14 +26,13 @@ const initialState: mainPageState = {
             {id: 2, imageUrl: "/Img/Xiaomi.png", title: "샤오미", sentence: "샤오미는 샤오미입니다."},
         ],
     }
-    
-    
 }
 
 const UISlice = createSlice({
     name: 'UI',
     initialState,
     reducers: {
+        
         changeIndex: (state, action: PayloadAction<number>) => {
             state.currentIndex = action.payload;
         },

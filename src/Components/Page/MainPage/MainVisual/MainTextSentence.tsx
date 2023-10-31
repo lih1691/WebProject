@@ -7,6 +7,7 @@ const TextStyle = styled.p`
   font-size: 16px;
   color: ${oc.gray[6]};
   letter-spacing: -.2px;
+  font-weight: 700;
 `
 
 function MainTextSentence({children}: {children: ReactNode}) {

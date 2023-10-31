@@ -40,6 +40,7 @@ export const PagerLi = styled.li<liInterface>`
           (props.$active ? props.$ClickedColor
                         : props.color)};
   line-height: 40px;
+  font-weight: 700;
   
   &::after {
     content: "";

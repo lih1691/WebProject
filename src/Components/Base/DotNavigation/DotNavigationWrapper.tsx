@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from "@redux/hook";
 import { Dot } from "@Components/Base/DotNavigation/Dot";
 import { DotNavigation } from "@Components/Base/DotNavigation/DotNavigation";
-import { moveScrollToArticle } from "@lib/mainScrollHelpers";
+import { moveScrollToArticle } from "@lib/scroll/mainScrollHelpers";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -21,13 +21,14 @@ function DotNavigationWrapper({articlesRef}: {articlesRef: React.MutableRefObjec
     
     const onClickHandler = (index: number) => {
         moveScrollToArticle(articlesRef, index, dispatch);
+        console.log(index);
     }
     
     return (
         <Wrapper>
             <DotNavigation>
                 {dotIndices.map(index =>
-                    <Dot $index={index} $currentIndex={currentIndex} onClick={() => onClickHandler(index)}></Dot>
+                    <Dot key={index} $index={index} $currentIndex={currentIndex} onClick={() => onClickHandler(index)}></Dot>
                 )}
             </DotNavigation>
         </Wrapper>

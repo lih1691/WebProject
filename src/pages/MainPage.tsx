@@ -1,14 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
 import { DotNavigationWrapper} from "@Components/Base/DotNavigation";
-import { moveScrollToArticle, handleWheelEvent } from "@lib/mainScrollHelpers";
+import useScrollHandler from "@lib/scroll/useScrollHandler";
 
 const ArticleContainer = styled.section`
   position: relative;
-  height: 100%;
-  overflow-y: auto;
+  height: 100vh;
   transition: all .6s;
 `;
 
@@ -18,28 +17,12 @@ function MainPage() {
     const [ windowSize, setWindowSize ] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
-    })
+    });
+    const [ scrollEventActive, setScrollEventActive ] = useState(false);
     const articlesRef = useRef<Array<HTMLElement>>([]);
+    const scrollDuration = 550;
     
-    useEffect(() => {
-        articlesRef.current = Array.from(document.querySelectorAll('.article'));
-        const handleScroll = handleWheelEvent(articlesRef, articleIndex, dispatch);
-        const handleResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-            moveScrollToArticle(articlesRef, articleIndex, dispatch);
-        }
-        
-        window.addEventListener('wheel', handleScroll);
-        window.addEventListener('resize', handleResize);
-        
-        return () => {
-            window.removeEventListener('wheel', handleScroll);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [articleIndex]);
+    useScrollHandler({articlesRef, articleIndex, dispatch, scrollEventActive, setScrollEventActive, setWindowSize, scrollDuration});
     
     return (
         <ArticleContainer >

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
 import { useAppSelector } from "@redux/hook";
-import { NoneDotUl, LeftLi } from "@lib/styleUtil";
+import { HorizontalList, HorizontalItem } from "@style/List/HorizontalList";
 
 const MenuContents = styled.div`
   display: flex;
@@ -12,11 +12,11 @@ const MenuContents = styled.div`
   padding: 10px 20px;
   gap: 30px;
 `
-const MenuUl = styled(NoneDotUl)`
+const MenuUl = styled(HorizontalList)`
   padding: 0;
 `
 
-const MenuLi = styled(LeftLi)`
+const MenuLi = styled(HorizontalItem)`
   padding-left: 30px;
 `
 

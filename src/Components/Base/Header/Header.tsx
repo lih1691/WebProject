@@ -13,7 +13,7 @@ const Positioner = styled.div`
   top: 0;
   width: 100%;
   transition: .2s ;
-  z-index: 1;
+  z-index: 10;
   
   &:hover {
     background-color: white;
@@ -38,8 +38,7 @@ const HeaderContents = styled.div`
 
     padding-right: 1rem;
     padding-left: 1rem;
-    
-
+  
     ${media.tablet`
         width: 100%;
     `}
@@ -57,7 +56,7 @@ const LogoLink = styled(Link)`
   font-size: 1.4rem;
   letter-spacing: 2px;
   color: ${oc.teal[7]};
-  font-family: 'Rajdhani';
+  font-family: 'Oswald';
   margin: 20px;
   text-decoration: none;
 `;

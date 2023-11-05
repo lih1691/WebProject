@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { HorizontalItem } from "@style/List/HorizontalList";
 
-const CategoryItem = styled.li`
+const CategoryItem = styled(HorizontalItem)`
   position: relative;
-  float: left;
   height: 100%;
   transition: all .6s;
 `

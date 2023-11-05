@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { HeaderContainer, FooterContainer } from "@Containers/Base";
-import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from '@pages/index';
+import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from './Pages/index';
 
 const Wrapper = styled.div`
   position: relative;

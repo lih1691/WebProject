@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { MainNewsLink} from "@Components/Page/MainPage/News/index";
+import { MainNewsLink } from "@Components/Page/MainPage/News/index";
+import { HorizontalItem } from "@style/List/HorizontalList";
 
-const Item = styled.li`
-  float: left;
+const Item = styled(HorizontalItem)`
   width: 25%;
   height: 435px;
 `

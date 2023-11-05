@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { Section } from "@style/Section";
-import { Background, MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual";
+import { Section } from "@style/Pages/Section";
+import { MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual";
+import { MainVisualBackground } from "@style/Base/Background";
 
-const Positioner = styled(Section)`
+const MainVisualSection = styled(Section)`
   width: 100%;
   
   &::after {
@@ -20,14 +21,20 @@ const Positioner = styled(Section)`
   }
 `
 
+const MainVisualBackgroundProps = {
+    width: "1200px",
+    height: "600px",
+    $zIndex: -1
+}
+
 function MainVisualContainer() {
     return (
-        <Positioner className={"article"}>
-            <Background />
+        <MainVisualSection className={"article"}>
+            <MainVisualBackground {...MainVisualBackgroundProps}/>
             <MainImgList />
             <MainTextWrapper />
             <MainPagerWrapper />
-        </Positioner>
+        </MainVisualSection>
     )
 }
 

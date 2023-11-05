@@ -1,0 +1,1 @@
+export { default as NewsPageContainer } from './NewsPageContainer';

@@ -1,6 +1,6 @@
 import React from 'react';
 import oc from 'open-color';
-import { Section } from '@style/Section';
+import { Section } from '@style/Pages/Section';
 import { CategoryLink, CategoryList, CategoryItem } from '@Components/Page/MainPage/Category';
 import styled from "styled-components";
 
@@ -8,8 +8,6 @@ const gray = oc.gray[3];
 const white = oc.gray[0];
 
 const CategorySection = styled(Section)`
-  overflow: hidden;
-  position: relative;
   display: block;
   min-width: 1500px;
 `

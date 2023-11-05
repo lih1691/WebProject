@@ -8,14 +8,14 @@ interface ulInterface {
 }
 
 interface liInterface {
-    $widthLength: string;
+    width: string;
     $active: boolean;
     color: string;
-    $ClickedColor: string;
+    $clickedColor: string;
     
     $after: {
-        topPosition: string;
-        leftPosition: string;
+        top: string;
+        left: string;
         activatedLength: string;
         deactivatedLength: string;
     }
@@ -35,10 +35,9 @@ export const PagerUl = styled.ul<ulInterface>`
 
 export const PagerLi = styled.li<liInterface>`
   position: relative;
-  width: ${(props) => props.$widthLength};
+  width: ${(props) => props.width};
   color: ${(props) =>
-          (props.$active ? props.$ClickedColor
-                        : props.color)};
+          (props.$active ? props.$clickedColor : props.color)};
   line-height: 40px;
   font-weight: 700;
   
@@ -46,13 +45,13 @@ export const PagerLi = styled.li<liInterface>`
     content: "";
     display: block;
     position: absolute;
-    top: ${(props) => props.$after.topPosition};
-    left: ${(props) => props.$after.leftPosition};;
+    top: ${(props) => props.$after.top};
+    left: ${(props) => props.$after.left};;
     width: ${(props) =>
             (props.$active ? props.$after.activatedLength
                             : props.$after.deactivatedLength)};;
     height: 1px; /* 줄의 높이 */
-    background-color: ${(props) => (props.$active ? props.$ClickedColor : props.color)};; /* 줄의 색상 */
+    background-color: ${(props) => (props.$active ? props.$clickedColor : props.color)};; /* 줄의 색상 */
     transition: all .6s;
   }
   

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useAppSelector } from "@redux/hook";
 import styled from 'styled-components';
-import { MainImg } from '@Components/Page/MainPage/MainVisual/index';
+import { MainImg } from '@style/Base/Image';
 
 const ImgList = styled.ul`
-  display: block;
   position: absolute;
   left: 50%;
   margin: 0 -230px;

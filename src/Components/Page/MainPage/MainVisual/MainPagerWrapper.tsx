@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { useAppDispatch } from "@redux/hook";
-import {changeIndex, changeMainVisualIndex} from '@redux/features/UISlice';
+import { changeMainVisualIndex } from '@redux/features/UISlice';
 import MainPagerText from './MainPagerText';
 import MainPager from "@Components/Page/MainPage/MainVisual/MainPager";
 

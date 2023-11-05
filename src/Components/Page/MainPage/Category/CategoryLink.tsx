@@ -1,19 +1,15 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { HoverCheckLink } from "@style/Link/HoverCheckLink";
 import { CategoryText, CategoryTitle} from "@Components/Page/MainPage/Category";
 
-const Category = styled(Link)<{ $isHovered: boolean, background: string }>`
+const Category = styled(HoverCheckLink)<{ $isHovered: boolean, background: string }>`
   position: relative;
-  display: block;
   width: 480px;
-  height: 100%;
   padding: 55% 0 0 60px;
   background-color: ${(props) => props.$isHovered ? oc.gray[9] : props.background};
   transition: all .4s;
-  text-decoration: none;
-  cursor: pointer;
 `
 
 function CategoryLink({title, text, background}: {title:string, text: string, background: string}) {

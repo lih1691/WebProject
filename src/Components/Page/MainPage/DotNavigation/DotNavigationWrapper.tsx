@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from "@redux/hook";
-import { Dot } from "@Components/Base/DotNavigation/Dot";
-import { DotNavigation } from "@Components/Base/DotNavigation/DotNavigation";
+import { Dot } from "@Components/Page/MainPage/DotNavigation/Dot";
+import { DotNavigation } from "@Components/Page/MainPage/DotNavigation/DotNavigation";
 import { moveScrollToArticle } from "@lib/scroll/mainScrollHelpers";
 
 const Wrapper = styled.div`

@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from "styled-components";
+import { NewsPageContainer} from "@Containers/NewsPage";
 
 const Positioner = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  width: 100%;
 `
 
 function NewsListPage() {
     return (
         <Positioner>
-            <h1>뉴스 페이지</h1>
+            <NewsPageContainer></NewsPageContainer>
         </Positioner>
     );
 }

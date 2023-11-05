@@ -1,17 +1,16 @@
 import React, {ReactNode} from 'react';
 import styled from 'styled-components';
-import oc from 'open-color';
 
-const Positioner = styled.div`
+const Wrapper = styled.div`
   padding: 60px 0 40px;
   letter-spacing: -.2px;
 `
 
-function MainNewsWrapper({children}: {children: React.ReactNode}) {
+function MainNewsWrapper({children}: {children: ReactNode}) {
     return (
-        <Positioner>
+        <Wrapper>
             {children}
-        </Positioner>
+        </Wrapper>
     )
 }
 

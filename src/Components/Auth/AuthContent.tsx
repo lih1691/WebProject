@@ -4,6 +4,7 @@ import oc from 'open-color';
 
 const Positioner = styled.div`
   position: relative;
+  
 `
 
 const Title = styled.div`

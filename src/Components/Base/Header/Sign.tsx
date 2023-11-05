@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-import { NonDecorationLink } from '@Components/Base/Link';
+import { NoneDecorationLink } from '@style/Link/NoneDecorationLink';
 
-const Sign = styled(NonDecorationLink)`
-  font-weight: 300;
+const Sign = styled(NoneDecorationLink)`
+  font-family: 'Oswald';
   color: ${oc.gray[8]};
   padding: 0.5rem 0.5rem 0.4rem;
+  transition: .2s all;
 
   &:hover {
     color: ${oc.gray[5]};

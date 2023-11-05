@@ -10,14 +10,12 @@ const Wrapper = styled.div`
     text-align: center;
 `;
 
-interface AuthErrorProps {
-    children: ReactNode;
+function AuthError({children}: {children: ReactNode}) {
+    return (
+        <Wrapper>
+            {children}
+        </Wrapper>
+    )
 }
-
-const AuthError: React.FC<AuthErrorProps> = ({children}) => (
-    <Wrapper>
-        {children}
-    </Wrapper>
-);
 
 export default AuthError;

@@ -1,0 +1,1 @@
+export { default as SubBanner } from './SubBanner';

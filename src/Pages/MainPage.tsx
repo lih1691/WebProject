@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
-import { DotNavigationWrapper} from "@Components/Base/DotNavigation";
+import { DotNavigationWrapper} from "@Components/Page/MainPage/DotNavigation";
 import useScrollHandler from "@lib/scroll/useScrollHandler";
 
 const ArticleContainer = styled.section`

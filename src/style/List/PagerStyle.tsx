@@ -50,7 +50,7 @@ export const PagerLi = styled.li<liInterface>`
     width: ${(props) =>
             (props.$active ? props.$after.activatedLength
                             : props.$after.deactivatedLength)};;
-    height: 1px; /* 줄의 높이 */
+    height: 1px;
     background-color: ${(props) => (props.$active ? props.$clickedColor : props.color)};; /* 줄의 색상 */
     transition: all .6s;
   }

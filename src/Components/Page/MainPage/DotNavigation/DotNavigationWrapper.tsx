@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 function DotNavigationWrapper({articlesRef}: {articlesRef: React.MutableRefObject<Array<HTMLElement | null>>}) {
     const articleNum = articlesRef.current.length;
     const dotIndices = Array.from({length: articleNum}, (_, index:number) => index);
-    const currentIndex = useAppSelector((state) => (state.ui.currentIndex));
+    const currentIndex = useAppSelector((state) => (state.ui.mainPageState.currentIndex));
     const dispatch = useAppDispatch();
     
     const onClickHandler = (index: number) => {

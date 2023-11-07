@@ -12,6 +12,7 @@ const Positioner = styled.div`
   justify-content: space-between;
   top: 0;
   width: 100%;
+  min-width: 1500px;
   transition: .2s ;
   z-index: 10;
   

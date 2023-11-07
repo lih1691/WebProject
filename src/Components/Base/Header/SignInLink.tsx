@@ -1,9 +1,9 @@
 import React from "react";
 import Sign from "./Sign";
 
-function SignInLink() {
+function SignInLink({currentPageName}: {currentPageName: string}) {
     return (
-        <Sign to={"/Auth/SignIn"}>
+        <Sign to={"/Auth/SignIn"} $pageName={currentPageName}>
             Sign In
         </Sign>
     )

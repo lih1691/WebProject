@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
 import { DotNavigationWrapper} from "@Components/Page/MainPage/DotNavigation";
 import useScrollHandler from "@lib/scroll/useScrollHandler";
+import {setCurrentPageName} from "@redux/features/UISlice";
 
 const ArticleContainer = styled.section`
   position: relative;
@@ -12,7 +13,7 @@ const ArticleContainer = styled.section`
 `;
 
 function MainPage() {
-    const articleIndex = useAppSelector((state) => state.ui.currentIndex);
+    const articleIndex = useAppSelector((state) => state.ui.mainPageState.currentIndex);
     const dispatch = useAppDispatch();
     const [ windowSize, setWindowSize ] = useState({
         width: window.innerWidth,
@@ -22,6 +23,7 @@ function MainPage() {
     const articlesRef = useRef<Array<HTMLElement>>([]);
     const scrollDuration = 550;
     
+    dispatch(setCurrentPageName("MainPage"));
     useScrollHandler({articlesRef, articleIndex, dispatch, scrollEventActive, setScrollEventActive, setWindowSize, scrollDuration});
     
     return (

@@ -5,8 +5,9 @@ import SubNavList from "@Components/Base/SubNav/SubNavList";
 
 const Positioner = styled.div`
   position: relative;
+  background-color: ${oc.gray[0]};
   color: ${oc.gray[0]};
-  width: 1000px;
+  width: 1300px;
   height: 70px;
   margin: -70px auto 0;
   z-index: 5;
@@ -24,7 +25,7 @@ const Positioner = styled.div`
 function SubNav() {
     return (
         <Positioner>
-        
+            <SubNavList />
         </Positioner>
     )
 }

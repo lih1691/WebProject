@@ -1,6 +1,6 @@
 import React, {MouseEvent} from 'react';
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { changeIndex } from "@redux/features/UISlice";
+import { changeMainIndex } from "@redux/features/UISlice";
 
 export function moveScrollToArticle(articlesRef: React.MutableRefObject<Array<HTMLElement | null>>, activeArticleIndex: number, dispatch: ThunkDispatch<any, any, any>) {
     if (articlesRef.current[activeArticleIndex]) {
@@ -8,7 +8,7 @@ export function moveScrollToArticle(articlesRef: React.MutableRefObject<Array<HT
         if (targetArticle) {
             const topOffset = targetArticle.offsetTop;
             window.scrollTo({ top: topOffset, behavior: 'smooth' });
-            dispatch(changeIndex(activeArticleIndex));
+            dispatch(changeMainIndex(activeArticleIndex));
         }
     }
 }

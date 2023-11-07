@@ -16,7 +16,7 @@ const pagerLiStyle = {
 };
 
 function MainPagerText({ handleClick } : { handleClick: (index: number) => void}) {
-    const Index = useAppSelector((state) => state.ui.mainVisual.currentIndex);
+    const Index = useAppSelector((state) => state.ui.mainPageState.mainVisual.currentIndex);
     
     return (
         <PagerUl $leftPosition={"50%"} $topPosition={"75vh"} $marginLeft={"-520px"} $zIndex={0} display={"block"}>

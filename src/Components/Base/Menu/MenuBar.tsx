@@ -21,14 +21,14 @@ const MenuLi = styled(HorizontalItem)`
 `
 
 function MenuBar() {
-    const index = useAppSelector((state) => (state.ui.currentIndex));
+    const index = useAppSelector((state) => (state.ui.mainPageState.currentIndex));
     
     return (
         <MenuContents>
             <MenuUl>
-                <MenuLi><Menu to={"/News"} $pageIndex={index}>News</Menu></MenuLi>
-                <MenuLi><Menu to={"/Review"} $pageIndex={index}>Review</Menu></MenuLi>
-                <MenuLi><Menu to={"/Community"} $pageIndex={index}>Community</Menu></MenuLi>
+                <MenuLi><Menu to={"/News"} $mainPageIndex={index}>News</Menu></MenuLi>
+                <MenuLi><Menu to={"/Review"} $mainPageIndex={index}>Review</Menu></MenuLi>
+                <MenuLi><Menu to={"/Community"} $mainPageIndex={index}>Community</Menu></MenuLi>
             </MenuUl>
         </MenuContents>
     );

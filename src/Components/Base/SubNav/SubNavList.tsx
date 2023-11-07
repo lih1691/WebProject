@@ -1,28 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import {HorizontalCompactList, HorizontalItem} from "@style/List/HorizontalList";
-import { NoneDecorationLink } from "@style/Link/NoneDecorationLink";
+import { HorizontalItem, HorizontalList } from "@style/List/HorizontalList";
+import { SubNavLink } from "@Components/Base/SubNav/SubNavLink";
 
 const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
   width: 1100px;
   margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center; /
+  justify-content: center;
+`
+const NavList = styled(HorizontalList)`
+  overflow: hidden;
+  margin: 0 auto;
+  height: inherit;
 `
 
-const TestLink = styled(NoneDecorationLink)`
-  position: relative;
-`
+//TODO: children을 받아서 NavList에 삽입
 
 function SubNavList() {
     return(
         <Wrapper>
-            <HorizontalCompactList>
+            <NavList>
                 <HorizontalItem>
-                    <TestLink>애플</TestLink>
+                    <SubNavLink to={"/"}>애플</SubNavLink>
                 </HorizontalItem>
-            </HorizontalCompactList>
+                <HorizontalItem>
+                    <SubNavLink to={"/"}>삼성</SubNavLink>
+                </HorizontalItem>
+                <HorizontalItem>
+                    <SubNavLink to={"/"}>샤오미</SubNavLink>
+                </HorizontalItem>
+            </NavList>
         </Wrapper>
     )
 }

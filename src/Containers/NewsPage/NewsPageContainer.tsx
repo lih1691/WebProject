@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SubBanner} from "@Components/Base/SubBanner";
 import SubNav from "@Components/Base/SubNav/SubNav";
+import { PageContents } from "@style/Base/PageContents";
 
 const Positioner = styled.div`
   position: relative;
@@ -11,8 +12,9 @@ const Positioner = styled.div`
 function NewsPageContainer() {
     return (
         <Positioner>
-            <SubBanner></SubBanner>
-            
+            <SubBanner />
+            <SubNav />
+            <PageContents />
         </Positioner>
     )
 }

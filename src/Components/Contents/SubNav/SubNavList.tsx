@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { HorizontalItem, HorizontalList } from "@style/List/HorizontalList";
-import { SubNavLink } from "@Components/Base/SubNav/SubNavLink";
+import { SubNavLink } from "@Components/Contents/SubNav/SubNavLink";
 
 const Wrapper = styled.div`
   overflow: hidden;

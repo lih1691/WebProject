@@ -16,7 +16,7 @@ function NewsListPage() {
     
     return (
         <Positioner>
-            <NewsPageContainer></NewsPageContainer>
+            <NewsPageContainer />
         </Positioner>
     );
 }

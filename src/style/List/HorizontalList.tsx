@@ -6,11 +6,9 @@ export const HorizontalList = styled.ul`
   list-style: none;
 `
 export const HorizontalCompactList= styled(HorizontalList)`
-  display: block;
   padding: 0;
   margin: 0;
 `
-
 export const HorizontalItem = styled.li`
   height: inherit;
   float: left;

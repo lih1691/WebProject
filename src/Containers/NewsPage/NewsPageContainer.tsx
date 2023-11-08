@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SubBanner} from "@Components/Base/SubBanner";
-import SubNav from "@Components/Base/SubNav/SubNav";
-import { PageContents } from "@style/Base/PageContents";
+import { SubBanner} from "@Components/Contents/SubBanner";
+import SubNav from "@Components/Contents/SubNav/SubNav";
+import { NewsPageContents } from "@Components/Page/NewsPage";
 
 const Positioner = styled.div`
   position: relative;
@@ -14,7 +14,7 @@ function NewsPageContainer() {
         <Positioner>
             <SubBanner />
             <SubNav />
-            <PageContents />
+            <NewsPageContents />
         </Positioner>
     )
 }

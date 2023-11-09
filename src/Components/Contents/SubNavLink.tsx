@@ -3,7 +3,6 @@ import oc from 'open-color';
 import { HoverCheckLink } from "@style/Link/HoverCheckLink";
 
 export const SubNavLink = styled(HoverCheckLink)`
-  display: block;
   font-size: 17px;
   position: relative;
   padding: 0 25px;

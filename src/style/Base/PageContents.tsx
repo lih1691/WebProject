@@ -9,5 +9,4 @@ export const PageContents = styled.div`
   margin: 0 auto;
   padding: 70px 0;
   z-index: 5;
-  background-color: blue;
 `

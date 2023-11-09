@@ -8,7 +8,6 @@ const gray = oc.gray[3];
 const white = oc.gray[0];
 
 const CategorySection = styled(Section)`
-  display: block;
   min-width: 1500px;
 `
 

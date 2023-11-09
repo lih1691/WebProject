@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { useAppDispatch } from "@redux/hook";
-import { NewsPageContainer} from "@Containers/NewsPage";
+import { ReviewPageContainer} from "Containers/ReviewPage";
 import { setCurrentPageName } from "@redux/features/UISlice";
 
 const Positioner = styled.div`
@@ -10,15 +10,9 @@ const Positioner = styled.div`
 `
 
 function NewsListPage() {
-    const dispatch = useAppDispatch();
-    
-    dispatch(setCurrentPageName("NewsListPage"));
-    
     return (
-        <Positioner>
-            <NewsPageContainer />
-        </Positioner>
-    );
+        <h1>뉴스 페이지</h1>
+    )
 }
 
 export default NewsListPage;

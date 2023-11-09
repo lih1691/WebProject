@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Background = styled.div`
-  display: block;
   position: absolute;
   top: 0;
   right: 55%;

@@ -9,7 +9,6 @@ const MainVisualSection = styled(Section)`
   width: 100%;
   
   &::after {
-     display: block;
      content: "";
      position: absolute;
      top: 0;

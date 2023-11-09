@@ -43,7 +43,6 @@ export const PagerLi = styled.li<liInterface>`
   
   &::after {
     content: "";
-    display: block;
     position: absolute;
     top: ${(props) => props.$after.top};
     left: ${(props) => props.$after.left};;

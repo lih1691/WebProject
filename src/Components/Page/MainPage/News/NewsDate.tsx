@@ -12,7 +12,6 @@ export const NewsDate = styled.p<{$isHovered: boolean}>`
   
   &::before {
     position: absolute;
-    display: block;
     content: "";
     top: -1px;
     left: 0;

@@ -16,6 +16,7 @@ const NumberList = styled(HorizontalList)`
 const PageButton = styled.button`
   margin: 20px 20px;
   border: none;
+  cursor: pointer;
 `
 
 function PageNumberList({index}: {index: number}) {

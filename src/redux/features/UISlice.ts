@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Image {
+interface image {
     id: number;
     imageUrl: string;
     title: string;
@@ -11,10 +11,9 @@ interface mainPageState {
     currentIndex: number,
     mainVisual: {
         currentIndex: number;
-        MainImages: Image[];
+        MainImages: image[];
     },
 }
-
 
 interface pageState {
     currentPage: string;
@@ -35,7 +34,7 @@ const initialState: pageState = {
             ],
         }
     },
-    contentCategory: ""
+    contentCategory: "",
 }
 
 const UISlice = createSlice({

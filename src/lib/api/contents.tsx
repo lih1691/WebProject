@@ -1,3 +1,4 @@
 import axios from 'axios';
 
-export const loadContents = (pageData: string) => axios.get('api/contents' + pageData);
+export const fetchReviewContents = () => axios.get('/api/contents/review');
+export const fetchNewsContents = () => axios.get('/api/contents/news');

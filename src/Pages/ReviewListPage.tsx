@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { useAppDispatch } from "@redux/hook";
+import {useAppDispatch, useAppSelector} from "@redux/hook";
 import { setCurrentPageName } from "@redux/features/UISlice";
 import { ReviewPageContainer } from "@Containers/ReviewPage";
 

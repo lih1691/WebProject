@@ -107,8 +107,7 @@ const authSlice = createSlice({
 
            state[form].error = message;
         },
-
-        // 입력값 변경 액션
+        
         changeInput: (
             state,
             action: PayloadAction<{ form: keyof authState; name: string; value: string }>
@@ -116,14 +115,12 @@ const authSlice = createSlice({
             const { form, name, value } = action.payload;
             state[form].form[name] = value;
         },
-
-        // 폼 초기화 액션
+        
         initializeForm: (state, action: PayloadAction<keyof authState>) => {
             const initialForm = initialState[action.payload];
             state[action.payload].form = { ...initialState[action.payload].form }
         },
-
-
+        
     },
     extraReducers: (builder) => {
         builder

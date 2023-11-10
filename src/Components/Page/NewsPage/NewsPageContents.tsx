@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from "@redux/hook";
-import { fetchReviewContents, selectReviewContents } from "@redux/features/ReviewContentsSlice";
+import { fetchNewsContents, selectNewsContents } from "@redux/features/NewsContentSlice";
 import { ContentsWrapper} from "@Components/Contents";
-import { ReviewContents } from "@Components/Page/ReviewPage";
+import { NewsContents } from "@Components/Page/NewsPage";
 import { ContentsList } from "@style/List/ContentsList";
 
-function ReviewPageContents() {
+function NewsPageContents() {
     const dispatch = useAppDispatch();
-    const contents = useAppSelector(selectReviewContents);
+    const contents = useAppSelector(selectNewsContents);
     
     useEffect(() => {
-        dispatch(fetchReviewContents());
+        dispatch(fetchNewsContents);
     }, [dispatch]);
     
     return (
         <ContentsWrapper>
             <ContentsList>
                 {contents.map((content, index) => (
-                    <ReviewContents key={index} content={content} />
+                    <NewsContents key={index} content={content} />
                 ))}
             </ContentsList>
         </ContentsWrapper>
     )
 }
 
-export default ReviewPageContents;
+export default NewsPageContents;

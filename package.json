@@ -36,6 +36,7 @@
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.3",
+    "http-proxy-middleware": "^2.0.6",
     "identity-obj-proxy": "^3.0.0",
     "immer": "^10.0.2",
     "immutable": "^4.3.3",

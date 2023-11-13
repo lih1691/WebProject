@@ -18,10 +18,8 @@ function DotNavigationWrapper({articlesRef}: {articlesRef: React.MutableRefObjec
     const dotIndices = Array.from({length: articleNum}, (_, index:number) => index);
     const currentIndex = useAppSelector((state) => (state.ui.mainPageState.currentIndex));
     const dispatch = useAppDispatch();
-    
     const onClickHandler = (index: number) => {
         moveScrollToArticle(articlesRef, index, dispatch);
-        console.log(index);
     }
     
     return (

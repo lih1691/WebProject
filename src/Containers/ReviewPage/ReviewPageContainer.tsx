@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SubBanner } from "@Components/Contents";
-import SubNav from "@Components/Contents/SubNav";
-import { ReviewPageContents } from "@Components/Page/ReviewPage";
+import { reviewContent } from "@redux/features/ReviewContentsSlice";
+import { ContentsWrapper } from "@Components/Contents";
+import { ReviewContents } from "@Components/Page/ReviewPage";
+import { ContentsList } from "@style/List/ContentsList";
 
 const Positioner = styled.div`
   position: relative;
   width: 100%;
 `
 
-function ReviewPageContainer() {
+function ReviewPageContainer({contents}: {contents: reviewContent[]}) {
     return (
         <Positioner>
-            <SubBanner />
-            <SubNav />
-            <ReviewPageContents />
+            <ContentsWrapper>
+                <ContentsList>
+                    {contents.map((content, index) => (
+                        <ReviewContents key={index} content={content} />
+                    ))}
+                </ContentsList>
+            </ContentsWrapper>
         </Positioner>
     )
 }

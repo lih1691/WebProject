@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@redux/store";
 import * as ContentAPI from '@lib/api/contents';
 
-export interface NewsContent {
+export interface newsContent {
     title: string;
     date: string;
     desc: string;
 }
 
 interface NewsPageState {
-    contents: NewsContent[];
+    contents: newsContent[];
 }
 
 const initialState: NewsPageState = {
@@ -17,7 +17,7 @@ const initialState: NewsPageState = {
 }
 
 export const fetchNewsContents = createAsyncThunk(
-    'contents/News',
+    'contents/news',
     async () => {
         const response = await ContentAPI.fetchNewsContents();
         return response.data;

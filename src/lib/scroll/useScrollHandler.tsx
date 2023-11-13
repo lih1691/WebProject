@@ -1,21 +1,6 @@
-import React, {MouseEvent, useEffect} from 'react';
-import { ThunkDispatch } from '@reduxjs/toolkit';
+import {MouseEvent} from 'react';
 import { moveScrollToArticle, handleWheelEvent, handleKeyEvent } from "@lib/scroll/mainScrollHelpers";
-
-interface windowSize {
-    width: number;
-    height: number;
-}
-
-interface UseScrollHandlerProps {
-    articlesRef: React.MutableRefObject<Array<HTMLElement>>;
-    articleIndex: number;
-    dispatch: ThunkDispatch<any, any, any>;
-    scrollEventActive: boolean;
-    setScrollEventActive: React.Dispatch<React.SetStateAction<boolean>>;
-    setWindowSize: React.Dispatch<React.SetStateAction<windowSize>>;
-    scrollDuration: number;
-}
+import { mainPageHandlerProps } from "@lib/PageHandler/MainPageHandler";
 
 export default function useScrollHandler({
     articlesRef,
@@ -25,7 +10,7 @@ export default function useScrollHandler({
     setScrollEventActive,
     setWindowSize,
     scrollDuration
-}: UseScrollHandlerProps) {
+}: mainPageHandlerProps) {
     const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
         if (scrollEventActive) return;
@@ -61,19 +46,6 @@ export default function useScrollHandler({
         }
     };
     
-    useEffect(() => {
-        articlesRef.current = Array.from(document.querySelectorAll('.article'));
-        
-        window.addEventListener('wheel', handleWheel, {passive: false});
-        window.addEventListener('keydown', handleKeyDown, { passive: false });
-        window.addEventListener('resize', handleResize)
-        
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('resize', handleResize);
-        };
-        
-    }, [articleIndex, scrollEventActive]);
+   return { handleWheel, handleKeyDown, handleResize, handleArticleTransition, removeWheelClick };
 }
 

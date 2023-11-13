@@ -18,7 +18,6 @@ const PageButton = styled.button`
   border: none;
   cursor: pointer;
 `
-
 function PageNumberList({index}: {index: number}) {
     const pageNumbers = Array.from({length: index}, (_, i) => i + 1);
     

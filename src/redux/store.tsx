@@ -3,6 +3,7 @@ import userReducer from '@redux/features/userSlice';
 import UIReducer from '@redux/features/UISlice';
 import reviewReducer from '@redux/features/ReviewContentsSlice';
 import newsReducer from '@redux/features/NewsContentSlice';
+import communityReducer from '@redux/features/CommunitySlice';
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
         ui: UIReducer,
         review: reviewReducer,
         news: newsReducer,
+        community: communityReducer
     }
 })
 

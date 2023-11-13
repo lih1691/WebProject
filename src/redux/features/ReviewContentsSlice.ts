@@ -2,7 +2,7 @@ import {createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {RootState} from "@redux/store";
 import * as ContentAPI from '@lib/api/contents';
 
-export interface ReviewContent {
+export interface reviewContent {
     id: number;
     nickname: string;
     title: string;
@@ -12,7 +12,7 @@ export interface ReviewContent {
 }
 
 interface ReviewPageState {
-    contents: ReviewContent[];
+    contents: reviewContent[];
 }
 
 const initialState: ReviewPageState = {
@@ -21,11 +21,11 @@ const initialState: ReviewPageState = {
 
 export const fetchReviewContents = createAsyncThunk(
     'contents/review',
-    async () => {
-        const response = await ContentAPI.fetchReviewContents();
+    async (contents: reviewContent[]) => {
+        const response = await ContentAPI.fetchReviewContents(contents);
         return response.data;
     }
-)
+);
 
 const reviewSlice = createSlice({
     name: 'review',
@@ -34,6 +34,8 @@ const reviewSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchReviewContents.fulfilled, (state, action) => {
             state.contents = action.payload;
+            console.log(1);
+            
         });
     },
 })

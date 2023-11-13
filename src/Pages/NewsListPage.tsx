@@ -11,7 +11,9 @@ const Positioner = styled.div`
 
 function NewsListPage() {
     return (
-        <h1>뉴스 페이지</h1>
+        <Positioner>
+            
+        </Positioner>
     )
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import { NewsContent} from "@redux/features/NewsContentSlice";
+import { newsContent} from "@redux/features/NewsContentSlice";
 import NewsDescription from "@Components/Page/NewsPage/NewsDescription";
 import { Image } from '@style/Base/Image';
 import { TitleLink } from '@style/Link/NoneDecorationLink';
 import { ContentsListItem, ContentsWrapper} from "@style/List/ContentsList";
 import { ContentsImgPositioner, ContentsTextPositioner, ContentsSubjectPosition } from "@style/Base/Positioner";
 
-function NewsContents({content}: {content:NewsContent}) {
+function NewsContents({content}: {content:newsContent}) {
     const { title, date, desc } = content;
     
     return (

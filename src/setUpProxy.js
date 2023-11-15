@@ -10,7 +10,7 @@ module.exports = function (app) {
         })
     );
     app.use(
-        ['/api/contents/review', '/api/contents/news', 'api/contents/community'],
+        ['/api/contents/review', '/api/contents/news', '/api/contents/community'],
         createProxyMiddleware({
             target: "http://localhost:4000",
             changeOrigin: true,

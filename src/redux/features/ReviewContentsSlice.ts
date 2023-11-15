@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "@redux/store";
 import * as ContentAPI from '@lib/api/contents';
 
@@ -16,13 +16,13 @@ interface ReviewPageState {
 }
 
 const initialState: ReviewPageState = {
-    contents: [],
+    contents: []
 }
 
 export const fetchReviewContents = createAsyncThunk(
     'contents/review',
-    async (contents: reviewContent[]) => {
-        const response = await ContentAPI.fetchReviewContents(contents);
+    async () => {
+        const response = await ContentAPI.fetchReviewContents();
         return response.data;
     }
 );
@@ -34,8 +34,6 @@ const reviewSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchReviewContents.fulfilled, (state, action) => {
             state.contents = action.payload;
-            console.log(1);
-            
         });
     },
 })

@@ -1,32 +1,28 @@
 import React, { useEffect } from 'react';
-import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "@redux/hook";
 import { setCurrentPageName } from "@redux/features/UISlice";
-import { fetchReviewContents } from "@lib/api/contents";
-import { ReviewPageContainer } from "@Containers/ReviewPage";
+import { fetchReviewContents } from "@redux/features/ReviewContentsSlice";
+import { ReviewPageContainer } from "@Containers/ContentsPage";
 import { selectReviewContents } from "@redux/features/ReviewContentsSlice";
 import { SubBanner, SubNav } from "@Components/Contents";
+import { RelativePositioner } from "@style/Base/Positioner";
 
-const Positioner = styled.div`
-  position: relative;
-  width: 100%;
-`
 function ReviewListPage() {
     const dispatch = useAppDispatch();
     const contents = useAppSelector(selectReviewContents);
     
     useEffect(() => {
-        dispatch(fetchReviewContents(contents));
+        dispatch(fetchReviewContents());
         dispatch(setCurrentPageName("ReviewListPage"));
         
-    },[dispatch])
+    },[])
     
     return (
-        <Positioner>
+        <RelativePositioner>
             <SubBanner />
             <SubNav />
             <ReviewPageContainer contents={contents}/>
-        </Positioner>
+        </RelativePositioner>
     );
 }
 

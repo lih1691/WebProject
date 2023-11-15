@@ -4,27 +4,24 @@ import { useAppDispatch, useAppSelector } from "@redux/hook";
 import { fetchCommunityContents, selectCommunityContents } from "@redux/features/CommunitySlice";
 import { setCurrentPageName } from "@redux/features/UISlice";
 import { SubBanner, SubNav } from "@Components/Contents";
-import { CommunityContainer } from "@Containers/Community";
+import { CommunityPageContainer } from "@Containers/ContentsPage";
+import { RelativePositioner } from "@style/Base/Positioner";
 
-const Positioner = styled.div`
-  position: relative;
-  width: 100%;
-`
 function CommunityPage() {
     const dispatch = useAppDispatch();
     const contents = useAppSelector(selectCommunityContents);
     
     useEffect(() => {
         dispatch(setCurrentPageName("CommunityPage"));
-        dispatch(fetchCommunityContents);
+        dispatch(fetchCommunityContents());
     }, [dispatch]);
     
     return (
-        <Positioner>
+        <RelativePositioner>
             <SubBanner />
             <SubNav />
-            <CommunityContainer contents={contents}/>
-        </Positioner>
+            <CommunityPageContainer contents={contents}/>
+        </RelativePositioner>
     )
 }
 

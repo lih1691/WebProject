@@ -13,7 +13,6 @@ export const ContentsWrapper = styled.div<{padding: string}>`
   height: 100%;
   border: 1px solid ${oc.gray[5]};
 `
-
 export const ContentsList = styled.ul`
   display: flex;
   flex-wrap: wrap;

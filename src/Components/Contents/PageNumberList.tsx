@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import styled from 'styled-components'
 import { HorizontalList, HorizontalItem } from "@style/List/HorizontalList";
 
@@ -18,19 +18,25 @@ const PageButton = styled.button`
   border: none;
   cursor: pointer;
 `
-function PageNumberList({index}: {index: number}) {
-    const pageNumbers = Array.from({length: index}, (_, i) => i + 1);
+function PageNumberList({total, currentPage, setCurrentPage}:
+                            {
+                                total: number,
+                                currentPage: number,
+                                setCurrentPage: Dispatch<SetStateAction<number>>
+                            })
+{
     
     return (
         <Wrapper>
             <NumberList>
-                {pageNumbers.map((pageNumber) => (
+                {}
+                {/*{pageNumbers.map((pageNumber) => (
                     <HorizontalItem key={pageNumber}>
                         <PageButton>
                             {pageNumber}
                         </PageButton>
                     </HorizontalItem>
-                ))}
+                ))}*/}
             </NumberList>
         </Wrapper>
     )

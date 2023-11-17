@@ -12,7 +12,7 @@ function ReviewContents({content}: {content: reviewContent}) {
     
     return (
         <ContentsListItem width={"50%"}>
-            <ContentsWrapper padding={"10px"}>
+            <ContentsWrapper $padding={"10px"}>
                 <ContentsImgPositioner width={"45%"}>
                     <Image src={"/Img/no_image_found.png"} alt={"no image found"}/>
                 </ContentsImgPositioner>

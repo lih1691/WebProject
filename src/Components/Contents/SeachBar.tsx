@@ -1,6 +1,7 @@
 import React from 'react';
 import { SearchBarContainer, SearchInput, SearchBarCategory } from "@style/Base/SearchBar";
 
+// TODO:: 검색 실행 아이콘 추가, 검색 기능 구현
 function SearchBar() {
     return (
         <SearchBarContainer>

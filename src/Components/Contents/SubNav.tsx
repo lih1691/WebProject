@@ -22,6 +22,7 @@ const Positioner = styled.div`
   }
 `
 
+// TODO:: 선택된 태그 색상 조정
 function SubNav() {
     return (
         <Positioner>

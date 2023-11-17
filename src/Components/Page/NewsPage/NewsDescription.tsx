@@ -7,7 +7,6 @@ interface DescProps {
     desc: string;
 }
 
-
 function NewsDescription({date, desc}: DescProps) {
     return (
         <ContentsDescPosition>

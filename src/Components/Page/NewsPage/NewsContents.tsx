@@ -11,7 +11,7 @@ function NewsContents({content}: {content:newsContent}) {
     
     return (
         <ContentsListItem width={"100%"}>
-            <ContentsWrapper padding={"20px"}>
+            <ContentsWrapper $padding={"20px"}>
                 <ContentsImgPositioner width={"30%"}>
                     <Image src={"/Img/no_image_found.png"} alt={"no image found"}/>
                 </ContentsImgPositioner>

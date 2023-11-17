@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "@redux/hook";
+import {useAppDispatch} from "@redux/hook";
 import { setCurrentPageName } from "@redux/features/UISlice";
-import { fetchNewsContents, selectNewsContents } from "@redux/features/NewsContentSlice";
+import { fetchNewsContents } from "@redux/features/NewsContentSlice";
 import { RelativePositioner } from "@style/Base/Positioner";
 import { SubBanner, SubNav } from "@Components/Contents";
 import { NewsPageContainer } from "@Containers/ContentsPage";
@@ -9,7 +9,6 @@ import { NewsPageContainer } from "@Containers/ContentsPage";
 
 function NewsListPage() {
     const dispatch = useAppDispatch();
-    const contents = useAppSelector(selectNewsContents);
     
     useEffect(() => {
         dispatch(setCurrentPageName("NewsPage"));
@@ -21,7 +20,7 @@ function NewsListPage() {
         <RelativePositioner>
             <SubBanner />
             <SubNav />
-            <NewsPageContainer contents={contents} />
+            <NewsPageContainer />
         </RelativePositioner>
     )
 }

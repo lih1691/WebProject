@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react';
-import { ContentsWrapper } from "@Components/Contents";
 import { Table, TableRow, HeadContents} from "@style/Community/Post";
 import { postWidthState } from "@style/Community/Post";
 
@@ -19,7 +18,9 @@ function Community({children}: {children: ReactNode}) {
                     <HeadContents width={recommendationWidth}>추천수</HeadContents>
                 </TableRow>
             </thead>
-            {children}
+            <tbody>
+                {children}
+            </tbody>
         </Table>
     )
 }

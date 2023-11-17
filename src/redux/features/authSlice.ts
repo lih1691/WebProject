@@ -104,7 +104,6 @@ const authSlice = createSlice({
     reducers: {
         setError: (state, action: PayloadAction<{ form: keyof authState; message: string | null }>) => {
             const { form, message } = action.payload;
-
            state[form].error = message;
         },
         

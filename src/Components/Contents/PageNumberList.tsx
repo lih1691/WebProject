@@ -1,6 +1,7 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import { HorizontalList, HorizontalItem } from "@style/List/HorizontalList";
+import { Button } from "@style/Base/Button";
+import { paginationProps} from "@lib/Contents/PageNation";
 
 const Wrapper =  styled.div`
   display: flex;
@@ -9,34 +10,51 @@ const Wrapper =  styled.div`
   margin: 0 auto;
   justify-content: center;
 `
-const NumberList = styled(HorizontalList)`
+const NumberList = styled.nav`
   position: relative;
   height: 100%;
 `
-const PageButton = styled.button`
-  margin: 20px 20px;
-  border: none;
-  cursor: pointer;
-`
-function PageNumberList({total, currentPage, setCurrentPage}:
-                            {
-                                total: number,
-                                currentPage: number,
-                                setCurrentPage: Dispatch<SetStateAction<number>>
-                            })
-{
+
+function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentPageArray}: paginationProps) {
+    const PreOffset = (Math.floor(currentPage / pageLimit) - 1) * pageLimit;
+    const nextOffset = (Math.floor(currentPage / pageLimit) + 1) * pageLimit;
     
     return (
         <Wrapper>
             <NumberList>
-                {}
-                {/*{pageNumbers.map((pageNumber) => (
-                    <HorizontalItem key={pageNumber}>
-                        <PageButton>
-                            {pageNumber}
-                        </PageButton>
-                    </HorizontalItem>
-                ))}*/}
+                <Button
+                    onClick={() => setCurrentPage(currentPage) }
+                    disabled = {currentPage === 0}
+                >
+                    &lt;&lt;
+                </Button>
+                <Button
+                    onClick={() => setCurrentPage(PreOffset) }
+                    disabled = {PreOffset <= 0}
+                >
+                    &lt;
+                </Button>
+                {currentPageArray?.map((i) => (
+                    <Button
+                        key={i + 1}
+                        onClick = {() => setCurrentPage(i)}
+                        disabled = { currentPage === (i) }
+                    >
+                        { i + 1 }
+                    </Button>
+                ))}
+                <Button
+                    onClick={() => setCurrentPage(nextOffset) }
+                    disabled = {nextOffset >= total - 1}
+                >
+                    &gt;
+                </Button>
+                <Button
+                    onClick={() => setCurrentPage(total - 1) }
+                    disabled = {currentPage === total - 1}
+                >
+                    &gt;&gt;
+                </Button>
             </NumberList>
         </Wrapper>
     )

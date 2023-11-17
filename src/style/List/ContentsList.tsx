@@ -5,11 +5,11 @@ export const ContentsListWrapper =  styled.div`
   width: 100%;
   margin: 0;
 `
-export const ContentsWrapper = styled.div<{padding: string}>`
+export const ContentsWrapper = styled.div<{$padding: string}>`
   overflow: hidden;
   display: flex;
   position: relative;
-  padding: ${(props) => props.padding};
+  padding: ${(props) => props.$padding};
   height: 100%;
   border: 1px solid ${oc.gray[5]};
 `

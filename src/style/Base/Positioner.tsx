@@ -5,6 +5,9 @@ export const RelativePositioner = styled.div`
   width: 100%;
   height: 100%;
 `
+export const CenterPositioner = styled(RelativePositioner)`
+  margin: 0 auto;
+`
 
 export const ContentsImgPositioner = styled.div<{width: string}>`
   overflow: hidden;

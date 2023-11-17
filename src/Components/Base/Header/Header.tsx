@@ -62,6 +62,7 @@ const LogoLink = styled(Link)`
   text-decoration: none;
 `;
 
+// TODO: 메인 페이지 외에는 페이지 최상단에 고정, 메인 페이지 외에서 signLink 색상 조정
 function Header ({children}: {children: ReactNode}) {
     return (
         <Positioner>

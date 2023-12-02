@@ -17,7 +17,7 @@ function App(){
                 <Route path={"/"}  element={<MainPage />} />
                 <Route path={"/Auth/*"} element={<Auth />}/>
                 <Route path={"/Review/*"} element={<ReviewListPage/> }/>
-                <Route path={"/News/*"} element={<NewsListPage/> }/>
+                <Route path={"/Reviews/*"} element={<NewsListPage/> }/>
                 <Route path={"/Community/*"} element={<CommunityPage/>} />
             </Routes>
         </Wrapper>

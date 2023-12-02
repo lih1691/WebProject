@@ -5,31 +5,28 @@ import oc from 'open-color';
 import { media } from '@lib/styleUtil';
 
 // 상단 고정
-const Positioner = styled.div`
+const Positioner = styled.div<{$currentPageName: string, $isHovered: boolean}>`
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: ${(props) => props.$currentPageName === "MainPage" ? "fixed" : "absolute"};
   justify-content: space-between;
   top: 0;
   width: 100%;
   min-width: 1500px;
+  background: ${(props) => props.$isHovered ? oc.gray[0] : "none"};
   transition: .2s ;
   z-index: 10;
-  
-  &:hover {
-    background-color: white;
-  }
 `;
 
-// 흰 배경, 내용 중간 정렬
-const HeaderBackground = styled.div`
-    background: transparent;
+
+const HeaderBackground = styled.div<{$isHovered: boolean}>`
+    background: ${(props) => props.$isHovered ? oc.gray[0] : "none"};
     display: flex;
     justify-content: center;
     height: auto;
 `;
 
-// 해더의 내용
+
 const HeaderContents = styled.div`
     width: 1200px;
     height: 125px;
@@ -43,14 +40,6 @@ const HeaderContents = styled.div`
     ${media.tablet`
         width: 100%;
     `}
-
-    &:hover {
-      div {
-          a {
-            color: ${oc.gray[9]};
-          }
-      }
-    }
 `;
 
 const LogoLink = styled(Link)`
@@ -63,10 +52,11 @@ const LogoLink = styled(Link)`
 `;
 
 // TODO: 메인 페이지 외에는 페이지 최상단에 고정, 메인 페이지 외에서 signLink 색상 조정
-function Header ({children}: {children: ReactNode}) {
+function Header ({currentPageName, isHovered, children}: {currentPageName: string, isHovered: boolean, children: ReactNode}) {
+    
     return (
-        <Positioner>
-            <HeaderBackground>
+        <Positioner $currentPageName={currentPageName} $isHovered={isHovered}>
+            <HeaderBackground $isHovered={isHovered}>
                 <HeaderContents>
                     <LogoLink to={"/"}>Logo</LogoLink>
                     {children}

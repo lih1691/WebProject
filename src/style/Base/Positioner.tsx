@@ -25,17 +25,7 @@ export const ContentsTextPositioner = styled.div<{width: string}>`
 `
 
 export const ContentsSubjectPosition = styled(RelativePositioner)`
-  position: relative;
-  width: 100%;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px dotted gray;
-  background-color: white;
-`
-
-export const ContentsDescPosition = styled(RelativePositioner)`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: gray;
 `

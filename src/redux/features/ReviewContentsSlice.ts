@@ -3,12 +3,12 @@ import {RootState} from "@redux/store";
 import * as ContentAPI from '@lib/api/contents';
 import { sliceContents } from "@lib/Contents/PageNation";
 
-export interface reviewContent {
-    id: number;
-    nickname: string;
+export interface reviewContent  {
+    id: string;
     title: string;
-    rating: number;
     date: string;
+    nickname: string;
+    rating: number;
     product: string;
 }
 
@@ -34,7 +34,7 @@ export const fetchReviewContents = createAsyncThunk(
     }
 );
 
-// TODO:: 컨텐츠 슬라이스들 통합 방법 고려, 태그 추가,
+// TODO:: 컨텐츠 슬라이스들 통합 방법 고려, 태그 추가
 const reviewSlice = createSlice({
     name: 'review',
     initialState,

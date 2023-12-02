@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { MainNewsLink } from "@Components/Page/MainPage/News/index";
+import { MainReviewsLink } from "@Components/Page/MainPage/Reviews/index";
 import { HorizontalItem } from "@style/List/HorizontalList";
 
 const Item = styled(HorizontalItem)`
@@ -8,7 +8,7 @@ const Item = styled(HorizontalItem)`
   height: 435px;
 `
 
-function MainNewsItem({title, text, date}: {title: string, text: string, date: string}) {
+function MainReviewsItem({title, text, date}: {title: string, text: string, date: string}) {
     const [ isHovered, setIsHovered ] = useState(false);
     
     return (
@@ -16,9 +16,9 @@ function MainNewsItem({title, text, date}: {title: string, text: string, date: s
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <MainNewsLink title={title} text={text} date={date} isHovered={isHovered}></MainNewsLink>
+            <MainReviewsLink title={title} text={text} date={date} isHovered={isHovered} />
         </Item>
     )
 }
 
-export default MainNewsItem;
+export default MainReviewsItem;

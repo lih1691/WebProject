@@ -9,10 +9,10 @@ const Title = styled.p`
   line-height: 50px;
 `
 
-function TitleArea() {
+function TitleArea({title}: {title: string}) {
     return (
-        <SectionTitle>
-            <Title>News & Notice</Title>
+        <SectionTitle $marginTop={"200px"} $marginBottom={"50px"}>
+            <Title>{title}</Title>
         </SectionTitle>
     )
 }

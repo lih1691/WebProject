@@ -1,6 +1,6 @@
 import React from 'react';
-import { ContentsDescPosition } from "@style/Base/Positioner";
-import { DescList, DescTerm, Desc} from "@style/Base/Desc";
+import { RelativePositioner } from "@style/Base/Positioner";
+import { DescList, DescTerm, Desc } from "@style/Base/Desc";
 import { StarRating } from "@lib/Contents/StarRating";
 
 interface DescProps {
@@ -12,7 +12,7 @@ interface DescProps {
 
 function ReviewDescription({nickname, rating, date, product}: DescProps) {
     return (
-        <ContentsDescPosition>
+        <RelativePositioner>
             <DescList>
                 <DescTerm>별 점 : </DescTerm>
                 <Desc><StarRating rating={rating} totalRating={5} /></Desc>
@@ -29,7 +29,7 @@ function ReviewDescription({nickname, rating, date, product}: DescProps) {
                 <DescTerm>상품명 : </DescTerm>
                 <Desc>{product}</Desc>
             </DescList>
-        </ContentsDescPosition>
+        </RelativePositioner>
     )
 }
 

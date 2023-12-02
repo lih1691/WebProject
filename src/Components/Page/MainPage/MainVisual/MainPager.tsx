@@ -8,9 +8,9 @@ const pagerLiStyle = {
     color: oc.gray[8],
     clickedColor: oc.gray[4],
     $after: {
-        top: "100%",
+        top: "90%",
         left: "35%",
-        activatedLength: "25px",
+        activatedLength: "20px",
         deactivatedLength: "0px",
     }
 };

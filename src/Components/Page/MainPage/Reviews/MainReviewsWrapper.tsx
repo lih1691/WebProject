@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   letter-spacing: -.2px;
 `
 
-function MainNewsWrapper({children}: {children: ReactNode}) {
+function MainReviewsWrapper({children}: {children: ReactNode}) {
     return (
         <Wrapper>
             {children}
@@ -14,4 +14,4 @@ function MainNewsWrapper({children}: {children: ReactNode}) {
     )
 }
 
-export default MainNewsWrapper;
+export default MainReviewsWrapper;

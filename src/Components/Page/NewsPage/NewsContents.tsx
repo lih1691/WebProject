@@ -1,5 +1,5 @@
 import React from 'react';
-import { newsContent} from "@redux/features/NewsContentSlice";
+import { newsContent } from "@redux/features/NewsContentSlice";
 import NewsDescription from "@Components/Page/NewsPage/NewsDescription";
 import { Image } from '@style/Base/Image';
 import { TitleLink } from '@style/Link/NoneDecorationLink';

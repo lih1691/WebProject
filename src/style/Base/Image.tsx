@@ -8,9 +8,10 @@ export const Image = styled.img`
 export const MainImg = styled(Image)<{$active: boolean}>`
   position: absolute;
   top: 0;
-  transition: .6s all;
+  left: ${(props) => props.$active ? 0 : "5%"};
   background-size: cover;
   opacity: ${(props) => props.$active ? 1 : 0};
+  transition: .6s all;
 `
 export const SubBannerImg = styled(Image)`
   background-color: black;

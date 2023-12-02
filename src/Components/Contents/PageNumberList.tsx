@@ -16,21 +16,23 @@ const NumberList = styled.nav`
 `
 
 function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentPageArray}: paginationProps) {
-    const PreOffset = (Math.floor(currentPage / pageLimit) - 1) * pageLimit;
+    const PreOffset = (Math.floor(currentPage / pageLimit - 1)) * pageLimit;
     const nextOffset = (Math.floor(currentPage / pageLimit) + 1) * pageLimit;
+    
+    console.log(currentPage);
     
     return (
         <Wrapper>
             <NumberList>
                 <Button
                     onClick={() => setCurrentPage(currentPage) }
-                    disabled = {currentPage === 0}
+                    disabled = {PreOffset <= 0}
                 >
                     &lt;&lt;
                 </Button>
                 <Button
-                    onClick={() => setCurrentPage(PreOffset) }
-                    disabled = {PreOffset <= 0}
+                    onClick={() => setCurrentPage(currentPage - 1) }
+                    disabled = {currentPage === 0}
                 >
                     &lt;
                 </Button>

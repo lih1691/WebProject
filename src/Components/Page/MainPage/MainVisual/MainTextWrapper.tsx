@@ -14,21 +14,26 @@ const TextPositioner = styled.div`
   position: absolute;
   top: 305px;
   line-height: 1.8;
-  transition: all .6s;
 `
 
 function MainTextWrapper() {
-    const index = useAppSelector(state => state.ui.mainPageState.mainVisual.currentIndex);
+    const currentIndex = useAppSelector(state => state.ui.mainPageState.mainVisual.currentIndex);
     const mainState = useAppSelector(state => state.ui.mainPageState.mainVisual.MainImages);
-    
-    const currentText = mainState[index];
     
     return (
         <Positioner>
-            <TextPositioner>
-                <MainTextTitle>{currentText.title}</MainTextTitle>
-                <MainTextSentence>{currentText.sentence}</MainTextSentence>
-            </TextPositioner>
+                {
+                    mainState.map((state) => (
+                        <TextPositioner key={state.id}>
+                            <MainTextTitle active={state.id === currentIndex}>
+                                {state.title}
+                            </MainTextTitle>
+                            <MainTextSentence active={state.id === currentIndex}>
+                                {state.sentence}
+                            </MainTextSentence>
+                        </TextPositioner>
+                    ))
+                }
         </Positioner>
     )
 }

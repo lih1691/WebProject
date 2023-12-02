@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from "@redux/hook";
-import { MainVisualContainer, CategoryContainer, NewsContainer } from '@Containers/MainPage';
+import { MainVisualContainer, CategoryContainer, ReviewsContainer } from '@Containers/MainPage';
 import { DotNavigationWrapper} from "@Components/Page/MainPage/DotNavigation";
 import useMainPageHandler from "@lib/PageHandler/MainPageHandler";
 
@@ -29,7 +29,7 @@ function MainPage() {
             <DotNavigationWrapper articlesRef={articlesRef}></DotNavigationWrapper>
             <MainVisualContainer />
             <CategoryContainer />
-            <NewsContainer />
+            <ReviewsContainer />
         </ArticleContainer>
     );
 }

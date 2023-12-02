@@ -7,7 +7,7 @@ export const StarRating = ({ rating, totalRating = 5}: {rating: number, totalRat
     const filledStars = Math.floor(rating);
     const halfStars = rating - filledStars === 0.5;
     
-    const stars = Array.from({ length: totalRating}, (_, index) => {
+    const stars = Array.from({ length: totalRating }, (_, index) => {
         if (index < filledStars) {
             return <FaStar key={index} color={oc.yellow[4]} />;
         } else if (halfStars && index === filledStars) {

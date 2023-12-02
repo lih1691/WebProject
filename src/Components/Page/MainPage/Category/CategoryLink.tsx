@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { HoverCheckLink } from "@style/Link/HoverCheckLink";
-import { CategoryText, CategoryTitle} from "@Components/Page/MainPage/Category";
+import { CategoryText, CategoryTitle, CategoryIcon} from "@Components/Page/MainPage/Category";
 
 const Category = styled(HoverCheckLink)<{ $isHovered: boolean, background: string }>`
   position: relative;
@@ -12,7 +12,7 @@ const Category = styled(HoverCheckLink)<{ $isHovered: boolean, background: strin
   transition: all .4s;
 `
 
-function CategoryLink({title, text, background}: {title:string, text: string, background: string}) {
+function CategoryLink({title, text, src, invertedSrc ,alt, background}: {title:string, text: string, src: string, invertedSrc: string,alt: string, background: string}) {
     const [isHovered, setIsHovered] = useState(false);
     
     return (
@@ -23,6 +23,7 @@ function CategoryLink({title, text, background}: {title:string, text: string, ba
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
+            <CategoryIcon src={src} invertedSrc={invertedSrc} alt={alt} isHovered={isHovered}/>
             <CategoryTitle $isHovered={isHovered}>{title}</CategoryTitle>
             <CategoryText $isHovered={isHovered}>{text}</CategoryText>
         </Category>

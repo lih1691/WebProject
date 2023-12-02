@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import useScrollHandler from "@lib/scroll/useScrollHandler";
 import { setCurrentPageName } from "@redux/features/UISlice";
@@ -27,7 +27,7 @@ export default function useMainPageHandler({
                                                setWindowSize,
                                                scrollDuration
                                            }: mainPageHandlerProps) {
-    const { handleWheel, handleKeyDown, handleResize, handleArticleTransition, removeWheelClick } =
+    const { handleWheel, handleKeyDown, handleResize } =
         useScrollHandler(
             {articlesRef, articleIndex, dispatch, scrollEventActive, setScrollEventActive, setWindowSize, scrollDuration});
     

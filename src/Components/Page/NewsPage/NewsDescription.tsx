@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentsDescPosition } from "@style/Base/Positioner";
+import { RelativePositioner } from "@style/Base/Positioner";
 import { DescList, DescTerm, Desc, NewsDesc } from "@style/Base/Desc";
 
 interface DescProps {
@@ -9,13 +9,13 @@ interface DescProps {
 
 function NewsDescription({date, desc}: DescProps) {
     return (
-        <ContentsDescPosition>
+        <RelativePositioner>
             <DescList>
                 <DescTerm>날 짜 :</DescTerm>
                 <Desc>{date}</Desc>
             </DescList>
             <NewsDesc>{desc}</NewsDesc>
-        </ContentsDescPosition>
+        </RelativePositioner>
     )
 }
 

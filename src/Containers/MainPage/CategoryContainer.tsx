@@ -16,21 +16,56 @@ function CategoryContainer() {
         <CategorySection className={"article"}>
             <CategoryList>
                 <CategoryItem>
-                    <CategoryLink title={"애플"} text={"애플은 애플입니다."} background={gray} />
+                    <CategoryLink 
+                        title={"애플"} 
+                        text={"애플은 애플입니다."} 
+                        src={"/Img/apple.png"}
+                        invertedSrc={"/Img/apple_on.png"}
+                        alt={"애플 아이콘"}
+                        background={gray}
+                    />
                 </CategoryItem>
                 <CategoryItem>
-                    <CategoryLink title={"삼성"} text={"삼성은 삼성입니다."} background={white} />
+                    <CategoryLink
+                        title={"삼성"}
+                        text={"삼성은 삼성입니다."}
+                        src={"/Img/samsung.png"}
+                        invertedSrc={"/Img/samsung_on.png"}
+                        alt={"삼성 아이콘"}
+                        background={white}
+                    />
                 </CategoryItem>
             </CategoryList>
             <CategoryList>
                 <CategoryItem>
-                    <CategoryLink title={"스마트폰"} text={"스마트폰은 스마트폰입니다."} background={gray} />
+                    <CategoryLink
+                        title={"스마트폰"}
+                        text={"스마트폰은 스마트폰입니다."}
+                        src={"/Img/smartphone.png"}
+                        invertedSrc={"/Img/smartphone_on.png"}
+                        alt={"애플 아이콘"}
+                        background={gray}
+                    />
                 </CategoryItem>
                 <CategoryItem>
-                    <CategoryLink title={"태블릿"} text={"태블릿은 태블릿입니다."} background={white} />
+                    <CategoryLink
+                        title={"태블릿"}
+                        text={"태블릿은 태블릿입니다."}
+                        src={"/Img/apple.png"}
+                        invertedSrc={"/Img/apple_on.png"}
+                        alt={"애플 아이콘"}
+                        background={white}
+                    />
                 </CategoryItem>
                 <CategoryItem>
-                    <CategoryLink title={"기타"} text={"기타"} background={gray} />
+                    <CategoryLink
+                        title={"기타"}
+                        text={"기타"}
+                        src={"/Img/apple.png"}
+                        invertedSrc={"/Img/apple_on.png"}
+                        alt={"애플 아이콘"}
+                        background={gray}
+                    />
                 </CategoryItem>
             </CategoryList>
         </CategorySection>

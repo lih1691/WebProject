@@ -11,7 +11,7 @@ const CategorySection = styled(Section)`
   min-width: 1500px;
 `
 
-function CategoryContainer() {
+function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number}) {
     return (
         <CategorySection className={"article"}>
             <CategoryList>

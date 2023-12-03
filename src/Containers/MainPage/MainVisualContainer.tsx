@@ -26,13 +26,14 @@ const MainVisualBackgroundProps = {
     $zIndex: -1
 }
 
-function MainVisualContainer() {
+function MainVisualContainer({currentSectionIndex}: {currentSectionIndex: number}) {
+    
     return (
         <MainVisualSection className={"article"}>
             <MainVisualBackground {...MainVisualBackgroundProps}/>
-            <MainImgList />
+            <MainImgList currentSectionIndex={currentSectionIndex}/>
             <MainTextWrapper />
-            <MainPagerWrapper />
+            <MainPagerWrapper currentSectionIndex={currentSectionIndex}/>
         </MainVisualSection>
     )
 }

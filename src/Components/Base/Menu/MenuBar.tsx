@@ -32,8 +32,6 @@ function MenuBar({setIsHovered}: {setIsHovered: Dispatch<SetStateAction<boolean>
     const index = useAppSelector((state) => (state.ui.mainPageState.currentIndex));
     const pageName = useAppSelector((state) => (state.ui.currentPage));
     
-    console.log(index === 0 || pageName !== "MainPage");
-    
     return (
         <MenuContents
             onMouseEnter={() => setIsHovered(true)}

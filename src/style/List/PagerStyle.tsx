@@ -9,6 +9,7 @@ interface ulInterface {
 
 interface liInterface {
     width: string;
+    $focus: boolean;
     $active: boolean;
     color: string;
     $clickedColor: string;
@@ -16,6 +17,7 @@ interface liInterface {
     $after: {
         top: string;
         left: string;
+        height: string;
         activatedLength: string;
         deactivatedLength: string;
     }
@@ -37,7 +39,7 @@ export const PagerLi = styled.li<liInterface>`
   position: relative;
   width: ${(props) => props.width};
   color: ${(props) =>
-          (props.$active ? props.$clickedColor : props.color)};
+          (props.$focus ? props.$clickedColor : props.color)};
   line-height: 40px;
   font-weight: 700;
   
@@ -47,10 +49,10 @@ export const PagerLi = styled.li<liInterface>`
     top: ${(props) => props.$after.top};
     left: ${(props) => props.$after.left};;
     width: ${(props) =>
-            (props.$active ? props.$after.activatedLength
+            (props.$focus ? props.$after.activatedLength
                             : props.$after.deactivatedLength)};;
-    height: 1px;
-    background-color: ${(props) => (props.$active ? props.$clickedColor : props.color)};; /* 줄의 색상 */
+    height: ${(props) => props.$after.height};
+    background-color: ${(props) => (props.$focus ? props.$clickedColor : props.color)};;
     transition: all .6s;
   }
   

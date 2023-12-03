@@ -19,8 +19,6 @@ function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentP
     const PreOffset = (Math.floor(currentPage / pageLimit - 1)) * pageLimit;
     const nextOffset = (Math.floor(currentPage / pageLimit) + 1) * pageLimit;
     
-    console.log(currentPage);
-    
     return (
         <Wrapper>
             <NumberList>

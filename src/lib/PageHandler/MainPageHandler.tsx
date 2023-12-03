@@ -40,6 +40,7 @@ export default function useMainPageHandler({
         window.addEventListener('resize', handleResize)
         
         return () => {
+            
             window.removeEventListener('wheel', handleWheel);
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('resize', handleResize);

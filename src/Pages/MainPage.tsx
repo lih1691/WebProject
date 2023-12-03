@@ -27,9 +27,9 @@ function MainPage() {
     return (
         <ArticleContainer >
             <DotNavigationWrapper articlesRef={articlesRef}></DotNavigationWrapper>
-            <MainVisualContainer />
-            <CategoryContainer />
-            <ReviewsContainer />
+            <MainVisualContainer currentSectionIndex={articleIndex}/>
+            <CategoryContainer currentSectionIndex={articleIndex}/>
+            <ReviewsContainer currentSectionIndex={articleIndex}/>
         </ArticleContainer>
     );
 }

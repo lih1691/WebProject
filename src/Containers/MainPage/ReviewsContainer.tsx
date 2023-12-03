@@ -8,7 +8,7 @@ const MainReviewsSection = styled(Section)`
   padding: 0 10%;
 `
 
-function ReviewsContainer() {
+function ReviewsContainer({currentSectionIndex}: {currentSectionIndex: number}) {
     return (
         <MainReviewsSection className={"article"}>
             <TitleArea title={"Reviews"}/>

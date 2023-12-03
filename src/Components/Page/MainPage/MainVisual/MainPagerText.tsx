@@ -10,12 +10,13 @@ const pagerLiStyle = {
     $after: {
         top: "50%",
         left: "170px",
+        height: "1px",
         activatedLength: "60px",
         deactivatedLength: "30px",
     }
 };
 
-function MainPagerText({ handleClick } : { handleClick: (index: number) => void}) {
+function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIndex: number, handleClick: (index: number) => void}) {
     const Index = useAppSelector((state) => state.ui.mainPageState.mainVisual.currentIndex);
     
     return (
@@ -24,7 +25,8 @@ function MainPagerText({ handleClick } : { handleClick: (index: number) => void}
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 0}
+                $active={currentSectionIndex === 0}
+                $focus={Index === 0}
                 onClick={() => handleClick(0)}
                 $after={pagerLiStyle.$after}
             >
@@ -34,7 +36,8 @@ function MainPagerText({ handleClick } : { handleClick: (index: number) => void}
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 1}
+                $active={currentSectionIndex === 0}
+                $focus={Index === 1}
                 onClick={() => handleClick(1)}
                 $after={pagerLiStyle.$after}
             >
@@ -44,7 +47,8 @@ function MainPagerText({ handleClick } : { handleClick: (index: number) => void}
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 2}
+                $active={currentSectionIndex === 0}
+                $focus={Index === 2}
                 onClick={() => handleClick(2)}
                 $after={pagerLiStyle.$after}
             >

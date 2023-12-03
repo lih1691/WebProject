@@ -10,6 +10,7 @@ const pagerLiStyle = {
     $after: {
         top: "90%",
         left: "35%",
+        height: "2px",
         activatedLength: "20px",
         deactivatedLength: "0px",
     }
@@ -25,7 +26,8 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 0}
+                $active={false}
+                $focus={Index === 0}
                 onClick={() => handleClick(0)}
                 $after={pagerLiStyle.$after}
             >
@@ -35,7 +37,8 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 1}
+                $focus={Index === 1}
+                $active={false}
                 onClick={() => handleClick(1)}
                 $after={pagerLiStyle.$after}
             >
@@ -45,7 +48,8 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={Index === 2}
+                $focus={Index === 2}
+                $active={false}
                 onClick={() => handleClick(2)}
                 $after={pagerLiStyle.$after}
             >

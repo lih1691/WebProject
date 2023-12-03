@@ -2,6 +2,7 @@ import { MouseEvent } from 'react';
 import { moveScrollToArticle, handleWheelEvent, handleKeyEvent } from "@lib/scroll/mainScrollHelpers";
 import { mainPageHandlerProps } from "@lib/PageHandler/MainPageHandler";
 
+
 export default function useScrollHandler({
     articlesRef,
     articleIndex,

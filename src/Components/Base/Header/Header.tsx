@@ -2,7 +2,9 @@ import React, {ReactNode} from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import oc from 'open-color';
+import { useAppDispatch } from "@redux/hook";
 import { media } from '@lib/styleUtil';
+import { changeMainIndex } from "@redux/features/UISlice";
 
 // 상단 고정
 const Positioner = styled.div<{$currentPageName: string, $isHovered: boolean}>`
@@ -51,14 +53,18 @@ const LogoLink = styled(Link)`
   text-decoration: none;
 `;
 
-// TODO: 메인 페이지 외에는 페이지 최상단에 고정, 메인 페이지 외에서 signLink 색상 조정
+
 function Header ({currentPageName, isHovered, children}: {currentPageName: string, isHovered: boolean, children: ReactNode}) {
+    const dispatch = useAppDispatch();
+    const handleClick = () => {
+        dispatch(changeMainIndex(0));
+    }
     
     return (
         <Positioner $currentPageName={currentPageName} $isHovered={isHovered}>
             <HeaderBackground $isHovered={isHovered}>
                 <HeaderContents>
-                    <LogoLink to={"/"}>Logo</LogoLink>
+                    <LogoLink to={"/"} onClick={handleClick}>Logo</LogoLink>
                     {children}
                 </HeaderContents>
             </HeaderBackground>

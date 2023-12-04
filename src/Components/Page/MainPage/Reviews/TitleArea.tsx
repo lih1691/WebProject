@@ -9,9 +9,15 @@ const Title = styled.p`
   line-height: 50px;
 `
 
-function TitleArea({title}: {title: string}) {
+function TitleArea({title, currentSectionIndex}: {title: string, currentSectionIndex: number}) {
     return (
-        <SectionTitle $marginTop={"200px"} $marginBottom={"50px"}>
+        <SectionTitle
+            $marginTop={"200px"}
+            $marginBottom={"50px"}
+            $focus={currentSectionIndex === 2}
+            $fadeInTransition={"all .5s .3s"}
+            $fadeOutTransition={"all .5s"}
+        >
             <Title>{title}</Title>
         </SectionTitle>
     )

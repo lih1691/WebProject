@@ -23,16 +23,18 @@ const MainVisualSection = styled(Section)`
 const MainVisualBackgroundProps = {
     width: "1200px",
     height: "600px",
+    $active: false,
     $zIndex: -1
 }
 
 function MainVisualContainer({currentSectionIndex}: {currentSectionIndex: number}) {
+    MainVisualBackgroundProps["$active"] = (currentSectionIndex === 0);
     
     return (
         <MainVisualSection className={"article"}>
             <MainVisualBackground {...MainVisualBackgroundProps}/>
             <MainImgList currentSectionIndex={currentSectionIndex}/>
-            <MainTextWrapper />
+            <MainTextWrapper currentSectionIndex={currentSectionIndex}/>
             <MainPagerWrapper currentSectionIndex={currentSectionIndex}/>
         </MainVisualSection>
     )

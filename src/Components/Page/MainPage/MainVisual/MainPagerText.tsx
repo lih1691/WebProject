@@ -25,10 +25,11 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={currentSectionIndex === 0}
-                $focus={Index === 0}
-                onClick={() => handleClick(0)}
+                $active={Index === 0}
+                $focus={currentSectionIndex === 0}
+                transition={"opacity .6s .4s, left .6s .4s"}
                 $after={pagerLiStyle.$after}
+                onClick={() => handleClick(0)}
             >
                 아이폰
             </PagerLi>
@@ -36,8 +37,9 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={currentSectionIndex === 0}
-                $focus={Index === 1}
+                $active={Index === 1}
+                $focus={currentSectionIndex === 0}
+                transition={"opacity .6s .5s, left .6s .5s"}
                 onClick={() => handleClick(1)}
                 $after={pagerLiStyle.$after}
             >
@@ -47,8 +49,9 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={currentSectionIndex === 0}
-                $focus={Index === 2}
+                $active={Index === 2}
+                $focus={currentSectionIndex === 0}
+                transition={"opacity .6s .6s, left .6s .6s"}
                 onClick={() => handleClick(2)}
                 $after={pagerLiStyle.$after}
             >

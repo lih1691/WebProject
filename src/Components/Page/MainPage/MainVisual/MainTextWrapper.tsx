@@ -10,13 +10,15 @@ const Positioner = styled.div`
   margin: 0 auto;
 `
 
-const TextPositioner = styled.div`
+const TextPositioner = styled.div<{$active: boolean}>`
   position: absolute;
   top: 305px;
+  left: ${(props) => props.$active ? 0 : "-5%"};
   line-height: 1.8;
+  transition: all .8s;
 `
 
-function MainTextWrapper() {
+function MainTextWrapper({currentSectionIndex}: {currentSectionIndex: number}) {
     const currentIndex = useAppSelector(state => state.ui.mainPageState.mainVisual.currentIndex);
     const mainState = useAppSelector(state => state.ui.mainPageState.mainVisual.MainImages);
     
@@ -24,7 +26,7 @@ function MainTextWrapper() {
         <Positioner>
                 {
                     mainState.map((state) => (
-                        <TextPositioner key={state.id}>
+                        <TextPositioner key={state.id} $active={currentSectionIndex === 0}>
                             <MainTextTitle active={state.id === currentIndex}>
                                 {state.title}
                             </MainTextTitle>

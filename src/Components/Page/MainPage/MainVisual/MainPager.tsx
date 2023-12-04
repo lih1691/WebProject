@@ -26,10 +26,11 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $active={false}
-                $focus={Index === 0}
-                onClick={() => handleClick(0)}
+                $active={Index === 0}
+                $focus={true}
+                transition={"all .2s"}
                 $after={pagerLiStyle.$after}
+                onClick={() => handleClick(0)}
             >
                 01
             </PagerLi>
@@ -37,10 +38,11 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $focus={Index === 1}
-                $active={false}
-                onClick={() => handleClick(1)}
+                $focus={true}
+                $active={Index === 1}
+                transition={"all .2s"}
                 $after={pagerLiStyle.$after}
+                onClick={() => handleClick(1)}
             >
                 02
             </PagerLi>
@@ -48,10 +50,11 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
-                $focus={Index === 2}
-                $active={false}
-                onClick={() => handleClick(2)}
+                $focus={true}
+                $active={Index === 2}
+                transition={"all .2s"}
                 $after={pagerLiStyle.$after}
+                onClick={() => handleClick(2)}
             >
                 03
             </PagerLi>

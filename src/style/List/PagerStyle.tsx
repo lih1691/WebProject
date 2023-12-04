@@ -13,6 +13,7 @@ interface liInterface {
     $active: boolean;
     color: string;
     $clickedColor: string;
+    transition: string;
     
     $after: {
         top: string;
@@ -37,11 +38,14 @@ export const PagerUl = styled.ul<ulInterface>`
 
 export const PagerLi = styled.li<liInterface>`
   position: relative;
+  opacity: ${(props) => props.$focus ? 1 : 0};
   width: ${(props) => props.width};
+  left: ${(props) => props.$focus ? 0 : "20%"};
   color: ${(props) =>
-          (props.$focus ? props.$clickedColor : props.color)};
+          (props.$active ? props.$clickedColor : props.color)};
   line-height: 40px;
   font-weight: 700;
+  transition: ${(props) => props.transition};
   
   &::after {
     content: "";
@@ -49,7 +53,7 @@ export const PagerLi = styled.li<liInterface>`
     top: ${(props) => props.$after.top};
     left: ${(props) => props.$after.left};;
     width: ${(props) =>
-            (props.$focus ? props.$after.activatedLength
+            (props.$active ? props.$after.activatedLength
                             : props.$after.deactivatedLength)};;
     height: ${(props) => props.$after.height};
     background-color: ${(props) => (props.$focus ? props.$clickedColor : props.color)};;

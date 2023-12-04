@@ -1,4 +1,3 @@
-export { default as Background } from './Background';
 export { default as MainImgList } from './MainImgList';
 export { default as MainPagerText } from './MainPagerText';
 export { default as MainPagerWrapper } from './MainPagerWrapper';

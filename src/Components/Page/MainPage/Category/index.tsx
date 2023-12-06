@@ -5,3 +5,4 @@ export { default as CategoryLink } from './CategoryLink';
 export { default as CategoryTitle } from './CategoryTitle';
 export { default as CategoryText } from './CategoryText';
 export { default as CategoryIcon } from './CategoryIcon';
+export { default as CategoryTitleArea } from './CategoryTitleArea';

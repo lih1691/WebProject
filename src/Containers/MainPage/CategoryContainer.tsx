@@ -2,7 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import oc from 'open-color';
 import { Section } from '@style/Pages/Section';
-import { CategoryLink, CategoryList, CategoryItem } from '@Components/Page/MainPage/Category';
+import { CategoryLink, CategoryList, CategoryItem, CategoryTitleArea } from '@Components/Page/MainPage/Category';
+import { CategorySectionLine } from "@style/Base/drawLine";
 
 const CategorySection = styled(Section)`
   min-width: 1500px;
@@ -21,9 +22,10 @@ const whiteCategory = {
 }
 
 function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number}) {
-    
     return (
         <CategorySection className={"article"}>
+            <CategoryTitleArea title={"Categories"} currentSectionIndex={currentSectionIndex}/>
+            <CategorySectionLine $height={"50vh"} $focus={currentSectionIndex === 1}/>
             <CategoryList>
                 <CategoryItem
                     $focus={currentSectionIndex === 1}

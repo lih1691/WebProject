@@ -2,7 +2,7 @@ import React from 'react';
 import { newsContent } from "@redux/features/NewsContentSlice";
 import NewsDescription from "@Components/Page/NewsPage/NewsDescription";
 import { Image } from '@style/Base/Image';
-import { TitleLink } from '@style/Link/NoneDecorationLink';
+import { CustomFontLink } from '@style/Link/NoneDecorationLink';
 import { ContentsListItem, ContentsWrapper} from "@style/List/ContentsList";
 import { ContentsImgPositioner, ContentsTextPositioner, ContentsSubjectPosition } from "@style/Base/Positioner";
 
@@ -18,9 +18,9 @@ function NewsContents({content}: {content:newsContent}) {
             </ContentsWrapper>
             <ContentsTextPositioner width={"70%"}>
                 <ContentsSubjectPosition>
-                    <TitleLink to={"/"} $fontsize={"21px"} $fontweight={700}>
+                    <CustomFontLink to={"/"} $fontsize={"21px"} $fontweight={700}>
                         {title}
-                    </TitleLink>
+                    </CustomFontLink>
                 </ContentsSubjectPosition>
                 <NewsDescription date={date} desc={desc} />
             </ContentsTextPositioner>

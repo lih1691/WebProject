@@ -28,13 +28,13 @@ const initialState: ReviewPageState = {
 
 export const fetchReviewContents = createAsyncThunk(
     'contents/review',
-    async () => {
-        const response = await ContentAPI.fetchContents("review");
+    async ({category, searchType, keyword}: {category: string, searchType?: string, keyword?:string}) => {
+        const response = await ContentAPI.fetchContents("review", category, searchType, keyword);
         return response.data;
     }
 );
 
-// TODO:: 컨텐츠 슬라이스들 통합 방법 고려, 태그 추가
+
 const reviewSlice = createSlice({
     name: 'review',
     initialState,

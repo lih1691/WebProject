@@ -18,7 +18,7 @@ function ReviewContents({content}: {content: reviewContent}) {
                 </ContentsImgPositioner>
                 <ContentsTextPositioner width={"55%"}>
                     <ContentsSubjectPosition>
-                        <CustomFontLink to={"/"} $fontsize={"17px"} $fontweight={700}>
+                        <CustomFontLink to={"/"} $fontSize={"17px"} $fontWeight={700}>
                             {title}
                         </CustomFontLink>
                     </ContentsSubjectPosition>

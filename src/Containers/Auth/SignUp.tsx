@@ -50,7 +50,7 @@ function SignUp() {
         // }
     }
 
-    const HandleLocalSignUp = async () => {
+    const useHandleLocalSignUp = async () => {
         const { error } = useAppSelector((state) => state.auth.SignUp);
         const encryptedPWD = encrypt(userPWD);
         const jsonData = JSON.stringify({userID, encryptedPWD, userNickName, userEmail});
@@ -128,7 +128,7 @@ function SignUp() {
             {
                 error && <AuthError>{error}</AuthError>
             }
-            <AuthButton onClick={HandleLocalSignUp}>회원가입</AuthButton>
+            <AuthButton onClick={useHandleLocalSignUp}>회원가입</AuthButton>
             <RightAlignedLink to={"/Auth/SignIn"}>로그인</RightAlignedLink>
         </AuthContent>
     );

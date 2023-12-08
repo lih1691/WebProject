@@ -26,7 +26,7 @@ const Positioner = styled.div`
   }
 `
 
-function MainPagerWrapper({currentSectionIndex}: {currentSectionIndex: number}) {
+function MainPagerWrapper({focus}: {focus: boolean}) {
     const dispatch = useAppDispatch();
     
     const handleLiClick = (index: number) => {
@@ -36,7 +36,7 @@ function MainPagerWrapper({currentSectionIndex}: {currentSectionIndex: number}) 
     return (
         <Positioner>
             <MainPager handleClick={handleLiClick} />
-            <MainPagerText currentSectionIndex={currentSectionIndex} handleClick={handleLiClick} />
+            <MainPagerText focus={focus} handleClick={handleLiClick} />
         </Positioner>
     )
 }

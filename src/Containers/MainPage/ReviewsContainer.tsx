@@ -4,17 +4,19 @@ import { Section } from '@style/Pages/Section';
 import { TitleArea } from "@Components/Page/MainPage/Reviews";
 import MainReviewsList from "@Components/Page/MainPage/Reviews/MainReviewsList";
 import {current} from "immer";
+import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
 
 const MainReviewsSection = styled(Section)`
   padding: 0 10%;
 `
 
 function ReviewsContainer({currentSectionIndex}: {currentSectionIndex: number}) {
+    const focus = checkCurrentSectionIndex(currentSectionIndex, 2);
+    
     return (
-        
         <MainReviewsSection className={"article"}>
-            <TitleArea title={"Reviews"} currentSectionIndex={currentSectionIndex}/>
-            <MainReviewsList currentSectionIndex={currentSectionIndex}/>
+            <TitleArea title={"Reviews"} focus={focus}/>
+            <MainReviewsList focus={focus}/>
         </MainReviewsSection>
     )
 }

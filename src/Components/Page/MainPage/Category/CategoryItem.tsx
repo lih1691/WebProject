@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 import { HorizontalItem } from "@style/List/HorizontalList";
+import { FocusFadeInterface } from "@style/Interface/Fade";
 
-interface categoryItemInterface {
-    $focus: boolean;
-    $fadeInTransition: string;
-    $fadeOutTransition: string;
-}
-
-const CategoryItem = styled(HorizontalItem)<categoryItemInterface>`
+const CategoryItem = styled(HorizontalItem)<FocusFadeInterface>`
   position: relative;
   opacity: ${(props) => props.$focus ? 1 : 0};
   height: 100%;

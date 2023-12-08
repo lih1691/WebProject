@@ -34,7 +34,7 @@ const initialState: pageState = {
             ],
         }
     },
-    contentCategory: "",
+    contentCategory: "apple",
 }
 
 const UISlice = createSlice({
@@ -43,6 +43,9 @@ const UISlice = createSlice({
     reducers: {
         setCurrentPageName: (state, action: PayloadAction<string>) => {
             state.currentPage = action.payload;
+        },
+        setCategory: (state, action: PayloadAction<string>) => {
+            state.contentCategory = action.payload;
         },
         changeMainIndex: (state, action: PayloadAction<number>) => {
             state.mainPageState.currentIndex = action.payload;
@@ -53,5 +56,5 @@ const UISlice = createSlice({
     }
 });
 
-export const { setCurrentPageName, changeMainIndex, changeMainVisualIndex } = UISlice.actions;
+export const { setCurrentPageName, setCategory,changeMainIndex, changeMainVisualIndex } = UISlice.actions;
 export default UISlice.reducer;

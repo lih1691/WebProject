@@ -4,6 +4,7 @@ import oc from 'open-color';
 import { Section } from "@style/Pages/Section";
 import { MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual";
 import { MainVisualBackground } from "@style/Base/Background";
+import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
 
 const MainVisualSection = styled(Section)`
   width: 100%;
@@ -23,19 +24,18 @@ const MainVisualSection = styled(Section)`
 const MainVisualBackgroundProps = {
     width: "1200px",
     height: "600px",
-    $active: false,
     $zIndex: -1
 }
 
 function MainVisualContainer({currentSectionIndex}: {currentSectionIndex: number}) {
-    MainVisualBackgroundProps["$active"] = (currentSectionIndex === 0);
+    const focus = checkCurrentSectionIndex(currentSectionIndex, 0);
     
     return (
         <MainVisualSection className={"article"}>
             <MainVisualBackground {...MainVisualBackgroundProps}/>
-            <MainImgList currentSectionIndex={currentSectionIndex}/>
-            <MainTextWrapper currentSectionIndex={currentSectionIndex}/>
-            <MainPagerWrapper currentSectionIndex={currentSectionIndex}/>
+            <MainImgList focus={focus}/>
+            <MainTextWrapper focus={focus}/>
+            <MainPagerWrapper focus={focus}/>
         </MainVisualSection>
     )
 }

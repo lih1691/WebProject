@@ -25,8 +25,8 @@ const initialState: NewsPageState = {
 
 export const fetchNewsContents = createAsyncThunk(
     'contents/news',
-    async () => {
-        const response = await ContentAPI.fetchContents('news');
+    async ({category, searchType, keyword}: {category: string, searchType?: string, keyword?:string}) => {
+        const response = await ContentAPI.fetchContents('news', category, searchType, keyword);
         return response.data;
     }
 )

@@ -18,7 +18,7 @@ function NewsContents({content}: {content:newsContent}) {
             </ContentsWrapper>
             <ContentsTextPositioner width={"70%"}>
                 <ContentsSubjectPosition>
-                    <CustomFontLink to={"/"} $fontsize={"21px"} $fontweight={700}>
+                    <CustomFontLink to={"/"} $fontSize={"21px"} $fontWeight={700}>
                         {title}
                     </CustomFontLink>
                 </ContentsSubjectPosition>

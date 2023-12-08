@@ -2,27 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { HorizontalCompactList } from "@style/List/HorizontalList";
+import { FocusFadeInterface, focusOpacityStyle, focusTransitionStyle} from "@style/Interface/Fade";
 import { MainReviewsItem } from "@Components/Page/MainPage/Reviews/index";
 
-interface ReviewListInterface {
-    $focus: boolean;
-    $fadeInTransition: string;
-    $fadeOutTransition: string;
-}
 
-const ReviewsList = styled(HorizontalCompactList)<ReviewListInterface>`
-  opacity: ${props => (props.$focus ? 1: 0)};
+const ReviewsList = styled(HorizontalCompactList)<FocusFadeInterface>`
+  ${focusOpacityStyle};
   width: 100%;
   border: 1px solid ${oc.gray[5]};
   background-color: ${oc.gray[0]};
   transform: translateX(${props => (props.$focus ? 0 :"50px")});
-  transition: ${props => (props.$focus ? props.$fadeInTransition : props.$fadeOutTransition)};
+  ${focusTransitionStyle};
 `
 
-function MainReviewsList({currentSectionIndex}: {currentSectionIndex: number}) {
+function MainReviewsList({focus}: {focus: boolean}) {
     return (
         <ReviewsList
-            $focus={currentSectionIndex === 2}
+            $focus={focus}
             $fadeInTransition={"all .5s .4s"}
             $fadeOutTransition={"all .4s"}
         >

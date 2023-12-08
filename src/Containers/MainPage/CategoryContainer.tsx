@@ -4,6 +4,7 @@ import oc from 'open-color';
 import { Section } from '@style/Pages/Section';
 import { CategoryLink, CategoryList, CategoryItem, CategoryTitleArea } from '@Components/Page/MainPage/Category';
 import { CategorySectionLine } from "@style/Base/drawLine";
+import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
 
 const CategorySection = styled(Section)`
   min-width: 1500px;
@@ -22,13 +23,15 @@ const whiteCategory = {
 }
 
 function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number}) {
+    const focus = checkCurrentSectionIndex(currentSectionIndex, 1);
+    
     return (
         <CategorySection className={"article"}>
-            <CategoryTitleArea title={"Categories"} currentSectionIndex={currentSectionIndex}/>
-            <CategorySectionLine $height={"50vh"} $focus={currentSectionIndex === 1}/>
+            <CategoryTitleArea title={"Categories"} focus={focus}/>
+            <CategorySectionLine $height={"50vh"} $focus={focus}/>
             <CategoryList>
                 <CategoryItem
-                    $focus={currentSectionIndex === 1}
+                    $focus={focus}
                     $fadeInTransition={grayCategory.$fadeInTransition}
                     $fadeOutTransition={grayCategory.$fadeOutTransition}
                 >
@@ -42,7 +45,7 @@ function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number})
                     />
                 </CategoryItem>
                 <CategoryItem
-                    $focus={currentSectionIndex === 1}
+                    $focus={focus}
                     $fadeInTransition={whiteCategory.$fadeInTransition}
                     $fadeOutTransition={whiteCategory.$fadeOutTransition}
                 >
@@ -58,7 +61,7 @@ function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number})
             </CategoryList>
             <CategoryList>
                 <CategoryItem
-                    $focus={currentSectionIndex === 1}
+                    $focus={focus}
                     $fadeInTransition={grayCategory.$fadeInTransition}
                     $fadeOutTransition={grayCategory.$fadeOutTransition}
                 >
@@ -72,7 +75,7 @@ function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number})
                     />
                 </CategoryItem>
                 <CategoryItem
-                    $focus={currentSectionIndex === 1}
+                    $focus={focus}
                     $fadeInTransition={whiteCategory.$fadeInTransition}
                     $fadeOutTransition={whiteCategory.$fadeOutTransition}
                 >
@@ -86,7 +89,7 @@ function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number})
                     />
                 </CategoryItem>
                 <CategoryItem
-                    $focus={currentSectionIndex === 1}
+                    $focus={focus}
                     $fadeInTransition={grayCategory.$fadeInTransition}
                     $fadeOutTransition={grayCategory.$fadeOutTransition}
                 >

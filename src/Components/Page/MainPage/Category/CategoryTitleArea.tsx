@@ -9,12 +9,12 @@ const Title = styled.p`
   line-height: 50px;
 `
 
-function CategoryTitleArea({title, currentSectionIndex}: {title: string, currentSectionIndex: number}) {
+function CategoryTitleArea({title, focus}: {title: string, focus: boolean}) {
     return (
         <AbsoluteSectionTitle
             $top={"15%"}
             $left={"10%"}
-            $focus={currentSectionIndex === 1}
+            $focus={focus}
             $fadeInTransition={"all .5s .3s"}
             $fadeOutTransition={"all .5s"}
         >

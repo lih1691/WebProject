@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-export const fetchReviewContents = () => axios.get('/api/contents/review');
-export const fetchNewsContents = () => axios.get('/api/contents/news');
-export const fetchCommunityContents = () => axios.get('/api/contents/community');
-
-export const fetchContents = (contentType: string) => axios.get(`/api/contents/${contentType}`);
+export const fetchContents = (
+    contentType: string,
+    category: string,
+    searchType?: string,
+    keyword?: string
+) => {
+    const searchQueryParameters = searchType && keyword
+        ? `&searchtype=${searchType}&keyword=${keyword}` : '';
+    
+    return axios.get(`/api/contents/${contentType}?category=${category}${searchQueryParameters}`);
+}

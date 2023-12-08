@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppDispatch} from "@redux/hook";
+import { setCategory } from "@redux/features/UISlice";
 import { HorizontalItem, HorizontalList } from "@style/List/HorizontalList";
-import { SubNavLink } from "@Components/Contents/SubNavLink";
+import { SubNavButton } from "@Components/Contents";
+
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -19,20 +22,24 @@ const NavList = styled(HorizontalList)`
   height: inherit;
 `
 
-//TODO: children을 받아서 NavList에 삽입
-
 function SubNavList() {
+    const dispatch = useAppDispatch();
+
+    const handleCategory = (category: string) => {
+        dispatch(setCategory(category));
+    };
+    
     return(
         <Wrapper>
             <NavList>
                 <HorizontalItem>
-                    <SubNavLink to={"/"}>애플</SubNavLink>
+                    <SubNavButton category={"apple"}>애플</SubNavButton>
                 </HorizontalItem>
                 <HorizontalItem>
-                    <SubNavLink to={"/"}>삼성</SubNavLink>
+                    <SubNavButton category={"samsung"}>삼성</SubNavButton>
                 </HorizontalItem>
                 <HorizontalItem>
-                    <SubNavLink to={"/"}>샤오미</SubNavLink>
+                    <SubNavButton category={"xiaomi"}>샤오미</SubNavButton>
                 </HorizontalItem>
             </NavList>
         </Wrapper>

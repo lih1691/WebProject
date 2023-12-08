@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import oc from 'open-color';
+import { FocusFadeInterface } from "@style/Interface/Fade";
 
-interface SectionTitleInterface {
+interface SectionTitleInterface extends FocusFadeInterface{
   $marginTop?: string;
   $marginLeft?: string;
   $marginBottom?: string;
-  $focus?: boolean;
-  $fadeInTransition?: string;
-  $fadeOutTransition?: string;
 }
 
 interface AbsoluteSectionTitleInterface extends SectionTitleInterface {

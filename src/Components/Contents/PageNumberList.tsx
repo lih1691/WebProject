@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Button } from "@style/Base/Button";
+import { PageButton } from "@style/Base/Button";
 import { paginationProps} from "@lib/Contents/PageNation";
 
 const Wrapper =  styled.div`
@@ -22,39 +22,39 @@ function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentP
     return (
         <Wrapper>
             <NumberList>
-                <Button
+                <PageButton
                     onClick={() => setCurrentPage(currentPage) }
                     disabled = {PreOffset <= 0}
                 >
                     &lt;&lt;
-                </Button>
-                <Button
+                </PageButton>
+                <PageButton
                     onClick={() => setCurrentPage(currentPage - 1) }
                     disabled = {currentPage === 0}
                 >
                     &lt;
-                </Button>
+                </PageButton>
                 {currentPageArray?.map((i) => (
-                    <Button
+                    <PageButton
                         key={i + 1}
                         onClick = {() => setCurrentPage(i)}
                         disabled = { currentPage === (i) }
                     >
                         { i + 1 }
-                    </Button>
+                    </PageButton>
                 ))}
-                <Button
+                <PageButton
                     onClick={() => setCurrentPage(nextOffset) }
                     disabled = {nextOffset >= total - 1}
                 >
                     &gt;
-                </Button>
-                <Button
+                </PageButton>
+                <PageButton
                     onClick={() => setCurrentPage(total - 1) }
                     disabled = {currentPage === total - 1}
                 >
                     &gt;&gt;
-                </Button>
+                </PageButton>
             </NumberList>
         </Wrapper>
     )

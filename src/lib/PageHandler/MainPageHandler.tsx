@@ -18,6 +18,10 @@ export interface mainPageHandlerProps {
     scrollDuration: number;
 }
 
+export const checkCurrentSectionIndex = (index: number, sectionNumber: number) => {
+    return (index === sectionNumber);
+}
+
 export default function useMainPageHandler({
                                                articlesRef,
                                                articleIndex,
@@ -40,7 +44,6 @@ export default function useMainPageHandler({
         window.addEventListener('resize', handleResize)
         
         return () => {
-            
             window.removeEventListener('wheel', handleWheel);
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('resize', handleResize);

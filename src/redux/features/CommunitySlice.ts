@@ -29,8 +29,8 @@ const initialState: communityState = {
 
 export const fetchCommunityContents = createAsyncThunk(
     'contents/community',
-    async () => {
-        const response = await ContentsAPI.fetchContents('community');
+    async (category: string) => {
+        const response = await ContentsAPI.fetchContents('community', category);
         return response.data;
     }
 )

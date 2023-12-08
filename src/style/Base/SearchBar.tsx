@@ -7,7 +7,7 @@ export const SearchBarPositioner = styled(RelativePositioner)`
   justify-content: flex-end;
 `
 
-export const SearchBarContainer = styled.div`
+export const SearchBarForm = styled.form`
   border: 1px solid ${oc.gray[4]};
 `
 

@@ -16,7 +16,7 @@ const pagerLiStyle = {
     }
 };
 
-function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIndex: number, handleClick: (index: number) => void}) {
+function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (index: number) => void}) {
     const Index = useAppSelector((state) => state.ui.mainPageState.mainVisual.currentIndex);
     
     return (
@@ -26,7 +26,7 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 0}
-                $focus={currentSectionIndex === 0}
+                $focus={focus}
                 transition={"opacity .6s .4s, left .6s .4s"}
                 $after={pagerLiStyle.$after}
                 onClick={() => handleClick(0)}
@@ -38,7 +38,7 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 1}
-                $focus={currentSectionIndex === 0}
+                $focus={focus}
                 transition={"opacity .6s .5s, left .6s .5s"}
                 onClick={() => handleClick(1)}
                 $after={pagerLiStyle.$after}
@@ -50,7 +50,7 @@ function MainPagerText({ currentSectionIndex, handleClick } : { currentSectionIn
                 color={pagerLiStyle.color}
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 2}
-                $focus={currentSectionIndex === 0}
+                $focus={focus}
                 transition={"opacity .6s .6s, left .6s .6s"}
                 onClick={() => handleClick(2)}
                 $after={pagerLiStyle.$after}

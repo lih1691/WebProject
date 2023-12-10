@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-import { communityContent } from "@redux/features/CommunitySlice";
 
 interface postWidthInterface {
     postNumberWidth: string;

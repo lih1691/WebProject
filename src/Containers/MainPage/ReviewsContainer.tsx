@@ -4,7 +4,7 @@ import { Section } from '@style/Pages/Section';
 import { TitleArea } from "@Components/Page/MainPage/Reviews";
 import MainReviewsList from "@Components/Page/MainPage/Reviews/MainReviewsList";
 import {current} from "immer";
-import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
+import {checkCurrentSectionIndex} from "@lib/Hooks/MainPageHandler";
 
 const MainReviewsSection = styled(Section)`
   padding: 0 10%;

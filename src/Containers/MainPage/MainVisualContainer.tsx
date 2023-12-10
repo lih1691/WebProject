@@ -4,7 +4,7 @@ import oc from 'open-color';
 import { Section } from "@style/Pages/Section";
 import { MainImgList, MainPagerWrapper, MainTextWrapper } from "@Components/Page/MainPage/MainVisual";
 import { MainVisualBackground } from "@style/Base/Background";
-import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
+import {checkCurrentSectionIndex} from "@lib/Hooks/MainPageHandler";
 
 const MainVisualSection = styled(Section)`
   width: 100%;

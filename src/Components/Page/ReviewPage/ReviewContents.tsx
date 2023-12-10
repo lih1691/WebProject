@@ -1,5 +1,5 @@
 import React from 'react';
-import { reviewContent } from "@redux/features/ReviewContentsSlice";
+import { ReviewContent } from "@Interfaces/Redux/ContentsInterface";
 import { ReviewDescription } from '@Components/Page/ReviewPage';
 import { Image } from "@style/Base/Image";
 import { CustomFontLink } from "@style/Link/NoneDecorationLink";
@@ -7,8 +7,8 @@ import { ContentsListItem, ContentsWrapper } from "@style/List/ContentsList";
 import { ContentsImgPositioner, ContentsTextPositioner, ContentsSubjectPosition } from "@style/Base/Positioner";
 
 //TODO: 이미지도 받아와서 연결시켜야 함
-function ReviewContents({content}: {content: reviewContent}) {
-    const { nickname, title, rating, date, product } = content;
+function ReviewContents({content}: {content: ReviewContent}) {
+    const { writer, title, rating, date, product } = content;
     
     return (
         <ContentsListItem width={"50%"}>
@@ -22,7 +22,7 @@ function ReviewContents({content}: {content: reviewContent}) {
                             {title}
                         </CustomFontLink>
                     </ContentsSubjectPosition>
-                    <ReviewDescription nickname={nickname} rating={rating} date={date} product={product} />
+                    <ReviewDescription nickname={writer} rating={rating} date={date} product={product} />
                 </ContentsTextPositioner>
             </ContentsWrapper>
         </ContentsListItem>

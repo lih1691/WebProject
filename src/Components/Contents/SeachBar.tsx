@@ -1,23 +1,24 @@
 import React, {useState} from 'react';
-import {AsyncThunkAction} from "@reduxjs/toolkit";
 import { FaMagnifyingGlass} from "react-icons/fa6";
-import {useAppDispatch} from "@redux/hook";
 import { SearchBarPositioner, SearchBarForm, SearchInput, SearchBarCategory, SearchButton } from "@style/Base/SearchBar";
+import { SearchInterface } from "@Interfaces/Form/SeachInterface";
 
-function SearchBar() {
+function SearchBar({onSearch}: {onSearch: (searchInterface: SearchInterface) => void})
+{
     const [ keyword, setKeyword ] = useState('');
     const [ searchOption, setSearchOption ] = useState('title');
     
-    
+    const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        onSearch({keyword, searchOption});
+    }
     
     return (
         <SearchBarPositioner>
             <SearchBarForm
                 action={"/search"}
                 method={"get"}
-                onSubmit={(event) => {
-                    event.preventDefault();
-                }}
+                onSubmit={handleSearch}
             >
                 <SearchBarCategory
                     value={searchOption}

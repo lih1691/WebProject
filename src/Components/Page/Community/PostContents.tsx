@@ -1,10 +1,10 @@
 import React from 'react';
-import { communityContent } from "@redux/features/CommunitySlice";
+import { CommunityContent } from "@Interfaces/Redux/ContentsInterface";
 import { DataContents, TableRow } from "@style/Community/Post";
 import { postWidthState } from "@style/Community/Post";
 
 
-function PostContents({content}: {content: communityContent}) {
+function PostContents({content}: {content: CommunityContent}) {
     const { postNumberWidth, tagWidth, titleWidth, writerWidth, dateWidth, viewsWidth, recommendationWidth}
         = postWidthState;
     

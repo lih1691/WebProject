@@ -2,12 +2,13 @@ import React, { ReactNode } from 'react';
 import { SearchBar} from "@Components/Contents";
 import { PageContents } from "@style/Base/PageContents";
 import { ContentsListWrapper } from "@style/List/ContentsList";
-import {AsyncThunkAction} from "@reduxjs/toolkit";
+import { SearchInterface } from "@Interfaces/Form/SeachInterface";
 
-function ContentsWrapper({children}: {children: ReactNode}) {
+function ContentsWrapper({onSearch, children}: {onSearch: (searchInterface: SearchInterface) => void, children: ReactNode })
+{
     return (
         <PageContents>
-            <SearchBar />
+            <SearchBar onSearch={onSearch}/>
             <ContentsListWrapper>
                 {children}
             </ContentsListWrapper>

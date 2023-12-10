@@ -4,7 +4,7 @@ import oc from 'open-color';
 import { Section } from '@style/Pages/Section';
 import { CategoryLink, CategoryList, CategoryItem, CategoryTitleArea } from '@Components/Page/MainPage/Category';
 import { CategorySectionLine } from "@style/Base/drawLine";
-import {checkCurrentSectionIndex} from "@lib/PageHandler/MainPageHandler";
+import {checkCurrentSectionIndex} from "@lib/Hooks/MainPageHandler";
 
 const CategorySection = styled(Section)`
   min-width: 1500px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from "@redux/hook";
 import { MainVisualContainer, CategoryContainer, ReviewsContainer } from '@Containers/MainPage';
 import { DotNavigationWrapper} from "@Components/Page/MainPage/DotNavigation";
-import useMainPageHandler, { checkCurrentSectionIndex } from "@lib/PageHandler/MainPageHandler";
+import useMainPageHandler, { checkCurrentSectionIndex } from "@lib/Hooks/MainPageHandler";
 
 const ArticleContainer = styled.section`
   position: relative;

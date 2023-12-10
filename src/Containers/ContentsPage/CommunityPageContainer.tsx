@@ -1,24 +1,28 @@
-import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "@redux/hook";
-import { selectCommunityContents, setCurrentContents } from "@redux/features/CommunitySlice";
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from "@redux/hook";
+import { selectCommunityState, setCurrentContents} from "@redux/features/ContentsSlice";
 import {Community, PostContents} from "@Components/Page/Community";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import NoContents from "@Components/Contents/NoContents";
 import { usePagination, usePaginationInfo } from "@lib/Contents/PageNation";
-import {AsyncThunkAction} from "@reduxjs/toolkit";
+import {AccessContentsPayload} from "@Interfaces/Redux/ContentsInterface";
 
-function CommunityPageContainer({fetch}: {fetch: AsyncThunkAction<any, string, any>}) {
+
+function CommunityPageContainer() {
     const dispatch = useAppDispatch();
-    const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectCommunityContents);
+    const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectCommunityState);
     const { total, currentPage, setCurrentPage  } = usePaginationInfo(contents);
     const { currentPageArray} = usePagination(total, postLimitNum);
     
     useEffect(() => {
-        dispatch(setCurrentContents(currentPage));
+        dispatch(setCurrentContents({
+            contentsType: "Community",
+            pageNumber: currentPage
+        }));
     }, [currentPage, contents]);
     
     return (
-        <ContentsWrapper fetch={fetch}>
+        <ContentsWrapper>
             <Community>
                 {currentContents && currentContents.length > 0 ? (
                     currentContents.slice().reverse().map((currentContent, index) => (

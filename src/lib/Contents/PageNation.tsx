@@ -1,4 +1,6 @@
 import {Dispatch, SetStateAction, useState, useEffect} from "react";
+import {useAppDispatch} from "@redux/hook";
+import {setCurrentContents} from "@redux/features/ContentsSlice";
 
 export interface paginationProps {
     total: number,
@@ -8,18 +10,19 @@ export interface paginationProps {
     currentPageArray: number[]
 }
 
-export const usePaginationInfo = (contents: any[]) => {
+export const usePaginationInfo = (contentsType: string, contents: any[]) => {
+    const dispatch = useAppDispatch();
     const total = contents.length;
     const [ currentPage, setCurrentPage ] = useState(0);
     
-    return { total, currentPage, setCurrentPage };
-}
-
-export const usePageArray = () => {
-    const [ currentPageArray, setCurrentPageArray ] = useState<number[]>([]);
-    const [ totalPageArray, setTotalPageArray ] = useState<number[][]>([]);
+    useEffect(() => {
+        dispatch(setCurrentContents({
+            contentsType: contentsType,
+            pageNumber: currentPage
+        }))
+    }, [currentPage, contents]);
     
-    return { currentPageArray, setCurrentPageArray, totalPageArray, setTotalPageArray };
+    return { total, currentPage, setCurrentPage };
 }
 
 export const usePagination = (total: number, postLimitNum: number) => {
@@ -34,7 +37,6 @@ export const usePagination = (total: number, postLimitNum: number) => {
     
     return { currentPageArray, totalPageArray };
 }
-
 
 export const slicePageByLimit = (total: number, limit: number) => {
     const numArray = Array(total)

@@ -11,3 +11,4 @@ export const fetchContents = (
     
     return axios.get(`/api/contents/${contentType}?category=${category}${searchQueryParameters}`);
 }
+

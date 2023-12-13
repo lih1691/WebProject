@@ -50,9 +50,9 @@ export interface AccessContentsPayload {
 }
 
 export interface ContentsState {
-    reviewPageState: ReviewPageState;
-    newsPageState: NewsPageState;
-    communityPageState: CommunityPageState;
+    ReviewPageState: ReviewPageState;
+    NewsPageState: NewsPageState;
+    CommunityPageState: CommunityPageState;
     
     [key: string]: any;
 }
@@ -60,6 +60,6 @@ export interface ContentsState {
 export interface FetchContentsInterface {
     contentsType: string;
     category: string;
-    searchType: string;
-    keyword: string;
+    searchType?: string;
+    keyword?: string;
 }

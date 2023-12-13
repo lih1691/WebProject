@@ -1,47 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@redux/hook";
-import { fetchContents, selectReviewContents, setCurrentContents} from "@redux/features/ContentsSlice";
-import { ContentsWrapper, PageNumberList } from "@Components/Contents";
+import React from 'react';
+import { useAppSelector } from "@redux/hook";
+import { selectReviewContents} from "@redux/features/ContentsSlice";
+import {ContentsWrapper, PageNumberList, SearchBar} from "@Components/Contents";
 import { ReviewContents } from "@Components/Page/ReviewPage";
+import NoContents from "@Components/Contents/NoContents";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePaginationInfo, usePagination } from "@lib/Contents/PageNation";
-import NoContents from "@Components/Contents/NoContents";
-import { SearchInterface } from "@Interfaces/Form/SeachInterface";
+import {useContents} from "@lib/Hooks/useContents";
+import { useURL } from "@lib/Hooks/useURL";
 
 function ReviewPageContainer({category}: {category: string}) {
-    const navigate = useNavigate();
-    const dispatch = useAppDispatch();
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
-    const {total, currentPage, setCurrentPage} = usePaginationInfo(contents);
+    const {total, currentPage, setCurrentPage} = usePaginationInfo("Review", contents);
     const {currentPageArray} = usePagination(total, postLimitNum);
-    const [uri, setURI] = useState(
-        `/review?category=${category}${searchOption ? `&searchType=${searchOption}` : ''}${keyword ? `&keyword=${keyword}` : ''}`
-    );
+    const { handleSetQueryParams } = useURL();
     
-    const onSearch = (SearchProps: SearchInterface) => {
-        setURI(`/review?category=${category}${searchOption ? `&searchType=${SearchProps.searchOption}` : ''}${keyword ? `&keyword=${SearchProps.keyword}` : ''}`);
-    }
-    
-    useEffect(() => {
-        dispatch(setCurrentContents({
-            contentsType: "Review",
-            pageNumber: currentPage
-        }));
-    }, [currentPage, contents]);
-    
-    useEffect(() => {
-        navigate(uri);
-        dispatch(fetchContents({
-            contentsType: "review",
-            category: category,
-            searchType: searchOption,
-            keyword: keyword
-        }));
-    }, [dispatch, category, uri])
+    useContents({
+        contentsType: "Review",
+        category: category,
+        handleSetQueryParams: handleSetQueryParams
+    });
     
     return (
-        <ContentsWrapper onSearch={onSearch}>
+        <ContentsWrapper >
+            <SearchBar handleSetQueryParams={handleSetQueryParams}/>
             <ContentsList>
                 {currentContents && currentContents.length > 0 ? (
                     currentContents.map((currentContent, index) => (

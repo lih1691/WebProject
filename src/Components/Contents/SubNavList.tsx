@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch} from "@redux/hook";
-import { setCategory } from "@redux/features/UISlice";
 import { HorizontalItem, HorizontalList } from "@style/List/HorizontalList";
 import { SubNavButton } from "@Components/Contents";
 
@@ -23,11 +22,6 @@ const NavList = styled(HorizontalList)`
 `
 
 function SubNavList() {
-    const dispatch = useAppDispatch();
-
-    const handleCategory = (category: string) => {
-        dispatch(setCategory(category));
-    };
     
     return(
         <Wrapper>

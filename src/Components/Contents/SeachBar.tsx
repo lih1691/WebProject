@@ -1,28 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { FaMagnifyingGlass} from "react-icons/fa6";
 import { SearchBarPositioner, SearchBarForm, SearchInput, SearchBarCategory, SearchButton } from "@style/Base/SearchBar";
-import { SearchInterface } from "@Interfaces/Form/SeachInterface";
+import {useSearch} from "@lib/Hooks/useSearch";
 
-function SearchBar({onSearch}: {onSearch: (searchInterface: SearchInterface) => void})
+function SearchBar({handleSetQueryParams}: {handleSetQueryParams: (key: string, value: string) => void})
 {
-    const [ keyword, setKeyword ] = useState('');
-    const [ searchOption, setSearchOption ] = useState('title');
-    
-    const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        onSearch({keyword, searchOption});
-    }
+    const { searchOption, keyword, handleSearchOptionChange, handleKeywordChange, handleOnSubmit}
+        = useSearch(handleSetQueryParams);
     
     return (
         <SearchBarPositioner>
             <SearchBarForm
                 action={"/search"}
                 method={"get"}
-                onSubmit={handleSearch}
+                onSubmit={handleOnSubmit}
             >
                 <SearchBarCategory
                     value={searchOption}
-                    onChange={(event) => setSearchOption(event.target.value)}
+                    onChange={handleSearchOptionChange}
                 >
                     <option value={"title"}>제목</option>
                     <option value={"content"}>내용</option>
@@ -32,7 +27,7 @@ function SearchBar({onSearch}: {onSearch: (searchInterface: SearchInterface) => 
                 <SearchInput
                     type={"text"}
                     value={keyword}
-                    onChange={(event) => setKeyword(event.target.value)}
+                    onChange={handleKeywordChange}
                 />
                 <SearchButton type={"submit"}>
                     <FaMagnifyingGlass/>

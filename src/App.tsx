@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
-import { HeaderContainer, FooterContainer } from "@Containers/Base";
+import { HeaderContainer } from "@Containers/Base";
 import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from './Pages/index';
 
 const Wrapper = styled.div`
@@ -15,10 +15,10 @@ function App(){
             <HeaderContainer />
             <Routes>
                 <Route path={"/"}  element={<MainPage />} />
-                <Route path={"/Auth/*"} element={<Auth />}/>
-                <Route path={"/Review/*"} element={<ReviewListPage/> }/>
-                <Route path={"/Reviews/*"} element={<NewsListPage/> }/>
-                <Route path={"/Community/*"} element={<CommunityPage/>} />
+                <Route path={"/auth/*"} element={<Auth />}/>
+                <Route path={"/review/*"} element={<ReviewListPage/> }/>
+                <Route path={"/news/*"} element={<NewsListPage/> }/>
+                <Route path={"/community/*"} element={<CommunityPage/>} />
             </Routes>
         </Wrapper>
     );

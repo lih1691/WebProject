@@ -4,27 +4,20 @@ import * as ContentAPI from '@lib/api/contents';
 import { sliceContents } from "@lib/Contents/PageNation";
 import {AccessContentsPayload, ContentsState, FetchContentsInterface} from "@Interfaces/Redux/ContentsInterface";
 
-interface ContentsTypeState {
-    postLimitNum: number;
-    pageLimitNum: number;
-    contents: any[][]; // 실제 데이터 타입에 맞게 조정
-    currentContents: any[]; // 실제 데이터 타입에 맞게 조정
-}
-
 const initialState: ContentsState = {
-    reviewPageState: {
+    ReviewPageState: {
         postLimitNum: 6,
         pageLimitNum: 10,
         contents: [],
         currentContents: []
     },
-    newsPageState: {
+    NewsPageState: {
         postLimitNum: 4,
         pageLimitNum: 10,
         contents: [],
         currentContents: []
     },
-    communityPageState: {
+    CommunityPageState: {
         postLimitNum: 20,
         pageLimitNum: 10,
         contents: [],
@@ -44,6 +37,10 @@ const contentsSlice = createSlice({
     name: 'contents',
     initialState,
     reducers: {
+        /*
+        * 콘텐츠 페이지에서 현재 페이지에 보여줄 페이지를 선택하는 메소드
+        * @params: {contentsType} string {pageNumber} number
+        */
         setCurrentContents: (state, action: PayloadAction<AccessContentsPayload>) => {
             const type = action.payload.contentsType;
             const index = action.payload.pageNumber;
@@ -64,8 +61,8 @@ const contentsSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchContents.fulfilled, (state, action: PayloadAction<AccessContentsPayload>) => {
-            const type = action.payload.contentsType;
+        builder.addCase(fetchContents.fulfilled, (state, action) => {
+            const type = action.meta.arg.contentsType;
             const contentsType = `${type}PageState`;
             
             if (contentsType in state) {
@@ -80,9 +77,9 @@ const contentsSlice = createSlice({
 })
 
 
-export const selectReviewContents = (state: RootState) => state.contents.reviewPageState;
-export const selectNewsState = (state: RootState) => state.contents.newsPageState;
-export const selectCommunityState = (state: RootState) => state.contents.communityPageState;
+export const selectReviewContents = (state: RootState) => state.contents.ReviewPageState;
+export const selectNewsState = (state: RootState) => state.contents.NewsPageState;
+export const selectCommunityState = (state: RootState) => state.contents.CommunityPageState;
 
 export const { setCurrentContents } = contentsSlice.actions;
 export default contentsSlice.reducer;

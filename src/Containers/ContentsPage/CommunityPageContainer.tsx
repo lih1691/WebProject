@@ -1,28 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from "@redux/hook";
-import { selectCommunityState, setCurrentContents} from "@redux/features/ContentsSlice";
+import { selectCommunityState} from "@redux/features/ContentsSlice";
 import {Community, PostContents} from "@Components/Page/Community";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import NoContents from "@Components/Contents/NoContents";
 import { usePagination, usePaginationInfo } from "@lib/Contents/PageNation";
-import {AccessContentsPayload} from "@Interfaces/Redux/ContentsInterface";
 
 
-function CommunityPageContainer() {
-    const dispatch = useAppDispatch();
+function CommunityPageContainer({category}: {category: string}) {
     const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectCommunityState);
-    const { total, currentPage, setCurrentPage  } = usePaginationInfo(contents);
+    const { total, currentPage, setCurrentPage  } = usePaginationInfo("Community", contents);
     const { currentPageArray} = usePagination(total, postLimitNum);
     
-    useEffect(() => {
-        dispatch(setCurrentContents({
-            contentsType: "Community",
-            pageNumber: currentPage
-        }));
-    }, [currentPage, contents]);
+    // useContents({
+    //     contentsType: "Community",
+    //     category: category
+    // });
+    //
     
     return (
-        <ContentsWrapper>
+        <ContentsWrapper >
             <Community>
                 {currentContents && currentContents.length > 0 ? (
                     currentContents.slice().reverse().map((currentContent, index) => (

@@ -1,24 +1,22 @@
-import React, {Dispatch, SetStateAction, useEffect} from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector} from "@redux/hook";
-import { selectNewsState, setCurrentContents } from "@redux/features/ContentsSlice";
+import { selectNewsState } from "@redux/features/ContentsSlice";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import { NewsContents } from "@Components/Page/NewsPage";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePagination, usePaginationInfo } from "@lib/Contents/PageNation";
 import NoContents from "@Components/Contents/NoContents";
 
-function NewsPageContainer() {
-    const dispatch = useAppDispatch();
+
+function NewsPageContainer({category}: {category: string}) {
     const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectNewsState);
-    const { total, currentPage, setCurrentPage  } = usePaginationInfo(contents);
+    const { total, currentPage, setCurrentPage  } = usePaginationInfo("News", contents);
     const { currentPageArray} = usePagination(total, postLimitNum);
     
-    useEffect(() => {
-        dispatch(setCurrentContents({
-            contentsType: "News",
-            pageNumber: currentPage
-        }));
-    }, [currentPage, contents]);
+    // useContents({
+    //     contentsType: "News",
+    //     category: category
+    // });
     
     return (
         <ContentsWrapper>

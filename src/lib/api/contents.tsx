@@ -3,11 +3,11 @@ import axios from 'axios';
 export const fetchContents = (
     contentType: string,
     category: string,
-    searchType?: string,
-    keyword?: string
+    searchOption?: string | null,
+    keyword?: string | null
 ) => {
-    const searchQueryParameters = searchType && keyword
-        ? `&searchtype=${searchType}&keyword=${keyword}` : '';
+    const searchQueryParameters = searchOption && keyword
+        ? `&search_option=${searchOption}&keyword=${keyword}` : '';
     
     return axios.get(`/api/contents/${contentType}?category=${category}${searchQueryParameters}`);
 }

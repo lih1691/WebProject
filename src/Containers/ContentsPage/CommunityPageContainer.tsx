@@ -1,17 +1,20 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from "@redux/hook";
+import { useAppSelector } from "@redux/hook";
 import { selectCommunityState} from "@redux/features/ContentsSlice";
 import {Community, PostContents} from "@Components/Page/Community";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import NoContents from "@Components/Contents/NoContents";
-import { usePagination, usePaginationInfo } from "@lib/Contents/PageNation";
+import { usePagination } from "@lib/Hooks/usePageNation";
 
 
 function CommunityPageContainer({category}: {category: string}) {
     const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectCommunityState);
-    const { total, currentPage, setCurrentPage  } = usePaginationInfo("Community", contents);
-    const { currentPageArray} = usePagination(total, postLimitNum);
-    
+    const { total, currentPage, setCurrentPage, currentPageArray }
+        = usePagination({
+        contentsType:"Community",
+        contents: contents,
+        postLimitNum: postLimitNum
+    });
     // useContents({
     //     contentsType: "Community",
     //     category: category

@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "@redux/store";
 import * as ContentAPI from '@lib/api/contents';
-import { sliceContents } from "@lib/Contents/PageNation";
+import { sliceContents } from "@lib/Hooks/usePageNation";
 import {AccessContentsPayload, ContentsState, FetchContentsInterface} from "@Interfaces/Redux/ContentsInterface";
 
 const initialState: ContentsState = {
@@ -25,10 +25,13 @@ const initialState: ContentsState = {
     }
 }
 
+/*
+*
+*/
 export const fetchContents = createAsyncThunk(
     'contents',
-    async ({contentsType, category, searchType, keyword}: FetchContentsInterface) => {
-        const response = await ContentAPI.fetchContents(contentsType, category, searchType, keyword);
+    async ({contentsType, category, searchOption, keyword}: FetchContentsInterface) => {
+        const response = await ContentAPI.fetchContents(contentsType, category, searchOption, keyword);
         return response.data;
     }
 );
@@ -68,7 +71,7 @@ const contentsSlice = createSlice({
             if (contentsType in state) {
                 const targetState = state[`${contentsType}`];
                 
-                targetState.contents = sliceContents(targetState.contents, targetState.postLimitNum);
+                targetState.contents = sliceContents(action.payload, targetState.postLimitNum);
             } else {
                 console.error("Invalid type : ", type);
             }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import oc from "open-color";
 
 export const PageContents = styled.div`
   position: relative;
@@ -9,4 +10,20 @@ export const PageContents = styled.div`
   margin: 0 auto;
   padding: 70px 0;
   z-index: 5;
+`
+
+export const NoContentsBackground = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 700px;
+  background-color: ${oc.gray[2]};
+`
+
+export const NoContentsText = styled.p`
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  margin: 0 auto;
+  font-family: 'Oswald';
 `

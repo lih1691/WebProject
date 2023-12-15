@@ -1,10 +1,13 @@
 import React from 'react';
+import {NoContentsBackground, NoContentsText} from "@style/Base/PageContents";
 
 function NoContents() {
     return (
-        <div>
-            No contents available.
-        </div>
+        <NoContentsBackground>
+            <NoContentsText>
+                No contents available.
+            </NoContentsText>
+        </NoContentsBackground>
     )
 }
 

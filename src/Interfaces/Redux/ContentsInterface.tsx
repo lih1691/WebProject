@@ -60,6 +60,6 @@ export interface ContentsState {
 export interface FetchContentsInterface {
     contentsType: string;
     category: string;
-    searchType?: string;
-    keyword?: string;
+    searchOption?: string | null;
+    keyword?: string | null;
 }

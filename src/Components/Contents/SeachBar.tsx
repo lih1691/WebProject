@@ -2,8 +2,9 @@ import React from 'react';
 import { FaMagnifyingGlass} from "react-icons/fa6";
 import { SearchBarPositioner, SearchBarForm, SearchInput, SearchBarCategory, SearchButton } from "@style/Base/SearchBar";
 import {useSearch} from "@lib/Hooks/useSearch";
+import {ObjectInterface} from "@Interfaces/Base/ObjectInterface";
 
-function SearchBar({handleSetQueryParams}: {handleSetQueryParams: (key: string, value: string) => void})
+function SearchBar({handleSetQueryParams}: {handleSetQueryParams: (params: ObjectInterface | ObjectInterface[]) => void})
 {
     const { searchOption, keyword, handleSearchOptionChange, handleKeywordChange, handleOnSubmit}
         = useSearch(handleSetQueryParams);

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {RootState} from "@redux/store";
 
 interface image {
     id: number;
@@ -55,6 +56,8 @@ const UISlice = createSlice({
         }
     }
 });
+
+export const selectCurrentCategory = (state: RootState) => state.ui.contentCategory;
 
 export const { setCurrentPageName, setCategory,changeMainIndex, changeMainVisualIndex } = UISlice.actions;
 export default UISlice.reducer;

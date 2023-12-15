@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { PageButton } from "@style/Base/Button";
-import { paginationProps} from "@lib/Contents/PageNation";
+import { PaginationProps } from "@Interfaces/Hooks/PaginationInterface";
 
 const Wrapper =  styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const NumberList = styled.nav`
   height: 100%;
 `
 
-function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentPageArray}: paginationProps) {
+function PageNumberList({total, pageLimit ,currentPage, setCurrentPage, currentPageArray}: PaginationProps) {
     const PreOffset = (Math.floor(currentPage / pageLimit - 1)) * pageLimit;
     const nextOffset = (Math.floor(currentPage / pageLimit) + 1) * pageLimit;
     

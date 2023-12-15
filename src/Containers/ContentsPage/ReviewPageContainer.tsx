@@ -5,20 +5,31 @@ import {ContentsWrapper, PageNumberList, SearchBar} from "@Components/Contents";
 import { ReviewContents } from "@Components/Page/ReviewPage";
 import NoContents from "@Components/Contents/NoContents";
 import { ContentsList } from "@style/List/ContentsList";
-import { usePaginationInfo, usePagination } from "@lib/Contents/PageNation";
+import { usePagination } from "@lib/Hooks/usePageNation";
 import {useContents} from "@lib/Hooks/useContents";
 import { useURL } from "@lib/Hooks/useURL";
+import {selectCurrentCategory} from "@redux/features/UISlice";
 
-function ReviewPageContainer({category}: {category: string}) {
+function ReviewPageContainer() {
+    const category = useAppSelector(selectCurrentCategory)
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
-    const {total, currentPage, setCurrentPage} = usePaginationInfo("Review", contents);
-    const {currentPageArray} = usePagination(total, postLimitNum);
-    const { handleSetQueryParams } = useURL();
+    const { total, currentPage, setCurrentPage, currentPageArray }
+        = usePagination({
+                                        contentsType:"Review",
+                                        contents: contents,
+                                        postLimitNum: postLimitNum
+        });
+    
+    const { queryParams, handleSetQueryParams } = useURL({
+        key: "category",
+        value: category
+    });
+    
     
     useContents({
         contentsType: "Review",
         category: category,
-        handleSetQueryParams: handleSetQueryParams
+        queryParams: queryParams
     });
     
     return (

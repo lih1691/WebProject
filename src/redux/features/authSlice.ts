@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as AuthAPI from '@lib/api/auth';
 
-interface formState {
+export interface formState {
     userID: string;
     userNickName: string;
     userPWD: string;
@@ -117,7 +117,7 @@ const authSlice = createSlice({
         
         initializeForm: (state, action: PayloadAction<keyof authState>) => {
             const initialForm = initialState[action.payload];
-            state[action.payload].form = { ...initialState[action.payload].form }
+            state[action.payload].form = { ...initialForm.form }
         },
         
     },

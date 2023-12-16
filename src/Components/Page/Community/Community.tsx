@@ -18,9 +18,7 @@ function Community({children}: {children: ReactNode}) {
                     <HeadContents width={recommendationWidth}>추천수</HeadContents>
                 </TableRow>
             </thead>
-            <tbody>
-                {children}
-            </tbody>
+            {children}
         </Table>
     )
 }

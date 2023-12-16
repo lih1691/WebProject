@@ -5,10 +5,10 @@ import { shadow } from '@lib/styleUtil';
 import { Link } from 'react-router-dom';
 
 const Positioner = styled.div`
-  position: absolute;
+  position: relative;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 30%;
+  margin: 0 auto;
 `;
 
 const ShadowBox = styled.div`

@@ -1,10 +1,10 @@
 import React from 'react';
 import {NoContentsBackground, NoContentsText} from "@style/Base/PageContents";
 
-function NoContents() {
+function NoContents({left}: {left: string}) {
     return (
         <NoContentsBackground>
-            <NoContentsText>
+            <NoContentsText $left={left}>
                 No contents available.
             </NoContentsText>
         </NoContentsBackground>

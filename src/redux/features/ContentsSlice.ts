@@ -55,7 +55,7 @@ const contentsSlice = createSlice({
                 if (index >= 0 && index < targetState.contents.length) {
                     targetState.currentContents = targetState.contents[index];
                 } else {
-                    console.error("Invalid index : ", index);
+                    //console.error("Invalid index : ", index);
                     targetState.currentContents = [];
                 }
             } else {

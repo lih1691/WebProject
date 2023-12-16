@@ -1,18 +1,14 @@
-import {useCallback, useEffect, useState} from "react";
-import {useLocation, useNavigate} from 'react-router-dom';
-import {ObjectInterface} from "@Interfaces/Base/ObjectInterface";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ObjectInterface } from "@Interfaces/Base/ObjectInterface";
 
 
 
-export const useURL = (dependency?: ObjectInterface | ObjectInterface[]) => {
+export const useURL = (dependency?: ObjectInterface) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [url, setURL] = useState(location.pathname + location.search);
     const [ queryParams, setQueryParams] = useState(new URLSearchParams(location.search));
-    
-    const handleResetQueryParams = () => {
-        setURL(location.pathname);
-    }
     
     const handleSetQueryParams = (params: ObjectInterface | ObjectInterface[]) => {
         const newParamsArray = Array.isArray(params) ? params : [params];
@@ -25,11 +21,13 @@ export const useURL = (dependency?: ObjectInterface | ObjectInterface[]) => {
         setQueryParams(newParams);
     }
     
-    useCallback(() => {
+    useEffect(() => {
         if (dependency !== undefined) {
-            handleSetQueryParams(dependency);
+            setQueryParams(new URLSearchParams([
+                [dependency.key, dependency.value]
+            ]));
         }
-    }, [dependency])
+    }, [dependency?.value])
     
     useEffect(() => {
         setURL(location.pathname + '?' + queryParams.toString());

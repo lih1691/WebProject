@@ -1,92 +1,13 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useAppSelector} from "@redux/hook";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "@Components/Auth";
-import { useAppSelector, useAppDispatch} from "@redux/hook";
-import { runValidation, runCheckExists } from "@Components/Auth/ValidationHelpers";
-import storage from "@lib/storage";
-import { setError, initializeForm, changeInput, localSignUp } from "@redux/features/authSlice";
-import { setLoggedInfo, setValidated } from "@redux/features/userSlice";
-import { encrypt } from "@lib/crypto";
+import {useSignUp} from "@lib/Auth/SignUp";
 
 function SignUp() {
-    const dispatch = useAppDispatch();
-    const { result } = useAppSelector((state) => state.auth.result);
     const { error, form } = useAppSelector((state) => state.auth.SignUp);
     const { userID, userNickName, userPWD, userPWDConfirm, userEmail } = form;
 
-    useEffect(() => {
-        return () => {
-            dispatch(initializeForm('SignUp'));
-        };
-    }, [dispatch]);
-
-    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name , value } = e.target;
-        console.log(value);
-
-        dispatch(changeInput({
-            name,
-            value,
-            form: 'SignUp'
-        }));
-
-        const validationError = runValidation(name, value, form);
-        dispatch(setError({
-            form: "SignUp",
-            message: validationError,
-        }));
-
-        // const checkError = runCheckExists({name, value});
-        // if (checkError) {
-        //     dispatch(setError({
-        //         form: 'SignUp',
-        //         message: checkError.toString(),
-        //     }));
-        // } else {
-        //     dispatch(setError({
-        //         form: 'SignUp',
-        //         message: null,
-        //     }));
-        // }
-    }
-
-    const useHandleLocalSignUp = async () => {
-        const { error } = useAppSelector((state) => state.auth.SignUp);
-        const encryptedPWD = encrypt(userPWD);
-        const jsonData = JSON.stringify({userID, encryptedPWD, userNickName, userEmail});
-        const navigate = useNavigate();
-
-        if (error) return;
-        if (!runValidation('userID', userID, form)
-            || !runValidation('userPWD', userPWD, form)
-            || !runValidation('userPWDConfirm', userPWDConfirm, form)
-            || !runValidation('userEmail', userEmail, form)) {
-            return;
-        }
-
-        try {
-            localSignUp(jsonData);
-            const loggedInfo = result;
-
-            storage.set('loggedInfo', loggedInfo);
-            setLoggedInfo(loggedInfo);
-            setValidated(true);
-            navigate('/');
-        } catch (e: any) {
-            if (e.response.status === 409) {
-                const { key } = e.response.data;
-                const message = key === 'userEmail' ? '이미 존재하는 이메일입니다.' : '이미 존재하는 아이디입니다.';
-                return dispatch(setError({
-                    form: 'SignUp',
-                    message,
-                }));
-            }
-            dispatch(setError({
-                form: 'SignUp',
-                message: '알 수 없는 에러가 발생했습니다.',
-            }));
-        }
-    }
+    const { handleChange, useHandleLocalSignUp } = useSignUp(form);
 
     return (
         <AuthContent title="회원가입" >

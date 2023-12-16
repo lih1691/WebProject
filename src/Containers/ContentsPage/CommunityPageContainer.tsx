@@ -5,6 +5,7 @@ import {Community, PostContents} from "@Components/Page/Community";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import NoContents from "@Components/Contents/NoContents";
 import { usePagination } from "@lib/Hooks/usePageNation";
+import {NoDataContents} from "@style/Community/Post";
 
 
 function CommunityPageContainer({category}: {category: string}) {
@@ -25,11 +26,17 @@ function CommunityPageContainer({category}: {category: string}) {
         <ContentsWrapper >
             <Community>
                 {currentContents && currentContents.length > 0 ? (
-                    currentContents.slice().reverse().map((currentContent, index) => (
-                        <PostContents key={index} content={currentContent} />
-                    ))
+                    <tbody>
+                    {
+                        currentContents.slice().reverse().map((currentContent, index) => (
+                            <PostContents key={index} content={currentContent} />
+                        ))
+                    }
+                    </tbody>
                 ) : (
-                    <NoContents />
+                    <NoDataContents colSpan={7}>
+                        <NoContents left={"auto"}/>
+                    </NoDataContents>
                 )}
             </Community>
             <PageNumberList

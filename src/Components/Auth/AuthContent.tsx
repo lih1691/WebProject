@@ -1,11 +1,8 @@
 import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { RelativePositioner } from "@style/Base/Positioner";
 
-const Positioner = styled.div`
-  position: relative;
-  
-`
 
 const Title = styled.div`
   font-size: 1.5rem;
@@ -14,17 +11,12 @@ const Title = styled.div`
   margin-bottom: 1rem;
 `
 
-interface AuthContentProps {
-    title: string;
-    children: ReactNode;
-}
-
 function AuthContent({title, children}: {title: string, children: ReactNode}) {
     return (
-        <Positioner>
+        <RelativePositioner>
             <Title>{title}</Title>
             {children}
-        </Positioner>
+        </RelativePositioner>
     )
 }
 

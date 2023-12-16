@@ -46,3 +46,8 @@ export const DataContents = styled.th<{width: string}>`
   border-bottom: 1px solid ${oc.gray[4]};
   padding: 0;
 `
+
+export const NoDataContents = styled.th`
+  position: relative;
+  top: -1px;
+`

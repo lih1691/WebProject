@@ -19,10 +19,10 @@ export const NoContentsBackground = styled.div`
   background-color: ${oc.gray[2]};
 `
 
-export const NoContentsText = styled.p`
+export const NoContentsText = styled.p<{$left: string}>`
   position: relative;
   top: 50%;
-  left: 50%;
+  left: ${props => props.$left};
   width: auto;
   margin: 0 auto;
   font-family: 'Oswald';

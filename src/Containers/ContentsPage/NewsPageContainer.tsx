@@ -31,7 +31,7 @@ function NewsPageContainer({category}: {category: string}) {
                         <NewsContents key={index} content={currentContent} />
                     ))
                 ) : (
-                    <NoContents />
+                    <NoContents left={"50%"}/>
                 )}
             </ContentsList>
             <PageNumberList

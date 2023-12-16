@@ -23,7 +23,7 @@ export const useSearch = (handleSetQueryParams: (params: ObjectInterface | Objec
     
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+        console.log(searchOption, keyword);
         if (!isLength(keyword, {min:1})) {
             alert("최소 1글자 이상 입력하세요");
             return

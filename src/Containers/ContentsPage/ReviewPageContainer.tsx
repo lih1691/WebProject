@@ -25,7 +25,6 @@ function ReviewPageContainer() {
         value: category
     });
     
-    
     useContents({
         contentsType: "Review",
         category: category,
@@ -41,16 +40,21 @@ function ReviewPageContainer() {
                         <ReviewContents key={index} content={currentContent} />
                     ))
                 ) : (
-                    <NoContents />
+                    <NoContents left={"50%"}/>
                 )}
             </ContentsList>
-            <PageNumberList
-                total={total}
-                currentPage={currentPage}
-                pageLimit={pageLimitNum}
-                setCurrentPage={setCurrentPage}
-                currentPageArray={currentPageArray}
-            />
+            {
+                currentContents && currentContents.length > 0 ? (
+                    <PageNumberList
+                        total={total}
+                        currentPage={currentPage}
+                        pageLimit={pageLimitNum}
+                        setCurrentPage={setCurrentPage}
+                        currentPageArray={currentPageArray}
+                    />
+                ) : null
+            }
+            
         </ContentsWrapper>
     )
 }

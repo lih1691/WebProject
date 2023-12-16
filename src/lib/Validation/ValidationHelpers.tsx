@@ -33,7 +33,7 @@ return null;
 
 export const runCheckExists =  createAsyncThunk (
     'auth/runCheckExists',
-    async (payload: {name: string; value: string}, {dispatch, getState})=> {
+    async (payload: {name: string; value: string}, {dispatch})=> {
         const {name, value} = payload;
 
         switch(name) {

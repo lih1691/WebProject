@@ -9,10 +9,12 @@ import { usePagination } from "@lib/Hooks/usePageNation";
 import {useContents} from "@lib/Hooks/useContents";
 import { useURL } from "@lib/Hooks/useURL";
 import {selectCurrentCategory} from "@redux/features/UISlice";
+import {useSetPageName} from "@lib/Hooks/useSetPageName";
 
 function ReviewPageContainer() {
     const category = useAppSelector(selectCurrentCategory)
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
+    useSetPageName("ReviewPage");
     const { total, currentPage, setCurrentPage, currentPageArray }
         = usePagination({
                                         contentsType:"Review",

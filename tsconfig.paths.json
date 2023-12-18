@@ -5,7 +5,7 @@
             "@Components/*": ["./Components/*"],
             "@Containers/*": ["./Containers/*"],
             "@lib/*": ["./lib/*"],
-            "@pages/*": ["./pages/*"],
+            "@Pages/*": ["./Pages/*"],
             "@redux/*": ["./redux/*"],
             "@style/*": ["./style/*"],
             "@Interfaces/*": ["./Interfaces/*"]

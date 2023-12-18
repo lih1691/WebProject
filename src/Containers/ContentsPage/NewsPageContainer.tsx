@@ -6,11 +6,13 @@ import NoContents from "@Components/Contents/NoContents";
 import { NewsContents } from "@Components/Page/NewsPage";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePagination } from "@lib/Hooks/usePageNation";
+import {selectCurrentCategory} from "@redux/features/UISlice";
+import {useSetPageName} from "@lib/Hooks/useSetPageName";
 
-
-
-function NewsPageContainer({category}: {category: string}) {
+function NewsPageContainer() {
+    const category = useAppSelector(selectCurrentCategory);
     const { postLimitNum, pageLimitNum, contents, currentContents } = useAppSelector(selectNewsState);
+    useSetPageName("NewsPage");
     const { total, currentPage, setCurrentPage, currentPageArray }
         = usePagination({
         contentsType:"News",

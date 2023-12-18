@@ -38,9 +38,9 @@ function MenuBar({setIsHovered}: {setIsHovered: Dispatch<SetStateAction<boolean>
             onMouseLeave={() => setIsHovered(false)}
         >
             <MenuUl>
-                <MenuLi><Menu to={"/news"} $mainPageIndex={index} $currentPage={pageName}>News</Menu></MenuLi>
-                <MenuLi><Menu to={"/review"} $mainPageIndex={index} $currentPage={pageName}>Review</Menu></MenuLi>
-                <MenuLi><Menu to={"/community"} $mainPageIndex={index} $currentPage={pageName}>Community</Menu></MenuLi>
+                <MenuLi><Menu to={"/contents/news"} $mainPageIndex={index} $currentPage={pageName}>News</Menu></MenuLi>
+                <MenuLi><Menu to={"/contents/review"} $mainPageIndex={index} $currentPage={pageName}>Review</Menu></MenuLi>
+                <MenuLi><Menu to={"/contents/community"} $mainPageIndex={index} $currentPage={pageName}>Community</Menu></MenuLi>
             </MenuUl>
         </MenuContents>
     );

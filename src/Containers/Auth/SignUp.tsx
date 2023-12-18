@@ -2,13 +2,15 @@ import React from 'react';
 import { useAppSelector} from "@redux/hook";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from "@Components/Auth";
 import {useSignUp} from "@lib/Auth/SignUp";
+import {setCurrentPageName} from "@redux/features/UISlice";
 
 function SignUp() {
     const { error, form } = useAppSelector((state) => state.auth.SignUp);
-    const { userID, userNickName, userPWD, userPWDConfirm, userEmail } = form;
+    const { userID, userNickname, userPWD, userPWDConfirm, userEmail } = form;
 
+    setCurrentPageName("SignIn");
     const { handleChange, useHandleLocalSignUp } = useSignUp(form);
-
+    
     return (
         <AuthContent title="회원가입" >
             <InputWithLabel
@@ -36,7 +38,7 @@ function SignUp() {
                 label={"닉네임"}
                 name={"userNickName"}
                 placeholder={"닉네임"}
-                value={userNickName}
+                value={userNickname}
                 onChange={handleChange}
             />
             <InputWithLabel

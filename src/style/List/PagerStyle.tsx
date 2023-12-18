@@ -13,7 +13,7 @@ interface liInterface {
     $active: boolean;
     color: string;
     $clickedColor: string;
-    transition: string;
+    $transition: string;
     
     $after: {
         top: string;
@@ -45,7 +45,7 @@ export const PagerLi = styled.li<liInterface>`
           (props.$active ? props.$clickedColor : props.color)};
   line-height: 40px;
   font-weight: 700;
-  transition: ${(props) => props.transition};
+  transition: ${(props) => props.$transition};
   
   &::after {
     content: "";

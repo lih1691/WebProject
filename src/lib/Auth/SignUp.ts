@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from "@redux/hook";
 import React, {useEffect} from "react";
 import {changeInput, formState, initializeForm, localSignUp, setError} from "@redux/features/authSlice";
-import {runCheckExists, runValidation} from "@lib/Validation/ValidationHelpers";
+import {runCheckExists, runValidation, setExistMessage} from "@lib/InputCheck/ValidationHelpers";
 import {encrypt} from "@lib/crypto";
 import {useNavigate} from "react-router-dom";
 import storage from "@lib/storage";
@@ -10,7 +10,8 @@ import {setLoggedInfo, setValidated} from "@redux/features/userSlice";
 export const useSignUp = (formInfo : formState) => {
     const dispatch = useAppDispatch();
     const { result } = useAppSelector((state) => state.auth.result);
-    const { userID, userNickName, userPWD, userPWDConfirm, userEmail } = formInfo;
+    const exists = useAppSelector((state) => state.auth.SignUp.exists);
+    const { userID, userNickname, userPWD, userPWDConfirm, userEmail } = formInfo;
     
     useEffect(() => {
         return () => {
@@ -20,7 +21,6 @@ export const useSignUp = (formInfo : formState) => {
     
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
-        console.log(value);
         
         dispatch(changeInput({
             name,
@@ -29,29 +29,26 @@ export const useSignUp = (formInfo : formState) => {
         }));
         
         const validationError = runValidation(name, value, formInfo);
-        dispatch(setError({
-            form: "SignUp",
-            message: validationError,
-        }));
-        
-        const checkError = runCheckExists({name, value});
-        if (checkError) {
+        if (validationError) {
             dispatch(setError({
-                form: 'SignUp',
-                message: checkError.toString(),
+                form: "SignUp",
+                message: validationError,
             }));
-        } else {
-            dispatch(setError({
-                form: 'SignUp',
-                message: null,
-            }));
+            return;
         }
+        
+        const checkExists = runCheckExists({name, value});
+        const existsMessage = setExistMessage(name, exists[name]);
+        dispatch(setError({
+            form: 'SignUp',
+            message: existsMessage
+        }));
     }
     
     const useHandleLocalSignUp = async () => {
         const { error } = useAppSelector((state) => state.auth.SignUp);
         const encryptedPWD = encrypt(userPWD);
-        const jsonData = JSON.stringify({userID, encryptedPWD, userNickName, userEmail});
+        const jsonData = JSON.stringify({userID, encryptedPWD, userNickname, userEmail});
         const navigate = useNavigate();
         
         if (error) return;
@@ -86,5 +83,5 @@ export const useSignUp = (formInfo : formState) => {
         }
     }
     
-    return { handleChange, useHandleLocalSignUp };
+    return { handleChange: handleChange, useHandleLocalSignUp };
 }

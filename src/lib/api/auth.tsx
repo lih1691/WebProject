@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const checkUserIDExists = (ID: string) => axios.get('/api/auth/exists/userID/' + ID);
+export const checkInfoExists = (info: string) => axios.get('/api/auth/exists')
+
+export const checkUserIDExists = (ID: string) => axios.get('/api/auth/exists/userid/' + ID);
 export const checkEmailExists = (email: string) => axios.get('/api/auth/exists/email/' + email);
 export const checkNickNameExists = (nickName: string) => axios.get('/api/auth/exists/nickname/' + nickName);
 export const localSignUp = (userData : string) => axios.post('/api/auth/signup/local', userData);

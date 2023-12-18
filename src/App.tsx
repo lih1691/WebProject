@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { HeaderContainer } from "@Containers/Base";
-import { MainPage, Auth, ReviewListPage, NewsListPage, CommunityPage } from './Pages/index';
+import { MainPage, Auth, ContentsPage } from '@Pages/index';
 
 const Wrapper = styled.div`
   position: relative;
@@ -17,9 +17,7 @@ function App(){
             <Routes>
                 <Route path={"/"}  element={<MainPage />} />
                 <Route path={"/auth/*"} element={<Auth />}/>
-                <Route path={"/review/*"} element={<ReviewListPage/> }/>
-                <Route path={"/news/*"} element={<NewsListPage/> }/>
-                <Route path={"/community/*"} element={<CommunityPage/>} />
+                <Route path={"/contents/*"} element={<ContentsPage/> }/>
             </Routes>
         </Wrapper>
     );

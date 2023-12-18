@@ -2,10 +2,13 @@ import React from 'react';
 import { useAppSelector } from "@redux/hook";
 import { AuthContent, InputWithLabel, AuthButton, RightAlignedLink, AuthError } from '@Components/Auth';
 import { useSignIn } from "@lib/Auth/SignIn";
+import {setCurrentPageName} from "@redux/features/UISlice";
 
 function SignIn() {
     const { error, form } = useAppSelector(state => state.auth.SignIn);
     const { userID, userPWD } = form;
+    
+    setCurrentPageName("SignUp");
     
     const{ handleChange, useHandleLocalSignIn } = useSignIn();
     

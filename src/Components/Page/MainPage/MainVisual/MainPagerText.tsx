@@ -27,7 +27,7 @@ function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 0}
                 $focus={focus}
-                transition={"opacity .6s .4s, left .6s .4s"}
+                $transition={"opacity .6s .4s, left .6s .4s"}
                 $after={pagerLiStyle.$after}
                 onClick={() => handleClick(0)}
             >
@@ -39,7 +39,7 @@ function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 1}
                 $focus={focus}
-                transition={"opacity .6s .5s, left .6s .5s"}
+                $transition={"opacity .6s .5s, left .6s .5s"}
                 onClick={() => handleClick(1)}
                 $after={pagerLiStyle.$after}
             >
@@ -51,7 +51,7 @@ function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (
                 $clickedColor={pagerLiStyle.clickedColor}
                 $active={Index === 2}
                 $focus={focus}
-                transition={"opacity .6s .6s, left .6s .6s"}
+                $transition={"opacity .6s .6s, left .6s .6s"}
                 onClick={() => handleClick(2)}
                 $after={pagerLiStyle.$after}
             >

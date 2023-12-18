@@ -3,16 +3,18 @@ import * as AuthAPI from '@lib/api/auth';
 
 export interface formState {
     userID: string;
-    userNickName: string;
+    userNickname: string;
     userPWD: string;
     userPWDConfirm: string;
     userEmail: string;
 }
 
 interface existsState {
-    id: boolean;
-    email: boolean;
-    nickName: boolean;
+    userID: boolean;
+    userEmail: boolean;
+    userNickname: boolean;
+    
+    [key: string]: any;
 }
 
 interface authState {
@@ -35,15 +37,15 @@ const initialState: authState = {
     SignUp: {
         form: {
             userID: '',
-            userNickName: '',
+            userNickname: '',
             userPWD: '',
             userPWDConfirm: '',
             userEmail: '',
         },
         exists: {
-            id: false,
-            email: false,
-            nickName: false,
+            userID: false,
+            userEmail: false,
+            userNickname: false,
         },
         error: null,
     },
@@ -57,12 +59,11 @@ const initialState: authState = {
     result: {},
 };
 
-
 export const checkUserIDExists = createAsyncThunk(
     'auth/checkUserIDExists',
     async (ID: string) => {
         const response = await AuthAPI.checkUserIDExists(ID);
-        return response.data.exists;
+        return response.data;
     }
 )
 
@@ -70,7 +71,7 @@ export const checkEmailExists = createAsyncThunk(
     'auth/checkEmailExists',
     async (email: string) => {
         const response = await AuthAPI.checkEmailExists(email);
-        return response.data.exists;
+        return response.data;
     }
 );
 
@@ -78,7 +79,7 @@ export const checkNickNameExists = createAsyncThunk(
     'auth/checkNickNameExists',
     async (nickName: string) => {
         const response = await AuthAPI.checkNickNameExists(nickName);
-        return response.data.exists;
+        return response.data;
     }
 )
 
@@ -124,13 +125,14 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(checkUserIDExists.fulfilled, (state, action) => {
-                state.SignUp.exists.id = action.payload;
+                state.SignUp.exists.userID = action.payload;
+                console.log(action.payload);
             })
             .addCase(checkNickNameExists.fulfilled, (state, action) => {
-                state.SignUp.exists.nickName = action.payload;
+                state.SignUp.exists.userNickname = action.payload;
             })
             .addCase(checkEmailExists.fulfilled, (state, action) => {
-                state.SignUp.exists.email = action.payload;
+                state.SignUp.exists.userEmail = action.payload;
             });
     },
 });

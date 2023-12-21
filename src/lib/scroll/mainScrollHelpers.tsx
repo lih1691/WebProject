@@ -1,4 +1,4 @@
-import React, {MouseEvent} from 'react';
+import React from 'react';
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { changeMainIndex } from "@redux/features/UISlice";
 
@@ -31,11 +31,5 @@ export function handleKeyEvent(articlesRef: React.MutableRefObject<Array<HTMLEle
         } else if (event.key === 'ArrowUp') {
             moveScrollToArticle(articlesRef, activeArticleIndex -1 , dispatch);
         }
-    }
-}
-
-export function handleWheelClick() {
-    return (event: MouseEvent) => {
-        console.log(event.button);
     }
 }

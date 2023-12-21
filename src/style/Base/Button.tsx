@@ -5,7 +5,7 @@ export const Button = styled.button`
   cursor: pointer;
   background-color: transparent;
 `
-
 export const PageButton = styled(Button)`
   margin: 20px 20px;
 `
+

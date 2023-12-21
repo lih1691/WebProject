@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
 import * as AuthAPI from '@lib/api/auth';
 
 export interface formState {
@@ -9,7 +9,7 @@ export interface formState {
     userEmail: string;
 }
 
-interface existsState {
+export interface existsState {
     userID: boolean;
     userEmail: boolean;
     userNickname: boolean;
@@ -59,29 +59,33 @@ const initialState: authState = {
     result: {},
 };
 
-export const checkUserIDExists = createAsyncThunk(
-    'auth/checkUserIDExists',
-    async (ID: string) => {
-        const response = await AuthAPI.checkUserIDExists(ID);
-        return response.data;
-    }
-)
 
-export const checkEmailExists = createAsyncThunk(
-    'auth/checkEmailExists',
-    async (email: string) => {
-        const response = await AuthAPI.checkEmailExists(email);
-        return response.data;
+export const runCheckExists = createAsyncThunk(
+    'auth/runCheckExists',
+    async ({ name, value }: { name: string; value: string }) => {
+        try {
+            let result: any;
+            
+            switch (name) {
+                case 'userID':
+                    result = await AuthAPI.checkUserIDExists(value);
+                    break;
+                case 'userNickname':
+                    result = await AuthAPI.checkNickNameExists(value);
+                    break;
+                case 'userEmail':
+                    result = await AuthAPI.checkEmailExists(value);
+                    break;
+                default:
+                    throw new Error('Invalid name');
+            }
+            
+            return result.data;
+        } catch (error) {
+            throw new Error('Invalid name');
+        }
     }
 );
-
-export const checkNickNameExists = createAsyncThunk(
-    'auth/checkNickNameExists',
-    async (nickName: string) => {
-        const response = await AuthAPI.checkNickNameExists(nickName);
-        return response.data;
-    }
-)
 
 export const localSignUp = createAsyncThunk(
     'auth/localSignUp',
@@ -105,9 +109,8 @@ const authSlice = createSlice({
     reducers: {
         setError: (state, action: PayloadAction<{ form: keyof authState; message: string | null }>) => {
             const { form, message } = action.payload;
-           state[form].error = message;
+            state[form].error = message;
         },
-        
         changeInput: (
             state,
             action: PayloadAction<{ form: keyof authState; name: string; value: string }>
@@ -115,25 +118,17 @@ const authSlice = createSlice({
             const { form, name, value } = action.payload;
             state[form].form[name] = value;
         },
-        
         initializeForm: (state, action: PayloadAction<keyof authState>) => {
             const initialForm = initialState[action.payload];
             state[action.payload].form = { ...initialForm.form }
         },
-        
     },
     extraReducers: (builder) => {
         builder
-            .addCase(checkUserIDExists.fulfilled, (state, action) => {
-                state.SignUp.exists.userID = action.payload;
-                console.log(action.payload);
+            .addCase(runCheckExists.fulfilled, (state, action) => {
+                const name = action.meta.arg.name;
+                state.SignUp.exists[name] = action.payload.isDuplicated;
             })
-            .addCase(checkNickNameExists.fulfilled, (state, action) => {
-                state.SignUp.exists.userNickname = action.payload;
-            })
-            .addCase(checkEmailExists.fulfilled, (state, action) => {
-                state.SignUp.exists.userEmail = action.payload;
-            });
     },
 });
 

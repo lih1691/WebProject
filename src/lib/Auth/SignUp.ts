@@ -1,17 +1,22 @@
+import React, {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@redux/hook";
-import React, {useEffect} from "react";
-import {changeInput, formState, initializeForm, localSignUp, setError} from "@redux/features/authSlice";
-import {runCheckExists, runValidation, setExistMessage} from "@lib/InputCheck/ValidationHelpers";
+import {formState, changeInput, initializeForm, runCheckExists, localSignUp, setError} from "@redux/features/authSlice";
+import {setLoggedInfo,  setValidated} from "@redux/features/userSlice";
+import { runValidation, setExistMessage } from "@lib/InputCheck/ValidationHelpers";
 import {encrypt} from "@lib/crypto";
 import {useNavigate} from "react-router-dom";
 import storage from "@lib/storage";
-import {setLoggedInfo, setValidated} from "@redux/features/userSlice";
 
 export const useSignUp = (formInfo : formState) => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const { result } = useAppSelector((state) => state.auth.result);
     const exists = useAppSelector((state) => state.auth.SignUp.exists);
+    const error = useAppSelector((state) => state.auth.SignUp.error);
     const { userID, userNickname, userPWD, userPWDConfirm, userEmail } = formInfo;
+    const [ validationError, setValidationError ] = useState('');
+    
+    const currentFieldNameRef = useRef<string | null>(null);
     
     useEffect(() => {
         return () => {
@@ -19,8 +24,31 @@ export const useSignUp = (formInfo : formState) => {
         };
     }, [dispatch]);
     
+    useEffect(() => {
+        const name = currentFieldNameRef.current;
+        if (name) {
+            const existsMessage = setExistMessage(name, exists[name]);
+            dispatch(setError({
+                form: 'SignUp',
+                message: existsMessage
+            }));
+        }
+    }, [exists, dispatch]);
+    
+    useEffect(() => {
+        const name = currentFieldNameRef.current;
+        if (name) {
+            dispatch(setError({
+                form: "SignUp",
+                message: validationError,
+            }));
+        }
+    }, [validationError])
+    
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
+        console.log(value);
+        currentFieldNameRef.current = name;
         
         dispatch(changeInput({
             name,
@@ -28,28 +56,19 @@ export const useSignUp = (formInfo : formState) => {
             form: 'SignUp'
         }));
         
-        const validationError = runValidation(name, value, formInfo);
-        if (validationError) {
-            dispatch(setError({
-                form: "SignUp",
-                message: validationError,
-            }));
-            return;
+        const newValidationError = runValidation(name, value, formInfo);
+        if (newValidationError) {
+            setValidationError(newValidationError);
+        } else {
+            setValidationError('');
         }
         
-        const checkExists = runCheckExists({name, value});
-        const existsMessage = setExistMessage(name, exists[name]);
-        dispatch(setError({
-            form: 'SignUp',
-            message: existsMessage
-        }));
+        await dispatch(runCheckExists({name, value}));
     }
     
-    const useHandleLocalSignUp = async () => {
-        const { error } = useAppSelector((state) => state.auth.SignUp);
+    const handleLocalSignUp = async () => {
         const encryptedPWD = encrypt(userPWD);
         const jsonData = JSON.stringify({userID, encryptedPWD, userNickname, userEmail});
-        const navigate = useNavigate();
         
         if (error) return;
         if (!runValidation('userID', userID, formInfo)
@@ -66,11 +85,11 @@ export const useSignUp = (formInfo : formState) => {
             storage.set('loggedInfo', loggedInfo);
             setLoggedInfo(loggedInfo);
             setValidated(true);
-            navigate('/');
+            navigate('/', {replace: false});
         } catch (e: any) {
             if (e.response.status === 409) {
                 const { key } = e.response.data;
-                const message = key === 'userEmail' ? '이미 존재하는 이메일입니다.' : '이미 존재하는 아이디입니다.';
+                const message = setExistMessage(key, true);
                 return dispatch(setError({
                     form: 'SignUp',
                     message,
@@ -83,5 +102,5 @@ export const useSignUp = (formInfo : formState) => {
         }
     }
     
-    return { handleChange: handleChange, useHandleLocalSignUp };
+    return { handleChange, handleLocalSignUp };
 }

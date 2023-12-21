@@ -1,13 +1,5 @@
-import {AsyncThunk, createAsyncThunk} from "@reduxjs/toolkit";
-import {
-    validateEmail,
-    validateUserID,
-    validatePassword,
-    validatePasswordConfirmation
-} from './ValidationFunctions';
-import { checkUserIDExists, checkEmailExists, checkNickNameExists} from "@redux/features/authSlice";
-import { ExistsErrorMessages } from "@lib/InputCheck/ExistsMessage";
-import {useAppSelector} from "@redux/hook";
+import {validateEmail, validatePassword, validatePasswordConfirmation, validateUserID} from './ValidationFunctions';
+import {ExistsErrorMessages} from "@lib/InputCheck/ExistsMessage";
 
 type formState = {
     userID: string;
@@ -32,33 +24,8 @@ export const runValidation = (name: string, value: string, form: formState) => {
     }
 };
 
-export const runCheckExists =  createAsyncThunk (
-    'auth/runCheckExists',
-    async (payload: {name: string; value: string})=> {
-            let apiFunction:  AsyncThunk<any, string, any>;
-            
-            switch (payload.name) {
-                case 'userEmail':
-                    apiFunction = checkEmailExists;
-                    break;
-                case 'userID':
-                    apiFunction = checkUserIDExists;
-                    break;
-                case 'userNickName':
-                    apiFunction = checkNickNameExists;
-                    break;
-                default:
-                    throw new Error('Invalid name');
-            }
-            
-            console.log(apiFunction(payload.value));
-            
-            return apiFunction(payload.value);
-        }
-    );
-
 export const setExistMessage = (name: string, isExists: boolean) => {
-    if (isExists) {
+    if (!isExists) {
         return null;
     }
     

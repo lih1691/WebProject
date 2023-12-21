@@ -9,6 +9,7 @@ import {NoDataContents} from "@style/Community/Post";
 import { usePagination } from "@lib/Hooks/usePageNation";
 import { useSetPageName } from "@lib/Hooks/useSetPageName";
 import { useContents } from "@lib/Hooks/useContents";
+import {useURL} from "@lib/Hooks/useURL";
 
 
 function CommunityPageContainer() {
@@ -22,10 +23,15 @@ function CommunityPageContainer() {
         postLimitNum: postLimitNum
     });
     
-    useContents({
-        contentsType: "Community",
-        category: category
-    });
+    // const { queryParams, handleSetQueryParams } = useURL({
+    //     key: "category",
+    //     value: category
+    // })
+    //
+    // useContents({
+    //     contentsType: "Community",
+    //     category: category
+    // });
     
     return (
         <ContentsWrapper >

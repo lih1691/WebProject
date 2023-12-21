@@ -10,7 +10,7 @@ export const store = configureStore({
         user: userReducer,
         ui: UIReducer,
         contents: contentsReducer,
-    }
+    },
 })
 
 export type RootState = ReturnType<typeof store.getState>

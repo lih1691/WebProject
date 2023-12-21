@@ -5,11 +5,11 @@ import {useSignUp} from "@lib/Auth/SignUp";
 import {setCurrentPageName} from "@redux/features/UISlice";
 
 function SignUp() {
-    const { error, form } = useAppSelector((state) => state.auth.SignUp);
+    const {  error, form } = useAppSelector((state) => state.auth.SignUp);
     const { userID, userNickname, userPWD, userPWDConfirm, userEmail } = form;
-
+    
     setCurrentPageName("SignIn");
-    const { handleChange, useHandleLocalSignUp } = useSignUp(form);
+    const { handleChange, handleLocalSignUp } = useSignUp(form);
     
     return (
         <AuthContent title="회원가입" >
@@ -36,7 +36,7 @@ function SignUp() {
             />
             <InputWithLabel
                 label={"닉네임"}
-                name={"userNickName"}
+                name={"userNickname"}
                 placeholder={"닉네임"}
                 value={userNickname}
                 onChange={handleChange}
@@ -51,7 +51,7 @@ function SignUp() {
             {
                 error && <AuthError>{error}</AuthError>
             }
-            <AuthButton onClick={useHandleLocalSignUp}>회원가입</AuthButton>
+            <AuthButton onClick={handleLocalSignUp}>회원가입</AuthButton>
             <RightAlignedLink to={"/Auth/SignIn"}>로그인</RightAlignedLink>
         </AuthContent>
     );

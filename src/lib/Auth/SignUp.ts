@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "@redux/hook";
 import {formState, changeInput, initializeForm, runCheckExists, localSignUp, setError} from "@redux/features/authSlice";
 import {setLoggedInfo,  setValidated} from "@redux/features/userSlice";
 import { runValidation, setExistMessage } from "@lib/InputCheck/ValidationHelpers";
-import {encrypt} from "@lib/crypto";
+// import {encrypt} from "@lib/crypto";
 import {useNavigate} from "react-router-dom";
 import storage from "@lib/storage";
 
@@ -14,9 +14,8 @@ export const useSignUp = (formInfo : formState) => {
     const exists = useAppSelector((state) => state.auth.SignUp.exists);
     const error = useAppSelector((state) => state.auth.SignUp.error);
     const { userID, userNickname, userPWD, userPWDConfirm, userEmail } = formInfo;
-    const [ validationError, setValidationError ] = useState('');
-    
     const currentFieldNameRef = useRef<string | null>(null);
+    const currentFieldValueRef = useRef<string | null>(null);
     
     useEffect(() => {
         return () => {
@@ -26,60 +25,55 @@ export const useSignUp = (formInfo : formState) => {
     
     useEffect(() => {
         const name = currentFieldNameRef.current;
-        if (name) {
-            const existsMessage = setExistMessage(name, exists[name]);
-            dispatch(setError({
-                form: 'SignUp',
-                message: existsMessage
-            }));
-        }
-    }, [exists, dispatch]);
-    
-    useEffect(() => {
-        const name = currentFieldNameRef.current;
-        if (name) {
+        const value = currentFieldValueRef.current;
+        
+        if (name && value) {
+            const newValidationError = runValidation(name, value, formInfo);
+            
             dispatch(setError({
                 form: "SignUp",
-                message: validationError,
+                message: newValidationError,
             }));
+            
+            
+            if (!newValidationError) {
+                dispatch(runCheckExists({name, value}));
+                
+                const existsMessage = setExistMessage(name, exists[name]);
+                dispatch(setError({
+                    form: 'SignUp',
+                    message: existsMessage
+                }));
+            }
         }
-    }, [validationError])
+    }, [currentFieldNameRef.current, currentFieldValueRef.current, formInfo, error, exists, dispatch]);
     
-    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange =  (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
-        console.log(value);
         currentFieldNameRef.current = name;
+        currentFieldValueRef.current = value;
         
         dispatch(changeInput({
             name,
             value,
             form: 'SignUp'
         }));
-        
-        const newValidationError = runValidation(name, value, formInfo);
-        if (newValidationError) {
-            setValidationError(newValidationError);
-        } else {
-            setValidationError('');
-        }
-        
-        await dispatch(runCheckExists({name, value}));
     }
     
     const handleLocalSignUp = async () => {
-        const encryptedPWD = encrypt(userPWD);
-        const jsonData = JSON.stringify({userID, encryptedPWD, userNickname, userEmail});
+        //const encryptedPWD = encrypt(userPWD);
+        const jsonData = JSON.stringify({userID, userPWD, userNickname, userEmail});
         
         if (error) return;
-        if (!runValidation('userID', userID, formInfo)
-            || !runValidation('userPWD', userPWD, formInfo)
-            || !runValidation('userPWDConfirm', userPWDConfirm, formInfo)
-            || !runValidation('userEmail', userEmail, formInfo)) {
+        if (runValidation('userID', userID, formInfo)
+            || runValidation('userPWD', userPWD, formInfo)
+            || runValidation('userPWDConfirm', userPWDConfirm, formInfo)
+            || runValidation('userEmail', userEmail, formInfo)) {
             return;
         }
         
         try {
-            localSignUp(jsonData);
+            dispatch(localSignUp(jsonData));
             const loggedInfo = result;
             
             storage.set('loggedInfo', loggedInfo);

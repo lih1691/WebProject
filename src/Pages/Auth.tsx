@@ -4,8 +4,13 @@ import { AuthWrapper } from '@Components/Auth';
 import { SignIn, SignUp } from '@Containers/Auth';
 import {HeaderContainer} from "@Containers/Base";
 import {ContentsWrapper, SubBanner} from "@Components/Contents";
+import {setCurrentPageName} from "@redux/features/UISlice";
+import {useAppDispatch} from "@redux/hook";
 
 function Auth() {
+    const dispatch = useAppDispatch();
+    dispatch(setCurrentPageName("Auth"));
+    
     return (
         <>
             <HeaderContainer/>

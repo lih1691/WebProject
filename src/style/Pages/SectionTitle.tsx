@@ -1,21 +1,11 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-import { FocusFadeInterface } from "@style/Interface/Fade";
+import { FocusFadeProps } from "@Interfaces/Style/Fade";
+import { PositionProps, MarginProps } from "@Interfaces/Style/Base";
 
-interface SectionTitleInterface extends FocusFadeInterface{
-  $marginTop?: string;
-  $marginLeft?: string;
-  $marginBottom?: string;
-}
+interface SectionTitleProps extends MarginProps, FocusFadeProps {}
 
-interface AbsoluteSectionTitleInterface extends SectionTitleInterface {
-  $top?: string;
-  $left?: string;
-  $bottom?: string;
-  $right?: string;
-}
-
-const SectionTitle = styled.div<SectionTitleInterface>`
+const SectionTitle = styled.div<SectionTitleProps>`
   opacity: ${props => (props.$focus ? 1: 0)};
   margin-top: ${(props) => props.$marginTop};
   margin-bottom: ${(props) => props.$marginBottom};
@@ -28,10 +18,10 @@ export const RelativeSectionTitle = styled(SectionTitle)`
   position: relative;
 `
 
-export const AbsoluteSectionTitle = styled(SectionTitle)<AbsoluteSectionTitleInterface>`
+export const AbsoluteSectionTitle = styled(SectionTitle)<PositionProps & SectionTitleProps>`
   position: absolute;
-  top: ${props => props.$top};
-  left: ${props => props.$left};
-  bottom: ${props => props.$bottom};
-  right: ${props => props.$right};
+  top: ${props => props.top};
+  left: ${props => props.left};
+  bottom: ${props => props.bottom};
+  right: ${props => props.right};
 `

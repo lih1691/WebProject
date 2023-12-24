@@ -1,34 +1,12 @@
 import styled from 'styled-components';
-interface ulInterface {
-    display: string;
-    $leftPosition: string;
-    $topPosition: string;
-    $marginLeft: string;
-    $zIndex: number;
-}
+import { MainPagerUlProps, MainPagerLiProps } from '@Interfaces/Style/Pages/MainPage';
+import { focusOpacityStyle } from "@style/CSS/Fade";
 
-interface liInterface {
-    width: string;
-    $focus: boolean;
-    $active: boolean;
-    color: string;
-    $clickedColor: string;
-    $transition: string;
-    
-    $after: {
-        top: string;
-        left: string;
-        height: string;
-        activatedLength: string;
-        deactivatedLength: string;
-    }
-}
-
-export const PagerUl = styled.ul<ulInterface>`
+export const PagerUl = styled.ul<MainPagerUlProps>`
   display: ${(props) => props.display};
   position: absolute;
-  left: ${(props) => props.$leftPosition};
-  top: ${(props) => props.$topPosition};
+  left: ${(props) => props.left};
+  top: ${(props) => props.top};
   margin-left: ${(props) => props.$marginLeft};
   text-align: right;
   list-style: none;
@@ -36,9 +14,9 @@ export const PagerUl = styled.ul<ulInterface>`
   z-index: ${(props) => props.$zIndex};
 `
 
-export const PagerLi = styled.li<liInterface>`
+export const PagerLi = styled.li<MainPagerLiProps>`
   position: relative;
-  opacity: ${(props) => props.$focus ? 1 : 0};
+  ${focusOpacityStyle};
   width: ${(props) => props.width};
   left: ${(props) => props.$focus ? 0 : "20%"};
   color: ${(props) =>
@@ -53,8 +31,8 @@ export const PagerLi = styled.li<liInterface>`
     top: ${(props) => props.$after.top};
     left: ${(props) => props.$after.left};;
     width: ${(props) =>
-            (props.$active ? props.$after.activatedLength
-                            : props.$after.deactivatedLength)};;
+            (props.$active ? props.$after.$activatedLength
+                            : props.$after.$deactivatedLength)};;
     height: ${(props) => props.$after.height};
     background-color: ${(props) => (props.$focus ? props.$clickedColor : props.color)};;
     transition: all .6s;

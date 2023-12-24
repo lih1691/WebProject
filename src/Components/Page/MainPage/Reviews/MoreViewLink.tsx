@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import {CustomFontInterface, CustomFontLink} from "@style/Link/NoneDecorationLink";
-import { FocusFadeInterface, focusOpacityStyle, focusTransitionStyle } from "@style/Interface/Fade";
+import { CustomFontProps } from "@Interfaces/Style/Font";
+import { CustomFontLink } from "@style/Link/NoneDecorationLink";
+import { FocusFadeProps } from "@Interfaces/Style/Fade";
+import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/Fade";
 
-export const MoreView = styled(CustomFontLink)<CustomFontInterface & FocusFadeInterface>`
+export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps>`
   ${focusOpacityStyle};
   margin-top: 60px;
   letter-spacing: .2px;

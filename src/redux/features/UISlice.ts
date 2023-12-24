@@ -1,28 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {RootState} from "@redux/store";
+import { UIState } from "@Interfaces/Redux/UIInterface";
 
-interface image {
-    id: number;
-    imageUrl: string;
-    title: string;
-    sentence: string;
-}
 
-interface mainPageState {
-    currentIndex: number,
-    mainVisual: {
-        currentIndex: number;
-        MainImages: image[];
-    },
-}
-
-interface pageState {
-    currentPage: string;
-    mainPageState: mainPageState;
-    contentCategory: string;
-}
-
-const initialState: pageState = {
+const initialState: UIState = {
     currentPage: "",
     mainPageState: {
         currentIndex: 0,

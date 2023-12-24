@@ -11,14 +11,12 @@ export const PageContents = styled.div`
   padding: 70px 0;
   z-index: 5;
 `
-
 export const NoContentsBackground = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 700px;
   background-color: ${oc.gray[2]};
 `
-
 export const NoContentsText = styled.p<{$left: string}>`
   position: relative;
   top: 50%;

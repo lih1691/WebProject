@@ -1,13 +1,14 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
+import { FormState } from "@Interfaces/Redux/AuthInterface";
 import {useAppDispatch, useAppSelector} from "@redux/hook";
-import {formState, changeInput, initializeForm, runCheckExists, localSignUp, setError} from "@redux/features/authSlice";
+import {changeInput, initializeForm, runCheckExists, localSignUp, setError} from "@redux/features/authSlice";
 import {setLoggedInfo,  setValidated} from "@redux/features/userSlice";
 import { runValidation, setExistMessage } from "@lib/InputCheck/ValidationHelpers";
 // import {encrypt} from "@lib/crypto";
 import {useNavigate} from "react-router-dom";
 import storage from "@lib/storage";
 
-export const useSignUp = (formInfo : formState) => {
+export const useSignUp = (formInfo : FormState) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { result } = useAppSelector((state) => state.auth.result);

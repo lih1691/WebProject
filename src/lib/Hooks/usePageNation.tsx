@@ -1,16 +1,7 @@
-import {Dispatch, SetStateAction, useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {useAppDispatch} from "@redux/hook";
 import {setCurrentContents} from "@redux/features/ContentsSlice";
 import {PaginationInterface} from "@Interfaces/Hooks/PaginationInterface";
-
-export interface paginationProps {
-    total: number,
-    currentPage: number,
-    pageLimit: number,
-    setCurrentPage: Dispatch<SetStateAction<number>>,
-    currentPageArray: number[]
-}
-
 export const usePagination = (paginationProps: PaginationInterface) => {
     const dispatch = useAppDispatch();
     const total = paginationProps.contents.length;

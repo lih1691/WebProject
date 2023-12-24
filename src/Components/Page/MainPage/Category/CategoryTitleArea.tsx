@@ -12,8 +12,8 @@ const Title = styled.p`
 function CategoryTitleArea({title, focus}: {title: string, focus: boolean}) {
     return (
         <AbsoluteSectionTitle
-            $top={"15%"}
-            $left={"10%"}
+            top={"15%"}
+            left={"10%"}
             $focus={focus}
             $fadeInTransition={"all .5s .3s"}
             $fadeOutTransition={"all .5s"}

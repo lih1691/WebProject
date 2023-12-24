@@ -11,8 +11,8 @@ const pagerLiStyle = {
         top: "50%",
         left: "170px",
         height: "1px",
-        activatedLength: "60px",
-        deactivatedLength: "30px",
+        $activatedLength: "60px",
+        $deactivatedLength: "30px",
     }
 };
 
@@ -20,7 +20,13 @@ function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (
     const Index = useAppSelector((state) => state.ui.mainPageState.mainVisual.currentIndex);
     
     return (
-        <PagerUl $leftPosition={"50%"} $topPosition={"75vh"} $marginLeft={"-520px"} $zIndex={0} display={"block"}>
+        <PagerUl
+            display={"block"}
+            left={"50%"}
+            top={"75vh"}
+            $marginLeft={"-520px"}
+            $zIndex={0}
+        >
             <PagerLi
                 width={pagerLiStyle.width}
                 color={pagerLiStyle.color}

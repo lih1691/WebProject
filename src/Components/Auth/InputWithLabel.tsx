@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { InputWithLabelProps } from "@Interfaces/Style/Pages/Auth";
 
 const Wrapper = styled.div`
   & + & {
@@ -26,14 +27,6 @@ const Input = styled.input`
     color: ${oc.gray[3]};
   }
 `;
-
-interface InputWithLabelProps {
-    label: string;
-    name: string;
-    placeholder: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({label, ...rest}) => (
     <Wrapper>

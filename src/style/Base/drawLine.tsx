@@ -1,25 +1,20 @@
 import styled from 'styled-components';
 import oc from 'open-color';
+import {FocusProps, LengthProps} from "@Interfaces/Style/Base";
 
-interface VerticalLineInterface {
-    $height: string;
-}
+interface CategoryLineInterface extends LengthProps, FocusProps {}
 
-interface CategoryLineInterface extends VerticalLineInterface {
-    $focus: boolean;
-}
-
-const VerticalLine = styled.div<VerticalLineInterface>`
+const VerticalLine = styled.div<LengthProps>`
   position: absolute;
   opacity: 0.5;
   width: 1px;
-  height: ${props => props.$height};
+  height: ${props => props.height};
 `
 
 export const CategorySectionLine = styled(VerticalLine)<CategoryLineInterface>`
   left: 50%;
   margin-left: -320px;
-  height: ${props => (props.$focus ? props.$height : 0)};
+  height: ${props => (props.$focus ? props.height : 0)};
   background-color: ${oc.gray[5]};
   transition: height .4s .4s;
 `

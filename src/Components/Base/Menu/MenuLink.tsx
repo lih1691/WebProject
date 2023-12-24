@@ -1,10 +1,7 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import Menu from './Menu';
+import {MenuLinkProps} from "@Interfaces/Style/Link";
 
-interface MenuLinkProps {
-    to: string;
-    children: ReactNode;
-}
 
 function MenuLink({to, children}: MenuLinkProps) {
     return (

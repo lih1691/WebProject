@@ -1,11 +1,7 @@
 import React from 'react';
+import { DescProps } from "@Interfaces/Style/Pages/News";
 import { RelativePositioner } from "@style/Base/Positioner";
 import { DescList, DescTerm, Desc, NewsDesc } from "@style/Base/Desc";
-
-interface DescProps {
-    date: string;
-    desc: string;
-}
 
 function NewsDescription({date, desc}: DescProps) {
     return (

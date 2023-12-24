@@ -10,6 +10,7 @@ import {useContents} from "@lib/Hooks/useContents";
 import { useURL } from "@lib/Hooks/useURL";
 import {selectCurrentCategory} from "@redux/features/UISlice";
 import {useSetPageName} from "@lib/Hooks/useSetPageName";
+import {WriteButton} from "@style/Base/Button";
 
 function ReviewPageContainer() {
     const category = useAppSelector(selectCurrentCategory)
@@ -56,7 +57,9 @@ function ReviewPageContainer() {
                     />
                 ) : null
             }
-            
+            <WriteButton>
+                글쓰기
+            </WriteButton>
         </ContentsWrapper>
     )
 }

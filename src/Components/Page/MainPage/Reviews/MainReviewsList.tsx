@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { HorizontalCompactList } from "@style/List/HorizontalList";
-import { FocusFadeInterface, focusOpacityStyle, focusTransitionStyle} from "@style/Interface/Fade";
+import { FocusFadeProps} from "@Interfaces/Style/Fade";
 import { MainReviewsItem } from "@Components/Page/MainPage/Reviews/index";
+import { HorizontalCompactList } from "@style/List/HorizontalList";
+import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/Fade";
 
 
-const ReviewsList = styled(HorizontalCompactList)<FocusFadeInterface>`
+const ReviewsList = styled(HorizontalCompactList)<FocusFadeProps>`
   ${focusOpacityStyle};
   width: 100%;
   border: 1px solid ${oc.gray[5]};

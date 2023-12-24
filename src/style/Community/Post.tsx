@@ -1,17 +1,7 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-
-interface postWidthInterface {
-    postNumberWidth: string;
-    tagWidth: string;
-    titleWidth: string;
-    writerWidth: string;
-    dateWidth: string;
-    viewsWidth: string;
-    recommendationWidth: string;
-}
-
-export const postWidthState: postWidthInterface = {
+import { PostWidthProps } from "@Interfaces/Style/Pages/Community";
+export const postWidthState: PostWidthProps = {
     postNumberWidth: "7%",
     tagWidth: "5%",
     titleWidth: "52%",
@@ -20,7 +10,6 @@ export const postWidthState: postWidthInterface = {
     viewsWidth: "6%",
     recommendationWidth: "5%"
 }
-
 export const Table = styled.table`
   width: 100%;
   border: 0;
@@ -29,24 +18,20 @@ export const Table = styled.table`
   padding: 0;
   margin-top: 20px;
 `
-
 export const TableRow = styled.tr`
   height: 40px;
 `
-
 export const HeadContents = styled.th<{width: string}>`
   width: ${(props) => props.width};
   border-top: 1px solid ${oc.gray[9]};
   border-bottom: 1px solid ${oc.gray[4]};
   padding: 0;
 `
-
 export const DataContents = styled.th<{width: string}>`
   width: ${(props) => props.width};
   border-bottom: 1px solid ${oc.gray[4]};
   padding: 0;
 `
-
 export const NoDataContents = styled.th`
   position: relative;
   top: -1px;

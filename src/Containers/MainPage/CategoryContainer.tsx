@@ -28,7 +28,7 @@ function CategoryContainer({currentSectionIndex}: {currentSectionIndex: number})
     return (
         <CategorySection className={"article"}>
             <CategoryTitleArea title={"Categories"} focus={focus}/>
-            <CategorySectionLine $height={"50vh"} $focus={focus}/>
+            <CategorySectionLine height={"50vh"} $focus={focus}/>
             <CategoryList>
                 <CategoryItem
                     $focus={focus}

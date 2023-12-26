@@ -1,6 +1,6 @@
 import {css} from "styled-components";
-import {FocusFadeProps} from "@Interfaces/Style/Fade";
-import {FocusProps} from "@Interfaces/Style/Base";
+import {FocusFadeProps} from "@Interfaces/Style/FadeStyleInterface";
+import {FocusProps} from "@Interfaces/Style/BaseStyleInterface";
 
 export const focusOpacityStyle = (props: FocusProps) => css`
   opacity: ${props.$focus ? 1 : 0};

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchContents = (
     contentType: string,
-    category: string,
+    category: string | undefined,
     searchOption?: string | null,
     keyword?: string | null
 ) => {

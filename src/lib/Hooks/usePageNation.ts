@@ -15,13 +15,13 @@ export const usePagination = (paginationProps: PaginationInterface) => {
             contentsType: paginationProps.contentsType,
             pageNumber: currentPage
         }))
-    }, [currentPage, paginationProps.contents]);
+    }, [dispatch, currentPage, paginationProps.contents, paginationProps.contentsType]);
     
     useEffect(() => {
         const slicedPageArray = slicePageByLimit(total, paginationProps.postLimitNum);
         setTotalPageArray(slicedPageArray);
         setCurrentPageArray(slicedPageArray[0]);
-    }, [total])
+    }, [total, paginationProps.postLimitNum])
     
     return { total, currentPage, setCurrentPage, currentPageArray, totalPageArray };
 }

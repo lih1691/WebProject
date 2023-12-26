@@ -4,6 +4,7 @@ import Menu from './Menu';
 import { useAppSelector } from "@redux/hook";
 import { HorizontalList, HorizontalItem } from "@style/List/HorizontalList";
 import oc from "open-color";
+import {selectCurrentCategory} from "@redux/features/UISlice";
 
 const MenuContents = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ const MenuLi = styled(HorizontalItem)`
 `
 
 function MenuBar({setIsHovered}: {setIsHovered: Dispatch<SetStateAction<boolean>>}) {
+    const category = useAppSelector(selectCurrentCategory);
     const index = useAppSelector((state) => (state.ui.mainPageState.currentIndex));
     const pageName = useAppSelector((state) => (state.ui.currentPage));
     
@@ -38,9 +40,9 @@ function MenuBar({setIsHovered}: {setIsHovered: Dispatch<SetStateAction<boolean>
             onMouseLeave={() => setIsHovered(false)}
         >
             <MenuUl>
-                <MenuLi><Menu to={"/contents/news"} $mainPageIndex={index} $currentPage={pageName}>News</Menu></MenuLi>
-                <MenuLi><Menu to={"/contents/review"} $mainPageIndex={index} $currentPage={pageName}>Review</Menu></MenuLi>
-                <MenuLi><Menu to={"/contents/community"} $mainPageIndex={index} $currentPage={pageName}>Community</Menu></MenuLi>
+                <MenuLi><Menu to={`/contents/news/${category}`} $mainPageIndex={index} $currentPage={pageName}>News</Menu></MenuLi>
+                <MenuLi><Menu to={`/contents/review/${category}`} $mainPageIndex={index} $currentPage={pageName}>Review</Menu></MenuLi>
+                <MenuLi><Menu to={`/contents/community/${category}`} $mainPageIndex={index} $currentPage={pageName}>Community</Menu></MenuLi>
             </MenuUl>
         </MenuContents>
     );

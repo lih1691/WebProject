@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
-import {MenuLinkProps} from "@Interfaces/Style/Link";
+import {MenuLinkProps} from "@Interfaces/Style/LinkStyleInterface";
 
 
 function MenuLink({to, children}: MenuLinkProps) {

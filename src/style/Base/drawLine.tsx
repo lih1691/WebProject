@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-import {FocusProps, LengthProps} from "@Interfaces/Style/Base";
+import {FocusProps, LengthProps} from "@Interfaces/Style/BaseStyleInterface";
 
 interface CategoryLineInterface extends LengthProps, FocusProps {}
 

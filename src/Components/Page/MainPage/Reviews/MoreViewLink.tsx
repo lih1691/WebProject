@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CustomFontProps } from "@Interfaces/Style/Font";
+import { CustomFontProps } from "@Interfaces/Style/FontStyleInterface";
 import { CustomFontLink } from "@style/Link/NoneDecorationLink";
-import { FocusFadeProps } from "@Interfaces/Style/Fade";
-import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/Fade";
+import { FocusFadeProps } from "@Interfaces/Style/FadeStyleInterface";
+import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/FadeCSS";
+import { durationDownUp } from "@style/CSS/DownUpCSS";
+import { DownUpProps } from "@Interfaces/Style/Animation/DownUpProps";
 
-export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps>`
+export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps & DownUpProps>`
   ${focusOpacityStyle};
   margin-top: 60px;
   letter-spacing: .2px;
@@ -21,7 +23,8 @@ export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps>
     height: 50px;
     border-radius: 23px;
     z-index: -2;
-    background: linear-gradient(280deg, rgba(255, 255, 255, 0) 10%, rgba(128, 128, 128, 0.2) 90%);
+    background: linear-gradient(280deg, rgba(255, 255, 255, 0) 10%, rgba(128, 128, 128, 0.1) 90%);
+    ${durationDownUp};
     transition: all .4s .4s;
   }
   
@@ -36,7 +39,7 @@ export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps>
     height: 50px;
     border-radius: 23px;
     z-index: -2;
-    background: linear-gradient(280deg, rgba(255, 255, 255, 0) 10%, rgba(128, 128, 128, 0.2) 90%);
+    background: linear-gradient(280deg, rgba(255, 255, 255, 0) 10%, rgba(128, 128, 128, 0.1) 90%);
     transition: all .4s .4s;
   }
   
@@ -44,13 +47,13 @@ export const MoreView = styled(CustomFontLink)<CustomFontProps & FocusFadeProps>
     &::before {
       opacity: 0;
       right: -50px;
-      transition: all .4s;
+      transition: all .3s;
     }
     
     &::after {
       right: 20px;
       opacity: 1;
-      transition: all .4s;
+      transition: all .3s;
     }
   }
 `
@@ -64,6 +67,8 @@ function MoreViewLink({focus}: {focus: boolean}) {
                   $focus={focus}
                   $fadeInTransition={"all .5s .3s"}
                   $fadeOutTransition={"all .5s"}
+                  $translateYValue={"10%"}
+                  $duration={"2s"}
         >
             <p>More View</p>
         </MoreView>

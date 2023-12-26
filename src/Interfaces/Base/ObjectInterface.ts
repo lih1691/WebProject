@@ -1,4 +1,4 @@
 export interface ObjectInterface {
     key: string,
-    value: string;
+    value: string | undefined;
 }

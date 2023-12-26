@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { MainPagerUlProps, MainPagerLiProps } from '@Interfaces/Style/Pages/MainPage';
-import { focusOpacityStyle } from "@style/CSS/Fade";
+import { focusOpacityStyle } from "@style/CSS/FadeCSS";
 
 export const PagerUl = styled.ul<MainPagerUlProps>`
   display: ${(props) => props.display};

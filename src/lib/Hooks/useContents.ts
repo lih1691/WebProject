@@ -7,7 +7,7 @@ import { fetchContents } from "@redux/features/ContentsSlice";
 * 카테고리가 변경될 때마다 useEffect 실행
 */
 export const useContents = ({contentsType, category, queryParams}:
-                                {contentsType: string, category: string, queryParams?: URLSearchParams}) => {
+                                {contentsType: string, category: string | undefined, queryParams?: URLSearchParams}) => {
     const dispatch = useAppDispatch();
     const searchOption = queryParams?.has("search_option") ? queryParams?.get("search_option") : null;
     const keyword = queryParams?.has("keyword") ? queryParams?.get("keyword") : null;

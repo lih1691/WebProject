@@ -6,22 +6,21 @@ import { ReviewContents } from "@Components/Page/ReviewPage";
 import NoContents from "@Components/Contents/NoContents";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePagination } from "@lib/Hooks/usePageNation";
-import {useContents} from "@lib/Hooks/useContents";
+import { useContents } from "@lib/Hooks/useContents";
 import { useURL } from "@lib/Hooks/useURL";
 import {selectCurrentCategory} from "@redux/features/UISlice";
 import {useSetPageName} from "@lib/Hooks/useSetPageName";
-import {WriteButton} from "@style/Base/Button";
+import {BorderButton} from "@style/Base/Button";
+import {useParams} from "react-router-dom";
 
 function ReviewPageContainer() {
-    const category = useAppSelector(selectCurrentCategory)
+    // const category = useAppSelector(selectCurrentCategory);
+    const { category, search_option, keyword, } = useParams();
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
+    
+    console.log(1);
+    
     useSetPageName("ReviewPage");
-    const { total, currentPage, setCurrentPage, currentPageArray }
-        = usePagination({
-                                        contentsType:"Review",
-                                        contents: contents,
-                                        postLimitNum: postLimitNum
-        });
     
     const { queryParams, handleSetQueryParams } = useURL({
         key: "category",
@@ -32,6 +31,13 @@ function ReviewPageContainer() {
         contentsType: "Review",
         category: category,
         queryParams: queryParams
+    });
+    
+    const { total, currentPage, setCurrentPage, currentPageArray }
+        = usePagination({
+        contentsType:"Review",
+        contents: contents,
+        postLimitNum: postLimitNum
     });
     
     return (
@@ -57,9 +63,6 @@ function ReviewPageContainer() {
                     />
                 ) : null
             }
-            <WriteButton>
-                글쓰기
-            </WriteButton>
         </ContentsWrapper>
     )
 }

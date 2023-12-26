@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { FocusFadeProps} from "@Interfaces/Style/Fade";
+import { FocusFadeProps} from "@Interfaces/Style/FadeStyleInterface";
 import { MainReviewsItem } from "@Components/Page/MainPage/Reviews/index";
 import { HorizontalCompactList } from "@style/List/HorizontalList";
-import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/Fade";
+import { focusOpacityStyle, focusTransitionStyle } from "@style/CSS/FadeCSS";
 
 
 const ReviewsList = styled(HorizontalCompactList)<FocusFadeProps>`
@@ -20,7 +20,7 @@ function MainReviewsList({focus}: {focus: boolean}) {
     return (
         <ReviewsList
             $focus={focus}
-            $fadeInTransition={"all .5s .4s"}
+            $fadeInTransition={"all .5s .7s"}
             $fadeOutTransition={"all .4s"}
         >
             <MainReviewsItem title={"11111111"} text={"2222222222"} date={"2023.10"}/>

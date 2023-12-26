@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LengthProps, DepthProps, ActiveProps } from '@Interfaces/Style/Base';
+import { LengthProps, DepthProps, ActiveProps } from '@Interfaces/Style/BaseStyleInterface';
 
 export const Background = styled.div<LengthProps>`
   position: absolute;

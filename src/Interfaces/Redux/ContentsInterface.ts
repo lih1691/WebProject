@@ -59,7 +59,7 @@ export interface ContentsState {
 
 export interface FetchContentsInterface {
     contentsType: string;
-    category: string;
+    category: string | undefined;
     searchOption?: string | null;
     keyword?: string | null;
 }

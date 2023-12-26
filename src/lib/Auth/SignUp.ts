@@ -47,7 +47,7 @@ export const useSignUp = (formInfo : FormState) => {
                 }));
             }
         }
-    }, [currentFieldNameRef.current, currentFieldValueRef.current, formInfo, error, exists, dispatch]);
+    }, [ formInfo, error, exists, dispatch]);
     
     const handleChange =  (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;

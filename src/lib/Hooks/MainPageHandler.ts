@@ -51,4 +51,5 @@ export default function useMainPageHandler({
         
     }, [articleIndex, scrollEventActive]);
     
+    
 }

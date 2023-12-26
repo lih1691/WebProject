@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import oc from 'open-color';
-import { FocusFadeProps } from "@Interfaces/Style/Fade";
-import { PositionProps, MarginProps } from "@Interfaces/Style/Base";
+import { FocusFadeProps } from "@Interfaces/Style/FadeStyleInterface";
+import { PositionProps, MarginProps } from "@Interfaces/Style/BaseStyleInterface";
 
 interface SectionTitleProps extends MarginProps, FocusFadeProps {}
 

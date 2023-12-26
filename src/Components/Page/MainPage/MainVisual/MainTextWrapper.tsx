@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useAppSelector } from "@redux/hook";
 import MainTextTitle from './MainTextTitle';
 import MainTextSentence from './MainTextSentence';
+import { FocusProps } from "@Interfaces/Style/BaseStyleInterface";
 
 const Positioner = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ const Positioner = styled.div`
   margin: 0 auto;
 `
 
-const TextPositioner = styled.div<{$focus: boolean}>`
+const TextPositioner = styled.div<FocusProps>`
   position: absolute;
   top: 305px;
   left: ${(props) => props.$focus ? 0 : "-5%"};
@@ -27,7 +28,7 @@ function MainTextWrapper({focus}: {focus: boolean}) {
                 {
                     mainState.map((state) => (
                         <TextPositioner key={state.id} $focus={focus}>
-                            <MainTextTitle active={state.id === currentIndex}>
+                            <MainTextTitle focus={state.id === currentIndex}>
                                 {state.title}
                             </MainTextTitle>
                             <MainTextSentence active={state.id === currentIndex}>

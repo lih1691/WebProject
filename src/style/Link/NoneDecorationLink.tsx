@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import oc from "open-color";
-import {CustomFontProps} from "@Interfaces/Style/Font";
+import {CustomFontProps} from "@Interfaces/Style/FontStyleInterface";
 
 export const NoneDecorationLink = styled(Link)`
   text-decoration: none;

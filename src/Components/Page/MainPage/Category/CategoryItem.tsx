@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { HorizontalItem } from "@style/List/HorizontalList";
-import { FocusFadeProps } from "@Interfaces/Style/Fade";
-import { focusTransitionStyle } from "@style/CSS/Fade";
+import { FocusFadeProps } from "@Interfaces/Style/FadeStyleInterface";
+import { focusTransitionStyle } from "@style/CSS/FadeCSS";
 
 const CategoryItem = styled(HorizontalItem)<FocusFadeProps>`
   position: relative;

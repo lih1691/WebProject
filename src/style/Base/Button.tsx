@@ -9,6 +9,6 @@ export const PageButton = styled(Button)`
   margin: 20px 20px;
 `
 
-export const WriteButton = styled.button`
-
+export const BorderButton = styled(Button)`
+  height: 2rem;
 `

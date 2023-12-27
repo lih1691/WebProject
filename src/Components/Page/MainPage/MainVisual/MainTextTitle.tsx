@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { FocusProps } from "@Interfaces/Style/BaseStyleInterface";
+import { FocusProps } from "@Interfaces/Style/ComponentStateInterface";
 
 const TextStyle = styled.p<FocusProps>`
   opacity: ${(props) => props.$focus ? 1 : 0};

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useAppSelector } from "@redux/hook";
 import MainTextTitle from './MainTextTitle';
 import MainTextSentence from './MainTextSentence';
-import { FocusProps } from "@Interfaces/Style/BaseStyleInterface";
+import { FocusProps } from "@Interfaces/Style/ComponentStateInterface";
 
 const Positioner = styled.div`
   position: relative;

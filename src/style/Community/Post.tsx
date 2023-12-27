@@ -36,3 +36,8 @@ export const NoDataContents = styled.th`
   position: relative;
   top: -1px;
 `
+
+export const PostButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`

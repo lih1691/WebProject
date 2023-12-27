@@ -6,36 +6,16 @@ export const useURL = (dependency?: ObjectInterface) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [ url, setURL ] = useState(location.pathname + location.search);
-    const [ queryParams, setQueryParams] = useState(new URLSearchParams(location.search));
     
-    const handleSetQueryParams = (params: ObjectInterface | ObjectInterface[]) => {
-        const newParamsArray = Array.isArray(params) ? params : [params];
-        const newParams = new URLSearchParams(queryParams);
-        
-        newParamsArray.forEach(({key, value}) => {
-            if (value !== undefined) {
-                newParams.set(key, value);
-            }
-        });
-        
-        setQueryParams(newParams);
-    }
     
     useEffect(() => {
-        if (dependency?.value !== undefined) {
-            setQueryParams(new URLSearchParams([
-                [dependency.key, dependency.value]
-            ]));
-        }
+    
     }, [dependency?.value])
     
-    useEffect(() => {
-        setURL(location.pathname + '?' + queryParams.toString());
-    }, [queryParams])
     
     useEffect(() => {
         navigate(url);
     }, [url, navigate]);
     
-    return { queryParams, handleSetQueryParams };
+    return {  };
 };

@@ -1,5 +1,3 @@
-
-
 export interface LengthProps  {
     width?: string;
     height?: string;
@@ -19,22 +17,12 @@ export interface PositionProps {
     right?: string;
 }
 
+export interface ColorProps {
+    color: string;
+}
+
 export interface DepthProps {
     $zIndex: number;
 }
-
-export interface FocusProps {
-    $focus: boolean;
-}
-
-export interface ActiveProps {
-    $active: boolean;
-}
-
-export interface HoverInterface {
-    $isHovered: boolean;
-}
-
-
 
 

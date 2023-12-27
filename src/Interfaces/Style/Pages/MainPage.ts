@@ -1,4 +1,5 @@
-import {ActiveProps, DepthProps, FocusProps, LengthProps} from "@Interfaces/Style/BaseStyleInterface";
+import {DepthProps, LengthProps} from "@Interfaces/Style/BaseStyleInterface";
+import {FocusProps, ActiveProps} from "@Interfaces/Style/ComponentStateInterface";
 
 export interface MainPagerUlProps extends DepthProps {
     display: string;

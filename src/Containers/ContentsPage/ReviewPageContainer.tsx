@@ -1,38 +1,20 @@
 import React from 'react';
 import { useAppSelector } from "@redux/hook";
 import { selectReviewContents} from "@redux/features/ContentsSlice";
-import {ContentsWrapper, PageNumberList, SearchBar} from "@Components/Contents";
+import {ContentsWrapper, PageNumberList, SearchBar, NoContents, PostButton } from "@Components/Contents";
 import { ReviewContents } from "@Components/Page/ReviewPage";
-import NoContents from "@Components/Contents/NoContents";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePagination } from "@lib/Hooks/usePageNation";
 import { useContents } from "@lib/Hooks/useContents";
-import { useURL } from "@lib/Hooks/useURL";
-import {selectCurrentCategory} from "@redux/features/UISlice";
-import {useSetPageName} from "@lib/Hooks/useSetPageName";
-import {BorderButton} from "@style/Base/Button";
-import {useParams} from "react-router-dom";
+import { useSetPageName } from "@lib/Hooks/useSetPageName";
+import {PostButtonWrapper} from "@style/Community/Post";
 
 function ReviewPageContainer() {
-    // const category = useAppSelector(selectCurrentCategory);
-    const { category, search_option, keyword, } = useParams();
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
-    
-    console.log(1);
-    
     useSetPageName("ReviewPage");
     
-    const { queryParams, handleSetQueryParams } = useURL({
-        key: "category",
-        value: category
-    });
-    
-    useContents({
-        contentsType: "Review",
-        category: category,
-        queryParams: queryParams
-    });
-    
+    useContents({contentsType: "Review"});
+
     const { total, currentPage, setCurrentPage, currentPageArray }
         = usePagination({
         contentsType:"Review",
@@ -42,7 +24,7 @@ function ReviewPageContainer() {
     
     return (
         <ContentsWrapper >
-            <SearchBar handleSetQueryParams={handleSetQueryParams}/>
+            <SearchBar />
             <ContentsList>
                 {currentContents && currentContents.length > 0 ? (
                     currentContents.map((currentContent, index) => (
@@ -63,6 +45,16 @@ function ReviewPageContainer() {
                     />
                 ) : null
             }
+            
+            <PostButtonWrapper>
+                <PostButton to={""}>
+                    전체글
+                </PostButton>
+                <PostButton to={"write"}>
+                    글쓰기
+                </PostButton>
+            </PostButtonWrapper>
+            
         </ContentsWrapper>
     )
 }

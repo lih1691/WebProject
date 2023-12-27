@@ -16,7 +16,6 @@ export const ContentsWrapper = styled.div<{$padding: string}>`
 export const ContentsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   height: 100%;
   padding: 0;
   list-style: none;

@@ -1,13 +1,19 @@
 import React, {ChangeEvent, useState} from 'react';
 import {ObjectInterface} from "@Interfaces/Base/ObjectInterface";
 import isLength from "validator/lib/isLength";
+import {useNavigate} from "react-router-dom";
+import {useAppSelector} from "@redux/hook";
+import {selectCurrentCategory, selectCurrentContentsType} from "@redux/features/UISlice";
 
 /*
 * 검색을 실행했을 시 URL을 변경하는 함수<br>
 * 변경된 URL로 직접 페이지를 이동하지는 않음
 * @params: {handleSetQueryParams} (key: string, value: string) => void
 */
-export const useSearch = (handleSetQueryParams: (params: ObjectInterface | ObjectInterface[]) => void) => {
+export const useSearch = () => {
+    const navigate = useNavigate();
+    const category = useAppSelector(selectCurrentCategory);
+    const contentsType = useAppSelector(selectCurrentContentsType);
     const [ searchOption, setSearchOption ] = useState('title');
     const [ keyword, setKeyword ] = useState('');
     
@@ -28,16 +34,7 @@ export const useSearch = (handleSetQueryParams: (params: ObjectInterface | Objec
             return
         }
         
-        handleSetQueryParams([
-            {
-                key: "search_option",
-                value: searchOption
-            },
-            {
-                key: "keyword",
-                value: keyword
-            }
-        ])
+        navigate(`/contents/${contentsType}/${category}/${searchOption}/${keyword}`);
         
         setSearchOption('title');
         setKeyword('');

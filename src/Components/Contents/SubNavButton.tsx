@@ -1,9 +1,10 @@
 import React, {ReactNode} from 'react';
+import {useNavigate} from "react-router-dom";
 import styled from 'styled-components';
 import oc from 'open-color';
 import { Button } from "@style/Base/Button";
 import {useAppDispatch, useAppSelector} from "@redux/hook";
-import {setCategory} from "@redux/features/UISlice";
+import {selectCurrentCategory, selectCurrentContentsType, setCategory} from "@redux/features/UISlice";
 
 const NavButton = styled(Button)<{$active: boolean}>`
   font-size: 17px;
@@ -19,18 +20,21 @@ const NavButton = styled(Button)<{$active: boolean}>`
   }
 `
 
-function SubNavButton({children, category}: {children: ReactNode, category: string}) {
+function SubNavButton({children, buttonCategory}: {children: ReactNode, buttonCategory: string}) {
     const dispatch = useAppDispatch();
-    const currentCategory = useAppSelector((state) => state.ui.contentCategory);
+    const navigate = useNavigate();
+    const contentsType = useAppSelector(selectCurrentContentsType);
+    const category = useAppSelector(selectCurrentCategory);
     
     const handleCategory = (category: string) => {
         dispatch(setCategory(category));
+        navigate(`/contents/${contentsType}/${category}`);
     };
     
     return (
         <NavButton
-            onClick={() => handleCategory(category)}
-            $active={currentCategory === category}
+            onClick={() => handleCategory(buttonCategory)}
+            $active={category === buttonCategory}
         >
             {children}
         </NavButton>

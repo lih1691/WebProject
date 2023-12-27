@@ -1,4 +1,4 @@
-import {FocusProps} from "@Interfaces/Style/BaseStyleInterface";
+import {FocusProps} from "@Interfaces/Style/ComponentStateInterface";
 
 export interface FadeInterface {
     $fadeInTransition: string;

@@ -13,8 +13,13 @@ export interface MainPageState {
     },
 }
 
+export interface ContentsPageState {
+    currentContentsType: string;
+    currentCategory: string;
+}
+
 export interface UIState {
     currentPage: string;
     mainPageState: MainPageState;
-    contentCategory: string;
+    contentsPageState: ContentsPageState;
 }

@@ -4,10 +4,10 @@ import { SearchBarPositioner, SearchBarForm, SearchInput, SearchBarCategory, Sea
 import {useSearch} from "@lib/Hooks/useSearch";
 import {ObjectInterface} from "@Interfaces/Base/ObjectInterface";
 
-function SearchBar({handleSetQueryParams}: {handleSetQueryParams: (params: ObjectInterface | ObjectInterface[]) => void})
+function SearchBar()
 {
     const { searchOption, keyword, handleSearchOptionChange, handleKeywordChange, handleOnSubmit}
-        = useSearch(handleSetQueryParams);
+        = useSearch();
     
     return (
         <SearchBarPositioner>

@@ -6,4 +6,4 @@ export const checkNickNameExists = (nickName: string) => axios.get('/api/auth/ex
 export const localSignUp = (userData : string) => axios.post('/api/auth/signup/local', userData);
 export const localSignIn = (userData: string) => axios.post('/api/auth/signin/local', userData);
 export const checkStatus = () => axios.get('/api/auth/check');
-export const logOut = () => axios.post('/api/auth/logOut');
+export const logOut = () => axios.post('/api/auth/logout');

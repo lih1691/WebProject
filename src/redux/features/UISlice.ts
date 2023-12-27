@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {RootState} from "@redux/store";
+import { RootState } from "@redux/store";
 import { UIState } from "@Interfaces/Redux/UIInterface";
 
 
@@ -16,7 +16,10 @@ const initialState: UIState = {
             ],
         }
     },
-    contentCategory: "apple",
+    contentsPageState: {
+        currentContentsType: "review",
+        currentCategory: "apple",
+    }
 }
 
 const UISlice = createSlice({
@@ -26,8 +29,11 @@ const UISlice = createSlice({
         setCurrentPageName: (state, action: PayloadAction<string>) => {
             state.currentPage = action.payload;
         },
+        setContentsType: (state, action: PayloadAction<string>) => {
+          state.contentsPageState.currentContentsType = action.payload;
+        },
         setCategory: (state, action: PayloadAction<string>) => {
-            state.contentCategory = action.payload;
+            state.contentsPageState.currentCategory = action.payload;
         },
         changeMainIndex: (state, action: PayloadAction<number>) => {
             state.mainPageState.currentIndex = action.payload;
@@ -38,7 +44,8 @@ const UISlice = createSlice({
     }
 });
 
-export const selectCurrentCategory = (state: RootState) => state.ui.contentCategory;
+export const selectCurrentCategory = (state: RootState) => state.ui.contentsPageState.currentCategory;
+export const selectCurrentContentsType = (state: RootState) => state.ui.contentsPageState.currentContentsType;
 
 export const { setCurrentPageName, setCategory,changeMainIndex, changeMainVisualIndex } = UISlice.actions;
 export default UISlice.reducer;

@@ -27,13 +27,13 @@ function SubNavList() {
         <Wrapper>
             <NavList>
                 <HorizontalItem>
-                    <SubNavButton category={"apple"}>애플</SubNavButton>
+                    <SubNavButton buttonCategory={"apple"}>애플</SubNavButton>
                 </HorizontalItem>
                 <HorizontalItem>
-                    <SubNavButton category={"samsung"}>삼성</SubNavButton>
+                    <SubNavButton buttonCategory={"samsung"}>삼성</SubNavButton>
                 </HorizontalItem>
                 <HorizontalItem>
-                    <SubNavButton category={"xiaomi"}>샤오미</SubNavButton>
+                    <SubNavButton buttonCategory={"xiaomi"}>샤오미</SubNavButton>
                 </HorizontalItem>
             </NavList>
         </Wrapper>

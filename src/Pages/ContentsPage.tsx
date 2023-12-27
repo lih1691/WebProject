@@ -3,8 +3,6 @@ import {RelativePositioner} from "@style/Base/Positioner";
 import {SubBanner, SubNav} from "@Components/Contents";
 import {Route, Routes} from "react-router-dom";
 import {CommunityPageContainer, NewsPageContainer, ReviewPageContainer} from "@Containers/ContentsPage";
-import {useAppSelector} from "@redux/hook";
-import {selectCurrentCategory} from "@redux/features/UISlice";
 
 function ContentsPage() {
     return (
@@ -14,11 +12,11 @@ function ContentsPage() {
             <Routes>
                 <Route path={"/news"} element={<NewsPageContainer />}/>
                 <Route
-                    path="/review/:category/:search_option?/:keyword?"
+                    path="/review/:category/:searchOption?/:keyword?"
                     element={<ReviewPageContainer />}
                 />
                 <Route
-                    path="/community/:category/:search_option/:keyword"
+                    path="/community/:category/:searchOption/:keyword"
                     element={<CommunityPageContainer />}
                 />
             </Routes>

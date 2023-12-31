@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ChangeInterface } from '@Interfaces/Hooks/ChangeInterface'
+import {ChangeEventHandler, useState} from 'react';
+import {ChangeInterface, InputChangeInterface} from '@Interfaces/Hooks/ChangeInterface'
 
 
 /*
@@ -13,6 +13,20 @@ export const useChange = <T>(initialValue: T): ChangeInterface<T> => {
     
     const onChange = (newValue: T) => {
         setValue(newValue);
+    };
+    
+    return {
+        value,
+        setValue,
+        onChange,
+    };
+};
+
+export const useInputChange = (initialValue: string): InputChangeInterface => {
+    const [value, setValue] = useState<string>(initialValue);
+    
+    const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+        setValue(event.target.value);
     };
     
     return {

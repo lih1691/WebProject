@@ -5,5 +5,6 @@ export interface InputWithLabelProps {
     name: string;
     placeholder: string;
     value: string;
+    width: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

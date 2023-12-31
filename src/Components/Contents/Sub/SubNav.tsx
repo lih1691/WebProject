@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import SubNavList from "@Components/Contents/SubNavList";
+import SubNavList from "@Components/Contents/Sub/SubNavList";
 
 const Positioner = styled.div`
   position: relative;

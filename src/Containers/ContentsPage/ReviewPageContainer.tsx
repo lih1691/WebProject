@@ -1,13 +1,13 @@
 import React from 'react';
 import { useAppSelector } from "@redux/hook";
 import { selectReviewContents} from "@redux/features/ContentsSlice";
-import {ContentsWrapper, PageNumberList, SearchBar, NoContents, PostButton } from "@Components/Contents";
+import {ContentsWrapper, PageNumberList, SearchBar, NoContents } from "@Components/Contents";
 import { ReviewContents } from "@Components/Page/ReviewPage";
 import { ContentsList } from "@style/List/ContentsList";
 import { usePagination } from "@lib/Hooks/usePageNation";
 import { useContents } from "@lib/Hooks/useContents";
 import { useSetPageName } from "@lib/Hooks/useSetPageName";
-import {PostButtonWrapper} from "@style/Community/Post";
+import PostButtonWrapper from "@Components/Contents/Post/PostButtonWrapper";
 
 function ReviewPageContainer() {
     const {postLimitNum, pageLimitNum, contents, currentContents} = useAppSelector(selectReviewContents);
@@ -45,16 +45,7 @@ function ReviewPageContainer() {
                     />
                 ) : null
             }
-            
-            <PostButtonWrapper>
-                <PostButton to={""}>
-                    전체글
-                </PostButton>
-                <PostButton to={"write"}>
-                    글쓰기
-                </PostButton>
-            </PostButtonWrapper>
-            
+            <PostButtonWrapper />
         </ContentsWrapper>
     )
 }

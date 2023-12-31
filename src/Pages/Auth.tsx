@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthWrapper } from '@Components/Auth';
 import { SignIn, SignUp } from '@Containers/Auth';
 import {HeaderContainer} from "@Containers/Base";
-import {ContentsWrapper, SubBanner} from "@Components/Contents";
+import {ContentsWrapper} from "@Components/Contents";
+import { SubBanner} from "@Components/Contents/Sub";
 import {setCurrentPageName} from "@redux/features/UISlice";
 import {useAppDispatch} from "@redux/hook";
 

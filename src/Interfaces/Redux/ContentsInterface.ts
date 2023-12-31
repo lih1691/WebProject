@@ -9,16 +9,17 @@ interface PageNumberInterface {
     pageLimitNum: number;
 }
 
-export interface ReviewContent extends BaseContentInterface{
-    rating: number;
-    product: string;
-}
-
-export interface NewsContent extends BaseContentInterface{
+export interface DescContent extends BaseContentInterface{
     desc: string;
 }
 
-export interface CommunityContent extends BaseContentInterface{
+export interface ReviewContent extends DescContent{
+    rating: number;
+    product: string;
+    file: any[];
+}
+
+export interface CommunityContent extends DescContent{
     postNumber: number;
     tag: string;
     views: number;
@@ -40,8 +41,8 @@ export interface CommunityPageState extends PageNumberInterface{
 
 
 interface NewsPageState extends PageNumberInterface{
-    contents: NewsContent[][];
-    currentContents: NewsContent[];
+    contents: DescContent[][];
+    currentContents: DescContent[];
 }
 
 export interface AccessContentsPayload {

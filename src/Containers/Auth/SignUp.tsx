@@ -18,6 +18,7 @@ function SignUp() {
                 name={"userID"}
                 placeholder={"아이디"}
                 value={userID}
+                width={"100%"}
                 onChange={handleChange}
             />
             <InputWithLabel
@@ -25,6 +26,7 @@ function SignUp() {
                 name={"userPWD"}
                 placeholder={"비밀번호"}
                 value={userPWD}
+                width={"100%"}
                 onChange={handleChange}
             />
             <InputWithLabel
@@ -32,6 +34,7 @@ function SignUp() {
                 name={"userPWDConfirm"}
                 placeholder={"비밀번호 확인"}
                 value={userPWDConfirm}
+                width={"100%"}
                 onChange={handleChange}
             />
             <InputWithLabel
@@ -39,6 +42,7 @@ function SignUp() {
                 name={"userNickname"}
                 placeholder={"닉네임"}
                 value={userNickname}
+                width={"100%"}
                 onChange={handleChange}
             />
             <InputWithLabel
@@ -46,6 +50,7 @@ function SignUp() {
                 name={"userEmail"}
                 placeholder={"이메일"}
                 value={userEmail}
+                width={"100%"}
                 onChange={handleChange}
             />
             {

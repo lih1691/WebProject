@@ -19,6 +19,7 @@ function SignIn() {
                 name={"userID"}
                 placeholder={"아이디"}
                 value={userID}
+                width={"100%"}
                 onChange={handleChange}
             />
             <InputWithLabel
@@ -26,6 +27,7 @@ function SignIn() {
                 name={"userPWD"}
                 placeholder={"비밀번호"}
                 value={userPWD}
+                width={"100%"}
                 onChange={handleChange}
             />
             {

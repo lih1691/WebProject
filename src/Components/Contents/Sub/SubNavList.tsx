@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useAppDispatch} from "@redux/hook";
 import { HorizontalItem, HorizontalList } from "@style/List/HorizontalList";
-import { SubNavButton } from "@Components/Contents";
-
+import { SubNavButton } from "@Components/Contents/Sub";
 
 const Wrapper = styled.div`
   overflow: hidden;

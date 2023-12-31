@@ -1,8 +1,5 @@
-import { css, CSSObject, styled } from 'styled-components';
+import { css, CSSObject } from 'styled-components';
 
-export const NoneDotUl = styled.ul`
-  list-style: none;
-`
 export const sizes: Record<string, string> = {
     wide: '1200px',
     desktop: '992px',

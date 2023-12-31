@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { SubBannerImg} from "@style/Base/Image";
-import { SubBannerBackground } from "@style/Base/Background";
 
 const Positioner = styled.div`
   position: relative;

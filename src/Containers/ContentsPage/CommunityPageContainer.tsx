@@ -5,7 +5,7 @@ import {selectCurrentCategory} from "@redux/features/UISlice";
 import {Community, PostContents} from "@Components/Page/Community";
 import { ContentsWrapper, PageNumberList } from "@Components/Contents";
 import NoContents from "@Components/Contents/NoContents";
-import {NoDataContents} from "@style/Community/Post";
+import {NoDataContents} from "@style/Pages/Community/Post";
 import { usePagination } from "@lib/Hooks/usePageNation";
 import { useSetPageName } from "@lib/Hooks/useSetPageName";
 import { useContents } from "@lib/Hooks/useContents";

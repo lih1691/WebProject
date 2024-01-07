@@ -3,8 +3,8 @@ import {FocusProps, ActiveProps} from "@Interfaces/Style/ComponentStateInterface
 
 export interface MainPagerUlProps extends DepthProps {
     display: string;
-    left: string;
-    top: string;
+    $left: string;
+    $top: string;
     $marginLeft: string;
 }
 
@@ -14,8 +14,8 @@ export interface MainPagerLiProps extends LengthProps, FocusProps, ActiveProps{
     $transition: string;
     
     $after: {
-        top: string;
-        left: string;
+        $top: string;
+        $left: string;
         height: string;
         $activatedLength: string;
         $deactivatedLength: string;

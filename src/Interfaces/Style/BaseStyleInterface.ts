@@ -1,6 +1,6 @@
 export interface LengthProps  {
-    width?: string;
-    height?: string;
+    width?: string | number;
+    height?: string | number;
 }
 
 export interface MarginProps {
@@ -11,10 +11,10 @@ export interface MarginProps {
 }
 
 export interface PositionProps {
-    top?: string;
-    left?: string;
-    bottom?: string;
-    right?: string;
+    $top?: string;
+    $left?: string;
+    $bottom?: string;
+    $right?: string;
 }
 
 export interface ColorProps {

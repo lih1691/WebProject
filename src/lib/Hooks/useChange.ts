@@ -22,11 +22,11 @@ export const useChange = <T>(initialValue: T): ChangeInterface<T> => {
     };
 };
 
-export const useInputChange = (initialValue: string): InputChangeInterface => {
-    const [value, setValue] = useState<string>(initialValue);
+export const useInputChange = <T>(initialValue: T): InputChangeInterface<T> => {
+    const [value, setValue] = useState<T>(initialValue);
     
     const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setValue(event.target.value);
+        setValue(event.target.value as T);
     };
     
     return {

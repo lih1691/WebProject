@@ -6,8 +6,9 @@ export interface ChangeInterface<T> {
     onChange: (newValue: T) => void;
 }
 
-export interface InputChangeInterface {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+export interface InputChangeInterface<T> {
+    value: T;
+    setValue: Dispatch<SetStateAction<T>>;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }
+

@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
-import { Table, TableRow, HeadContents} from "@style/Community/Post";
-import { postWidthState } from "@style/Community/Post";
+import { Table, TableRow, HeadContents} from "@style/Pages/Community/Post";
+import { postWidthState } from "@style/Pages/Community/Post";
 
 function Community({children}: {children: ReactNode}) {
     const { postNumberWidth, tagWidth, titleWidth, writerWidth, dateWidth, viewsWidth, recommendationWidth} = postWidthState;

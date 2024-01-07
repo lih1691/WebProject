@@ -5,8 +5,8 @@ import { focusOpacityStyle } from "@style/CSS/FadeCSS";
 export const PagerUl = styled.ul<MainPagerUlProps>`
   display: ${(props) => props.display};
   position: absolute;
-  left: ${(props) => props.left};
-  top: ${(props) => props.top};
+  left: ${(props) => props.$left};
+  top: ${(props) => props.$top};
   margin-left: ${(props) => props.$marginLeft};
   text-align: right;
   list-style: none;
@@ -28,8 +28,8 @@ export const PagerLi = styled.li<MainPagerLiProps>`
   &::after {
     content: "";
     position: absolute;
-    top: ${(props) => props.$after.top};
-    left: ${(props) => props.$after.left};;
+    top: ${(props) => props.$after.$top};
+    left: ${(props) => props.$after.$left};;
     width: ${(props) =>
             (props.$active ? props.$after.$activatedLength
                             : props.$after.$deactivatedLength)};;

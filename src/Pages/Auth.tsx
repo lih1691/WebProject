@@ -5,12 +5,10 @@ import { SignIn, SignUp } from '@Containers/Auth';
 import {HeaderContainer} from "@Containers/Base";
 import {ContentsWrapper} from "@Components/Contents";
 import { SubBanner} from "@Components/Contents/Sub";
-import {setCurrentPageName} from "@redux/features/UISlice";
-import {useAppDispatch} from "@redux/hook";
+import {useSetPageName} from "@lib/Hooks/useSetPageName";
 
 function Auth() {
-    const dispatch = useAppDispatch();
-    dispatch(setCurrentPageName("Auth"));
+    useSetPageName("Auth");
     
     return (
         <>

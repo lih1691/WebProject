@@ -1,7 +1,7 @@
 import React from 'react';
 import { CommunityContent } from "@Interfaces/Redux/ContentsInterface";
-import { DataContents, TableRow } from "@style/Community/Post";
-import { postWidthState } from "@style/Community/Post";
+import { DataContents, TableRow } from "@style/Pages/Community/Post";
+import { postWidthState } from "@style/Pages/Community/Post";
 
 
 function PostContents({content}: {content: CommunityContent}) {

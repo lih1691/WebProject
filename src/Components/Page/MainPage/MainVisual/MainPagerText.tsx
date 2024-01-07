@@ -8,8 +8,8 @@ const pagerLiStyle = {
     color: oc.gray[4],
     clickedColor: oc.gray[8],
     $after: {
-        top: "50%",
-        left: "170px",
+        $top: "50%",
+        $left: "170px",
         height: "1px",
         $activatedLength: "60px",
         $deactivatedLength: "30px",
@@ -22,8 +22,8 @@ function MainPagerText({ focus, handleClick } : { focus: boolean, handleClick: (
     return (
         <PagerUl
             display={"block"}
-            left={"50%"}
-            top={"75vh"}
+            $left={"50%"}
+            $top={"75vh"}
             $marginLeft={"-520px"}
             $zIndex={0}
         >

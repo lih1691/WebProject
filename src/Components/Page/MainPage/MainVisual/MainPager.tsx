@@ -8,8 +8,8 @@ const pagerLiStyle = {
     color: oc.gray[8],
     clickedColor: oc.gray[4],
     $after: {
-        top: "90%",
-        left: "35%",
+        $top: "90%",
+        $left: "35%",
         height: "2px",
         $activatedLength: "20px",
         $deactivatedLength: "0px",
@@ -23,8 +23,8 @@ function MainPager({handleClick} : { handleClick: (index: number) => void}) {
     return (
         <PagerUl
             display={"flex"}
-            left={"50%"}
-            top={"230px"}
+            $left={"50%"}
+            $top={"230px"}
             $marginLeft={"-795px"}
             $zIndex={1}
             >

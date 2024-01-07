@@ -1,7 +1,7 @@
 import React from 'react';
 import { RelativePositioner } from "@style/Base/Positioner";
 import { DescList, DescTerm, Desc } from "@style/Base/Desc";
-import { StarRating } from "@lib/Contents/StarRating";
+import { DescriptionStarRating } from "@Components/Page/ReviewPage/index";
 
 interface DescProps {
     nickname: string;
@@ -11,11 +11,12 @@ interface DescProps {
 }
 
 function ReviewDescription({nickname, rating, date, product}: DescProps) {
+    
     return (
         <RelativePositioner>
             <DescList>
                 <DescTerm>별 점 : </DescTerm>
-                <Desc><StarRating rating={rating} totalRating={5} /></Desc>
+                <Desc><DescriptionStarRating rating={rating} /></Desc>
             </DescList>
             <DescList>
                 <DescTerm>작성자 : </DescTerm>

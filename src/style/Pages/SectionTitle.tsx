@@ -20,8 +20,8 @@ export const RelativeSectionTitle = styled(SectionTitle)`
 
 export const AbsoluteSectionTitle = styled(SectionTitle)<PositionProps & SectionTitleProps>`
   position: absolute;
-  top: ${props => props.top};
-  left: ${props => props.left};
-  bottom: ${props => props.bottom};
-  right: ${props => props.right};
+  top: ${props => props.$top};
+  left: ${props => props.$left};
+  bottom: ${props => props.$bottom};
+  right: ${props => props.$right};
 `

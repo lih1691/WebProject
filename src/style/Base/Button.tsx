@@ -7,6 +7,12 @@ export const Button = styled.button`
   cursor: pointer;
   background-color: transparent;
 `
+
+/*
+* @params { string, string } width, height => 너비, 높이
+* @params { string } color 버튼 색
+* @params { string, string, string } $font, $fontSize, $fontWeight
+*/
 export const ColorButton = styled(Button)<ColorProps & LengthProps & CustomFontProps>`
   width: ${props => props.width};
   height: ${props => props.height};
